@@ -642,7 +642,7 @@ def charsel(
     rosterRect = Surface((560, 715), SRCALPHA)
     rosterRect.fill((200, 200, 200, 100))
     screen.blit(rosterRect, (680, 20))
-    for i in range(int(hee)+3, int(hee), -1):
+    for i in range(min(int(hee)+3, len(infoCards)-1), int(hee), -1):
         v = infoCards[i]
         blitImage = transform.scale(v.graphic, (int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_width()),
                                                 int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_height())))
