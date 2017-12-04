@@ -689,7 +689,7 @@ def charsel(
     screen.blit(myPartyText, (692, 26))
     for i,v in enumerate([i.name.lower() for i in yourselection]):
         for j in infoCards:
-            if j.characterName.lower() == v:
+            if j.characterName.lower() == v  or v == j.workingName.lower():
                 smallCard = j.graphic.subsurface([0,0,500,110])
                 screen.blit(smallCard,(690, i*(smallCard.get_height()+2)+60))
                 delRect = Rect(695+smallCard.get_width(), i*(smallCard.get_height()+2)+60, 40, smallCard.get_height())
