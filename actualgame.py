@@ -708,7 +708,7 @@ def charsel(
         if len(yourselection)==3:
             draw.rect(screen, GREEN, (690, 675, 540, 50))
             if Rect(690, 675, 540, 50).collidepoint(mx, my):
-                draw.rect(screen, (200, 200, 0), (690, 675, 540, 50))
+                draw.rect(screen, (0, 200, 0), (690, 675, 540, 50))
                 if(mb[0] and not clicked):
                     for i in infoCards:
                         if i.characterName.lower() == yourselection[0].name.lower():
