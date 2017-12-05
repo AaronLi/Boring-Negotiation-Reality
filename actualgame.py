@@ -97,9 +97,6 @@ kbattle = transform.scale(kbattle, (1260, 650))
 # image loading for the main menu and cutscenes
 menu1 = image.load("A BNR/main menu real.png")
 
-begin1 = image.load(
-    "A BNR/landscapee.png")  # this is actually used for character selection rather then for the cutscene
-
 # These are all the scenes used during the opening cutscene
 begin0 = image.load("A BNR/other/haha.jpg")
 begin0 = transform.scale(begin0, (1260, 650))
@@ -123,8 +120,6 @@ sceneback = [[begin0, begin0, begin2, begin2, begin3, begin4, begin5, begin6, be
 
 instructionsPic = image.load(
     "A BNR/help.png")  # The instructions as a single picture to be blit when being called as a function
-playy = image.load("A BNR/other/playarrow.png")  # The play button thats is blit when you have selected your characters
-
 # order: ER,AR,JH,SS,NN,JF,ED,LN,PS,MB,VL,OZ,ZH
 # This is all the characters standing normally that is used during character select as well as during the main game
 erikstand = image.load("A BNR/stands/erik stand.png")
@@ -291,69 +286,8 @@ emilydedportrait = image.load('game sprites/battle portraits/emily portraitded.p
 linhdedportrait = image.load('game sprites/battle portraits/linh portraitded.png')
 priyontodedportrait = image.load('game sprites/battle portraits/priyonto portraitded.png')
 
-# backstories for all characters
-erikback = image.load("A BNR/erik story.png")
-alizaback = image.load("A BNR/aliza story.png")
-julieback = image.load("A BNR/julie story.png")
-supback = image.load("A BNR/sup story.png")
-natback = image.load("A BNR/nat story.png")
-janback = image.load("A BNR/jan story.png")
-emilyback = image.load("A BNR/emily story.png")
-linhback = image.load("A BNR/linh story.png")
-printerback = image.load("A BNR/printer story.png")
-minyaback = image.load("A BNR/minya story.png")
-vivback = image.load("A BNR/viv story.png")
-oguback = image.load("A BNR/ogu story.png")
-zakback = image.load("A BNR/zak story.png")
-
-# stats for all characters
-erikstats = image.load("A BNR/stats/erikstats.png")
-alizastats = image.load("A BNR/stats/alizastats.png")
-juliestats = image.load("A BNR/stats/juliestats.png")
-supstats = image.load("A BNR/stats/supstats.png")
-natstats = image.load("A BNR/stats/natstats.png")
-janstats = image.load("A BNR/stats/janstats.png")
-emilystats = image.load("A BNR/stats/emilystats.png")
-linhstats = image.load("A BNR/stats/linhstats.png")
-printerstats = image.load("A BNR/stats/priyontostats.png")
-minyastats = image.load("A BNR/stats/minyastats.png")
-vivstats = image.load("A BNR/stats/vivstats.png")
-ogustats = image.load("A BNR/stats/ogustats.png")
-zakstats = image.load("A BNR/stats/zakstats.png")
-
 clicked = False
 # name tags
-# if you want to make a person say something (ie: 1st person) then say yourselection [0[0]]
-# name tags
-chartit = image.load("A BNR/nom/charseltitle.png")
-erikname = image.load("A BNR/nom/eriknom.png")
-alizaname = image.load("A BNR/nom/alizanom.png")
-juliename = image.load("A BNR/nom/julienom.png")
-supname = image.load("A BNR/nom/supreetnom.png")
-natname = image.load("A BNR/nom/natnom.png")
-janname = image.load("A BNR/nom/jannom.png")
-emilyname = image.load("A BNR/nom/emilynom.png")
-linhname = image.load("A BNR/nom/linhnom.png")
-printername = image.load("A BNR/nom/printernom.png")
-minyaname = image.load("A BNR/nom/minyanom.png")
-vivname = image.load("A BNR/nom/vivnom.png")
-oguname = image.load("A BNR/nom/oguzhannom.png")
-zakname = image.load("A BNR/nom/zacnom.png")
-
-# All the neeeded sprites for character selection and cutscenes in one list
-selectsprites = [[erikstand, erikback, erikname, erikstats],
-                 [alizastand, alizaback, alizaname, alizastats],
-                 [juliestand, julieback, juliename, juliestats],
-                 [supstand, supback, supname, supstats],
-                 [natstand, natback, natname, natstats],
-                 [janstand, janback, janname, janstats],
-                 [emilystand, emilyback, emilyname, emilystats],
-                 [linhstand, linhback, linhname, linhstats],
-                 [printerstand, printerback, printername, printerstats],
-                 [minyastand, minyaback, minyaname, minyastats],
-                 [vivstand, vivback, vivname, vivstats],
-                 [ogustand, oguback, oguname, ogustats],
-                 [zakstand, zakback, zakname, zakstats]]
 
 juvivPics = [(image.load("A BNR/CODESYS/juviv" + str(i) + ".png")) for i in
              range(10)]  # list of the pictures for the code "juviv"
@@ -498,7 +432,8 @@ eleven = "After I slay thee I will be the biggest boy.  And milk thy muscles for
 # after battle 1?
 tweleve = "We got you!   Tell us who your master is!"
 thirteen = "Me me little boy.... All I know is my master's... home is..."
-fourteen = "..at the upper regions of Mount Dew... I was hoping to die before I revealed that."
+fourteen = "..at the upper regions of Mount Dew..."
+fourteenpointfive = "I was hoping to die before I revealed that."
 fifteen = "There, you'll meet the immortal bouncer of the Portal, Vlad."
 
 sixteen = "Nnnnyyeeeessss. Ahh at last you come. You have promise. Alas, it is your naive belief that you can save everyone that blinds you. A shame."
@@ -529,7 +464,7 @@ thirtyfive = "[You have saved the land of Petraglade! You shall be rememebered e
 
 # List of all the scenes
 scene = [[zero, one, two, three, four, five, six, seven, eight], [nine, ten, eleven],
-         [tweleve, thirteen, fourteen, fifteen], [sixteen, seventeen, eighteen],
+         [tweleve, thirteen, fourteen, fourteenpointfive, fifteen], [sixteen, seventeen, eighteen],
          [nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix],
          [twentyseven, twentyeight, twentynine, thirtyone, thirtytwo], [thirtythree, thirtyfour, thirtyfive]]
 scene = [[j + (' ' * 7) for j in i] for i in scene]
@@ -617,12 +552,6 @@ enemyrevoked = [False, False, False]  # Another list for supreets revoke ability
 taunted = [False, False, False]  # Taunting enemies to attack a specific person
 beforehealth = -1  # Another variable for an ability (jan's flame shell)
 beforehealthtarget = -1  # Also being used for jan's flame shell
-# select buttons
-select = image.load("A BNR/sel.png")
-deselect = image.load("A BNR/desel.png")
-
-# Play button to be blitted
-playbut = image.load("A BNR/play arrow.png")
 
 deathScreen = image.load("A BNR/deathScreen.png")
 
@@ -653,9 +582,10 @@ def charsel(
     for i in range(max(int(hee)-3, 0), int(hee+1)):
         v = infoCards[i]
         blitImage = transform.scale(v.graphic, (int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_width()),
-                                                int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_height())))
+                                                int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_height())))#.convert_alpha()
         maskImage = Surface(blitImage.get_size(), SRCALPHA)
         maskImage.fill((0, 0, 0, min(100*abs(hee-i),255)))
+        #blitImage.set_alpha(min(100 * abs(hee - i), 255))
         screen.blit(blitImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - hee) * blitImage.get_height()))))
         screen.blit(maskImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - hee) * blitImage.get_height()))))
 
@@ -664,7 +594,7 @@ def charsel(
         if float(hee).is_integer():
             direction = 0
     else:
-        if float(hee).is_integer() and infoCards[int(hee)].characterName.lower() not in [i.name.lower() for i in yourselection] and len(yourselection)<3:
+        if float(hee).is_integer() and infoCards[int(hee)].characterName.lower() not in [i.name.lower() for i in yourselection] and len(yourselection)<3 and infoCards[int(hee)].workingName.lower() not in [i.name.lower() for i in yourselection]:
             hee = int(hee)
             draw.polygon(screen, (255,255,255), [
                 (320 + infoCards[hee].graphic.get_width() // 2, 337),
@@ -672,14 +602,14 @@ def charsel(
                 (320 + infoCards[hee].graphic.get_width() // 2, 397),
 
             ])
-            if Rect(320 + infoCards[hee].graphic.get_width() // 2,337, 50, 60).collidepoint(mx, my):
+            if Rect(320 + infoCards[hee].graphic.get_width() // 2,337, 50, 60).collidepoint(mx, my) or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
                 draw.polygon(screen, (200, 200, 200), [
                     (320 + infoCards[hee].graphic.get_width() // 2, 337),
                     (370 + infoCards[hee].graphic.get_width() // 2, 367),
                     (320 + infoCards[hee].graphic.get_width() // 2, 397),
 
                 ])
-                if mb[0] and not clicked and len(pparty)<3:
+                if mb[0] and not clicked and len(pparty)<3 or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
                     yourselection.append(stats[hee])
                     pparty.append(profs[hee])
                     selectnums.append(hee)
@@ -704,6 +634,14 @@ def charsel(
                     draw.rect(screen, (255,0,0), delRect)
                 draw.line(screen, WHITE, (delRect.centerx-10, delRect.centery-10), (delRect.centerx+10, delRect.centery+10), 2)
                 draw.line(screen, WHITE, (delRect.centerx - 10, delRect.centery + 10), (delRect.centerx + 10, delRect.centery - 10), 2)
+    if keys[K_a] or keys[K_LEFT] or keys[K_BACKSPACE]:
+        for i,v in enumerate(yourselection):
+            for j in infoCards:
+
+                del yourselection[hee]
+                del pparty[hee]
+                del selectnums[hee]
+        clicked = True
     if len(yourselection)>0:
         if len(yourselection)==3:
             draw.rect(screen, GREEN, (690, 675, 540, 50))
@@ -711,7 +649,7 @@ def charsel(
                 draw.rect(screen, (0, 200, 0), (690, 675, 540, 50))
                 if(mb[0] and not clicked):
                     for i in infoCards:
-                        if i.characterName.lower() == yourselection[0].name.lower():
+                        if i.characterName.lower() == yourselection[0].name.lower() or i.workingName.lower() == yourselection[0].name.lower():
                             pl = i.portrait
                             plprof = i.profile
                     skilllist = [yourselection[0].abilities, yourselection[1].abilities, yourselection[2].abilities]  # Appending the necessary values and images for our abilities/skills
@@ -742,10 +680,10 @@ def charsel(
         screen.blit(buttonText, (1220-buttonText.get_width(), 700-buttonText.get_height()//2))
     if (not clicked) and scrollMode:
         if(hee<len(infoCards)-1):
-            if (mb[0] and my>screen.get_height()//2) or keys[K_UP] or keys[K_w]:
+            if (mb[0] and my>screen.get_height()//2) or keys[K_DOWN] or keys[K_s]:
                 direction = 0.025
         if(hee>0):
-            if (mb[0] and my<screen.get_height()//2) or keys[K_DOWN] or keys[K_s]:
+            if (mb[0] and my<screen.get_height()//2) or keys[K_UP] or keys[K_w]:
                 direction = -0.025
     display.flip() #TODO: Main Mengyu
     return clicked
@@ -803,8 +741,8 @@ def ngame():  # When you press the new game button
             if evt.type == QUIT:
                 running = False
                 return "Menu"
-            mx, my = mouse.get_pos()
-            mb = mouse.get_pressed()
+            if evt.type == KEYUP:
+                clicked = False
             if evt.type == MOUSEBUTTONUP:
                 clicked = False
         clicked = charsel(clicked)
@@ -1125,6 +1063,7 @@ def slay(target, caster, casters, enemies):
             if yourselection[currentCaster].mana < min(300 + 100 * yourselection[currentCaster].get_special_stat("slayCounter"), 1200):
                 return 1
             enemies[target].damage(300 + 100 * yourselection[currentCaster].get_special_stat('slayCounter'), casters[caster])
+            yourselection[currentCaster].mana -= min(300 + 100 * yourselection[currentCaster].get_special_stat("slayCounter"), 1200)
             if not enemies[target].is_alive():
                 yourselection[currentCaster].modify_special_stat('slayCounter',1)
 
@@ -1137,8 +1076,10 @@ def healmore(target, caster, casters, enemies):
             casters[i].heal(900)
 
 
-def revive():
+def revive(target, caster, casters, enemies):
     #TODO: figure out how to do revive
+    if not casters[target].is_alive():
+        casters[target].health = casters[target].max_health//2
     pass
 
 def flameshell():
@@ -1278,7 +1219,7 @@ stats = [
                   ability.Ability("biggerandstronger", 500, ability.AbilityType.DAMAGING, 0, callback = biggerandstronger), #TODO: verify these are correctly implemented to the description
                   ability.Ability("flashyarrow", 800, ability.AbilityType.DAMAGING, 1600, callback = flashyarrow)),
     # heals and damages, buffs next damaging attack, big damage but targeted by enemies
-    caster.Caster("ogu", 3000, 1250, 750, "assassin",
+    caster.Caster("ogu", 3000, 1250, 500, "assassin",
                   ability.Ability("vampiricstrike", 500, ability.AbilityType.DAMAGING, 800, callback = vampiricstrike),
                   ability.Ability("playdead", 350, ability.AbilityType.DAMAGING, 0, callback = playdead), #TODO: make these work
                   ability.Ability("analyze", 500, ability.AbilityType.DAMAGING, 0, callback = analyze)),

@@ -64,7 +64,7 @@ class InfoCard():
         for i,v in enumerate(lines):
             storyLine = storyFont.render(v, True, (0,0,0))
             self.graphic.blit(storyLine, (5,i*fontHeight+114))
-        self.graphic = self.graphic.convert()
+        self.graphic = self.graphic.convert_alpha()
 def constructCards(playerStats, profiles, portraits, fileName = 'infoCardContents.txt'):
     cards = []
     personNumber = 0
