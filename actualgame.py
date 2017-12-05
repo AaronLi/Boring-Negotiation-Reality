@@ -634,13 +634,13 @@ def charsel(
                     draw.rect(screen, (255,0,0), delRect)
                 draw.line(screen, WHITE, (delRect.centerx-10, delRect.centery-10), (delRect.centerx+10, delRect.centery+10), 2)
                 draw.line(screen, WHITE, (delRect.centerx - 10, delRect.centery + 10), (delRect.centerx + 10, delRect.centery - 10), 2)
-    if keys[K_a] or keys[K_LEFT] or keys[K_BACKSPACE]:
+    if (keys[K_a] or keys[K_LEFT] or keys[K_BACKSPACE]) and not clicked:
         for i,v in enumerate(yourselection):
-            for j in infoCards:
-
-                del yourselection[hee]
-                del pparty[hee]
-                del selectnums[hee]
+            if (infoCards[int(hee)].workingName.lower() == v.name.lower() or infoCards[int(hee)].characterName.lower() == v.name.lower()):
+                    clicked = True
+                    del yourselection[i]
+                    del pparty[i]
+                    del selectnums[i]
         clicked = True
     if len(yourselection)>0:
         if len(yourselection)==3:
@@ -1659,7 +1659,7 @@ def attackaoe(somedmg, animation, enemypos,
             screen.blit(defendshield[1], (325 - 15 * i, 20 + 190 * i))
         yourselection[currentCaster].damage(somedmg)
         screen.blit(enemyanimation[enemypos][1][0], (1080 - 15 * enemynum, 400 - 190 * enemynum))
-        screen.blit(animations[selectnums[someone]][3][0], (325 - 15 * someone, 20 + 190 * someone))
+        screen.blit(animations[selectnums[i]][3][0], (325 - 15 * i, 20 + 190 * i))
     enemieselection[enemynum] = True
 
 
