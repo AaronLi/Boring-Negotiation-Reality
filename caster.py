@@ -1,5 +1,5 @@
 class Caster:
-    def __init__(self, name, health, mana, attack_damage, caster_class, ability1, ability2, ability3, **kwargs):
+    def __init__(self, name, health, mana, attack_damage, caster_class, ability1, ability2, ability3, animation, spellAnimation, **kwargs):
         self.name=name
         self.health=health
         self.max_health = health
@@ -14,6 +14,8 @@ class Caster:
         self.targetable = True
         self.specialStats = kwargs
         self.damage_multiplier = 1
+        self.animation = animation
+        self.spellAnimation = spellAnimation
     def regen_mana(self):
         self.mana = min(self.max_mana, self.mana+self.max_mana//5.8)
     def damage(self, amount):

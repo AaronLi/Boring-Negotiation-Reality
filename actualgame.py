@@ -1,7 +1,7 @@
 from pygame import *
 from tkinter import *
 from random import *
-import pickle, caster, enemy, ability
+import pickle, caster, enemy, ability, animation
 
 import infoCard
 
@@ -68,12 +68,12 @@ statRect = Rect(24, 308, 250, 300)
 # char=["EY","AR","JH","SS","NN","JF","ED","LN","PS","MB","VL","OY","ZH"] #everyone's characters, represented with initials ,SS,NN,JF,ED,LN,PS,VR,MB,VL,OZ,ZH
 selchar = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
            0]  # This allows us to know if we're selecting characters at the associated positions
-hee = 0  # This tells us what our players position is relevant to one another
+focusedCard = 0  # This tells us what our players position is relevant to one another
 pplparty = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
             11]  # This ties together with selchar as well depicting what position the characters we've selected are
 pparty = []  # We use this to blit characters profile pictures during cutscenes as well as during character selection
 
-selcurrent = selchar[hee]  # our current selection is the position in selchar
+selcurrent = selchar[focusedCard]  # our current selection is the position in selchar
 
 # cutscene shapes and characters speaking
 loreRect = Rect(0, 600, 1260, 150)
@@ -139,92 +139,6 @@ zakstand = image.load("A BNR/stands/zak stand.png")
 
 # The following is all attacking animations for each character that are also recycled for skill animations
 
-# Attacking animations for Erik
-erik1 = image.load('game sprites/erik 1.png')
-erik2 = image.load('game sprites/erik 2.png')
-erik3 = image.load('game sprites/erik 3.png')
-erik4 = image.load('game sprites/erik 4.png')
-erik5 = image.load('game sprites/erik 5.png')
-
-# Attacking animations for Aliza
-aliza1 = image.load('game sprites/aliza 1.png')
-aliza2 = image.load('game sprites/aliza 2.png')
-aliza3 = image.load('game sprites/aliza 3.png')
-aliza4 = image.load('game sprites/aliza 4.png')
-aliza5 = image.load('game sprites/aliza 5.png')
-
-# Attacking animations for Julie
-julie1 = image.load('game sprites/julie 1.png')
-julie2 = image.load('game sprites/julie 2.png')
-julie3 = image.load('game sprites/julie 3.png')
-julie4 = image.load('game sprites/julie 4.png')
-julie5 = image.load('game sprites/julie 5.png')
-
-# Attacking animations for Supreet
-supreet1 = image.load('game sprites/supreet 1.png')
-supreet2 = image.load('game sprites/supreet 2.png')
-supreet3 = image.load('game sprites/supreet 3.png')
-supreet4 = image.load('game sprites/supreet 4.png')
-supreet5 = image.load('game sprites/supreet 5.png')
-
-# Attacking animations for Natalie
-nat1 = image.load('game sprites/nat 1.png')
-nat2 = image.load('game sprites/nat 2.png')
-nat3 = image.load('game sprites/nat 3.png')
-nat4 = image.load('game sprites/nat 4.png')
-nat5 = image.load('game sprites/nat 5.png')
-
-# Attacking animations for Jan
-jan1 = image.load('game sprites/jan 1.png')
-jan2 = image.load('game sprites/jan 2.png')
-jan3 = image.load('game sprites/jan 3.png')
-jan4 = image.load('game sprites/jan 4.png')
-jan5 = image.load('game sprites/jan 5.png')
-
-# Attacking animations for Emily
-emily1 = image.load('game sprites/emily 1.png')
-emily2 = image.load('game sprites/emily 2.png')
-emily3 = image.load('game sprites/emily 3.png')
-emily4 = image.load('game sprites/emily 4.png')
-
-# Attacking animations for Linh
-linh1 = image.load('game sprites/linh 1.png')
-linh2 = image.load('game sprites/linh 2.png')
-linh3 = image.load('game sprites/linh 3.png')
-linh4 = image.load('game sprites/linh 4.png')
-
-# Attacking animations for Priyonto
-priyonto1 = image.load('game sprites/priyonto 1.png')
-priyonto2 = image.load('game sprites/priyonto 2.png')
-priyonto3 = image.load('game sprites/priyonto 3.png')
-priyonto4 = image.load('game sprites/priyonto 4.png')
-priyonto5 = image.load('game sprites/priyonto 5.png')
-
-# Attacking animations for Minya
-minya1 = image.load('game sprites/minya 1.png')
-minya2 = image.load('game sprites/minya 2.png')
-minya3 = image.load('game sprites/minya 3.png')
-
-# Attacking animations for Vivianne
-viv1 = image.load('game sprites/viv 1.png')
-viv2 = image.load('game sprites/viv 2.png')
-viv3 = image.load('game sprites/viv 3.png')
-viv4 = image.load('game sprites/viv 4.png')
-viv5 = image.load('game sprites/viv 5.png')
-
-# Attacking animations for Oguzhan
-ogu1 = image.load('game sprites/ogu 1.png')
-ogu2 = image.load('game sprites/ogu 2.png')
-ogu3 = image.load('game sprites/ogu 3.png')
-ogu4 = image.load('game sprites/ogu 4.png')
-ogu5 = image.load('game sprites/ogu 5.png')
-
-# Attacking animations for Zak
-zak1 = image.load('game sprites/zak 1.png')
-zak2 = image.load('game sprites/zak 2.png')
-zak3 = image.load('game sprites/zak 3.png')
-zak4 = image.load('game sprites/zak 4.png')
-zak5 = image.load('game sprites/zak 5.png')
 
 # Each characters final frame in their skill animations that distinguishes between their attack and skill
 erikskill = image.load('game sprites/erik skill.png')
@@ -286,6 +200,51 @@ emilydedportrait = image.load('game sprites/battle portraits/emily portraitded.p
 linhdedportrait = image.load('game sprites/battle portraits/linh portraitded.png')
 priyontodedportrait = image.load('game sprites/battle portraits/priyonto portraitded.png')
 
+# Attacking animations for Erik
+erikAnimation = animation.Animation([image.load("game sprites/erik %d.png"%(i)) for i in range(1,6)], 0.4, 60)
+erikAttackSprites = erikAnimation.sprites.copy()
+erikAttackSprites.insert(3,image.load("game sprites/erik skill.png"))
+erikSpellAnimation = animation.Animation(erikAttackSprites, 0.5, 60)
+# Attacking animations for Aliza
+alizaAnimation = animation.Animation([image.load("game sprites/aliza %d.png"%i) for i in range(1,6)], 0.4, 60)
+alizaSpellAnimation = animation.Animation(alizaAnimation.sprites+[alizaskill], 0.5, 60)
+# Attacking animations for Julie
+julieAnimation = animation.Animation([image.load("game sprites/julie %d.png"%i) for i in range(1,6)], 0.4, 60)
+julieSpellAnimation = animation.Animation(julieAnimation.sprites+[julieskill], 0.5, 60)
+# Attacking animations for Supreet
+supreetAnimation = animation.Animation([image.load("game sprites/supreet %d.png"%i) for i in range(1,6)], 0.4, 60)
+supreetSpellAnimation = animation.Animation(supreetAnimation.sprites+[supreetskill], 0.5, 60)
+# Attacking animations for Natalie
+natAnimation = animation.Animation([image.load("game sprites/nat %d.png"%i) for i in range(1,6)], 0.4, 60)
+natAttackSprites = natAnimation.sprites.copy()
+natAttackSprites.insert(3,image.load("game sprites/nat skill.png"))
+natSpellAnimation = animation.Animation(natAttackSprites, 0.5, 60)
+# Attacking animations for Jan
+janAnimation = animation.Animation([image.load("game sprites/jan %d.png"%i) for i in range(1,6)], 0.4, 60)
+janSpellAnimation = animation.Animation(janAnimation.sprites+[janskill], 0.5, 60)
+# Attacking animations for Emily
+emilyAnimation = animation.Animation([image.load("game sprites/emily %d.png"%i) for i in range(1,5)], 0.4, 60)
+emilySpellAnimation = animation.Animation(emilyAnimation.sprites+[emilyskill], 0.5, 60)
+# Attacking animations for Linh
+linhAnimation = animation.Animation([image.load("game sprites/linh %d.png"%i) for i in range(1,5)], 0.4, 60)
+linhSpellAnimation = animation.Animation(linhAnimation.sprites+[linhskill], 0.5, 60)
+# Attacking animations for Priyonto
+priyontoAnimation = animation.Animation([image.load("game sprites/priyonto %d.png"%i) for i in range(1,6)], 0.4, 60)
+priyontoSpellAnimation = animation.Animation(priyontoAnimation.sprites+[priyontoskill], 0.5, 60)
+# Attacking animations for Minya
+minyaAnimation = animation.Animation([image.load("game sprites/nat %d.png"%i) for i in range(1,4)], 0.4, 60)
+minyaSpellAnimation = animation.Animation(minyaAnimation.sprites+[minyaskill], 0.5, 60)
+# Attacking animations for Vivianne
+vivAnimation = animation.Animation([image.load("game sprites/viv %d.png"%i) for i in range(1,6)], 0.4, 60)
+vivSpellAnimation = animation.Animation(vivAnimation.sprites+[vivskill], 0.5, 60)
+# Attacking animations for Oguzhan
+oguAnimation = animation.Animation([image.load("game sprites/ogu %d.png"%i) for i in range(1,6)], 0.4, 60)
+oguAttackSprites = oguAnimation.sprites.copy()
+oguAttackSprites.insert(3,image.load("game sprites/ogu skill.png"))
+oguSpellAnimation = animation.Animation(oguAttackSprites, 0.5, 60)
+# Attacking animations for Zak
+zakAnimation = animation.Animation([image.load("game sprites/zak %d.png"%i) for i in range(1,6)], 0.4, 60)
+zakSpellAnimation = animation.Animation(zakAnimation.sprites+[zakskill], 0.5, 60)
 clicked = False
 # name tags
 
@@ -367,23 +326,23 @@ vlad1 = image.load('game sprites/vlad1.png')
 
 # All of the characters in battle animations compiled into a 3d list
 animations = [
-    [[erikstand], [erik1, erik2, erik3, erik4, erik5], [erik1, erik2, erik3, erikskill], [erikow], [erikded]],
-    [[alizastand], [aliza1, aliza2, aliza3, aliza4, aliza5], [aliza1, aliza2, aliza3, alizaskill], [alizaow],
+    [[erikstand], [], [], [erikow], [erikded]],
+    [[alizastand], [], [], [alizaow],
      [alizaded]],
-    [[juliestand], [julie1, julie2, julie3, julie4, julie5], [julie1, julie2, julie3, julieskill], [julieow],
+    [[juliestand], [], [], [julieow],
      [julieded]],
-    [[supstand], [supreet1, supreet2, supreet3, supreet4, supreet5], [supreet1, supreet2, supreet3, supreetskill],
+    [[supstand], [], [],
      [supreetow], [supreetded]],
-    [[natstand], [nat1, nat2, nat3, nat4, nat5], [nat1, nat2, nat3, natskill], [natow], [natded]],
-    [[janstand], [jan1, jan2, jan3, jan4, jan5], [jan1, jan2, jan3, janskill], [janow], [janded]],
-    [[emilystand], [emily1, emily2, emily3, emily4], [emily1, emily2, emily3, emilyskill], [emilyow], [emilyded]],
-    [[linhstand], [linh1, linh2, linh3, linh4], [linh1, linh2, linh3, linhskill], [linhow], [linhded]],
-    [[printerstand], [priyonto1, priyonto2, priyonto3, priyonto4, priyonto5],
-     [priyonto1, priyonto2, priyonto3, priyontoskill], [priyontoow], [priyontoded]],
-    [[minyastand], [minya1, minya2, minya3], [minya1, minya2, minya3, minyaskill], [minyaow], [minyaded]],
-    [[vivstand], [viv1, viv2, viv3, viv4, viv5], [viv1, viv2, viv3, vivskill], [vivow], [vivded]],
-    [[ogustand], [ogu1, ogu2, ogu3, ogu4, ogu5], [ogu1, ogu2, ogu3, oguskill], [oguow], [oguded]],
-    [[zakstand], [zak1, zak2, zak3, zak4, zak5], [zak1, zak2, zak3, zakskill], [zakow], [zakded]]
+    [[natstand], [], [], [natow], [natded]],
+    [[janstand], [], [], [janow], [janded]],
+    [[emilystand], [], [], [emilyow], [emilyded]],
+    [[linhstand], [], [], [linhow], [linhded]],
+    [[printerstand], [],
+     [], [priyontoow], [priyontoded]],
+    [[minyastand], [], [], [minyaow], [minyaded]],
+    [[vivstand], [], [], [vivow], [vivded]],
+    [[ogustand], [], [], [oguow], [oguded]],
+    [[zakstand], [], [], [zakow], [zakded]]
 ]
 
 # Same as above except for enemies
@@ -562,57 +521,58 @@ scrollMode = True
 tempBirbs = image.load('birbs.png').convert() #TODO: remove when I have gourd art
 def charsel(
         clicked):  # This is the character selection function for choosing which characters will be in your party and you'll play the game with
-    global hee, party, skilllist, abilitybutton, abilitydesc, direction, scrollMode  # hee is index of the character that is currently selected in all of the lists
+    global focusedCard, party, skilllist, abilitybutton, abilitydesc, direction, scrollMode  # hee is index of the character that is currently selected in all of the lists
     mx, my = mouse.get_pos()
     mb = mouse.get_pressed()
     keys = key.get_pressed()
     screen.blit(tempBirbs,(0,0))
-    draw.rect(screen, (0,0,0), (305 - infoCards[int(hee)].graphic.get_width()//2, 0,infoCards[int(hee)].graphic.get_width()+10, 755))
+    draw.rect(screen, (0,0,0), (305 - infoCards[int(focusedCard)].graphic.get_width() // 2, 0, infoCards[int(focusedCard)].graphic.get_width() + 10, 755))
     rosterRect = Surface((560, 715), SRCALPHA)
     rosterRect.fill((200, 200, 200, 100))
     screen.blit(rosterRect, (680, 20))
-    for i in range(min(int(hee)+3, len(infoCards)-1), int(hee), -1):
+    for i in range(min(int(focusedCard)+3, len(infoCards)-1), int(focusedCard), -1):
         v = infoCards[i]
-        blitImage = transform.scale(v.graphic, (int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_width()),
-                                                int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_height())))
+        blitImage = transform.scale(v.graphic, (int((2 / max(abs(focusedCard - i) + 2, 2)) * v.graphic.get_width()),
+                                                int((2 / max(abs(focusedCard - i) + 2, 2)) * v.graphic.get_height())))
         maskImage = Surface(blitImage.get_size(), SRCALPHA)
-        maskImage.fill((0, 0, 0, min(100 * abs(hee - i),255)))
-        screen.blit(blitImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - hee) * blitImage.get_height()))))
-        screen.blit(maskImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - hee) * blitImage.get_height()))))
-    for i in range(max(int(hee)-3, 0), int(hee+1)):
+        maskImage.fill((0, 0, 0, min(100 * abs(focusedCard - i), 255)))
+        screen.blit(blitImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - focusedCard) * blitImage.get_height()))))
+        screen.blit(maskImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - focusedCard) * blitImage.get_height()))))
+    for i in range(max(int(focusedCard)-3, 0), int(focusedCard+1)):
         v = infoCards[i]
-        blitImage = transform.scale(v.graphic, (int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_width()),
-                                                int((2 / max(abs(hee - i) + 2, 2)) * v.graphic.get_height())))#.convert_alpha()
+        blitImage = transform.scale(v.graphic, (int((2 / max(abs(focusedCard - i) + 2, 2)) * v.graphic.get_width()),
+                                                int((2 / max(abs(focusedCard - i) + 2, 2)) * v.graphic.get_height())))#.convert_alpha()
         maskImage = Surface(blitImage.get_size(), SRCALPHA)
-        maskImage.fill((0, 0, 0, min(100*abs(hee-i),255)))
+        maskImage.fill((0, 0, 0, min(100 * abs(focusedCard - i), 255)))
         #blitImage.set_alpha(min(100 * abs(hee - i), 255))
-        screen.blit(blitImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - hee) * blitImage.get_height()))))
-        screen.blit(maskImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - hee) * blitImage.get_height()))))
+        screen.blit(blitImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - focusedCard) * blitImage.get_height()))))
+        screen.blit(maskImage, (310 - blitImage.get_width() // 2, ((377 - v.graphic.get_height() // 2) + ((i - focusedCard) * blitImage.get_height()))))
 
     if direction!=0:
-        hee=round(hee+direction,3)
-        if float(hee).is_integer():
+        focusedCard=round(focusedCard + direction, 3)
+        if abs(focusedCard-int(focusedCard))<abs(direction)-0.0001:
             direction = 0
+            focusedCard = int(focusedCard)
     else:
-        if float(hee).is_integer() and infoCards[int(hee)].characterName.lower() not in [i.name.lower() for i in yourselection] and len(yourselection)<3 and infoCards[int(hee)].workingName.lower() not in [i.name.lower() for i in yourselection]:
-            hee = int(hee)
+        if float(focusedCard).is_integer() and infoCards[int(focusedCard)].characterName.lower() not in [i.name.lower() for i in yourselection] and len(yourselection)<3 and infoCards[int(focusedCard)].workingName.lower() not in [i.name.lower() for i in yourselection]:
+            focusedCard = int(focusedCard)
             draw.polygon(screen, (255,255,255), [
-                (320 + infoCards[hee].graphic.get_width() // 2, 337),
-                (370 + infoCards[hee].graphic.get_width() // 2, 367),
-                (320 + infoCards[hee].graphic.get_width() // 2, 397),
+                (320 + infoCards[focusedCard].graphic.get_width() // 2, 337),
+                (370 + infoCards[focusedCard].graphic.get_width() // 2, 367),
+                (320 + infoCards[focusedCard].graphic.get_width() // 2, 397),
 
             ])
-            if Rect(320 + infoCards[hee].graphic.get_width() // 2,337, 50, 60).collidepoint(mx, my) or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
+            if Rect(320 + infoCards[focusedCard].graphic.get_width() // 2, 337, 50, 60).collidepoint(mx, my) or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
                 draw.polygon(screen, (200, 200, 200), [
-                    (320 + infoCards[hee].graphic.get_width() // 2, 337),
-                    (370 + infoCards[hee].graphic.get_width() // 2, 367),
-                    (320 + infoCards[hee].graphic.get_width() // 2, 397),
+                    (320 + infoCards[focusedCard].graphic.get_width() // 2, 337),
+                    (370 + infoCards[focusedCard].graphic.get_width() // 2, 367),
+                    (320 + infoCards[focusedCard].graphic.get_width() // 2, 397),
 
                 ])
                 if mb[0] and not clicked and len(pparty)<3 or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
-                    yourselection.append(stats[hee])
-                    pparty.append(profs[hee])
-                    selectnums.append(hee)
+                    yourselection.append(stats[focusedCard])
+                    pparty.append(profs[focusedCard])
+                    selectnums.append(focusedCard)
                     clicked = True
     titleFont.set_italic(True)
     myPartyText = titleFont.render("My Team", False, (255, 255, 255))
@@ -636,7 +596,7 @@ def charsel(
                 draw.line(screen, WHITE, (delRect.centerx - 10, delRect.centery + 10), (delRect.centerx + 10, delRect.centery - 10), 2)
     if (keys[K_a] or keys[K_LEFT] or keys[K_BACKSPACE]) and not clicked:
         for i,v in enumerate(yourselection):
-            if (infoCards[int(hee)].workingName.lower() == v.name.lower() or infoCards[int(hee)].characterName.lower() == v.name.lower()):
+            if (infoCards[int(focusedCard)].workingName.lower() == v.name.lower() or infoCards[int(focusedCard)].characterName.lower() == v.name.lower()):
                     clicked = True
                     del yourselection[i]
                     del pparty[i]
@@ -679,13 +639,13 @@ def charsel(
         buttonText = titleFont.render("Start %d/3 >"%len(yourselection), True, (255, 255, 255))
         screen.blit(buttonText, (1220-buttonText.get_width(), 700-buttonText.get_height()//2))
     if (not clicked) and scrollMode:
-        if(hee<len(infoCards)-1):
+        if(focusedCard<len(infoCards)-1):
             if (mb[0] and my>screen.get_height()//2) or keys[K_DOWN] or keys[K_s]:
-                direction = 0.025
-        if(hee>0):
+                direction = 0.03
+        if(focusedCard>0):
             if (mb[0] and my<screen.get_height()//2) or keys[K_UP] or keys[K_w]:
-                direction = -0.025
-    display.flip() #TODO: Main Mengyu
+                direction = -0.03
+    #TODO: Main Mengyu
     return clicked
 
 
@@ -746,6 +706,7 @@ def ngame():  # When you press the new game button
             if evt.type == MOUSEBUTTONUP:
                 clicked = False
         clicked = charsel(clicked)
+        display.flip()
         clockity.tick(60)
     return "Menu"
 
@@ -1167,68 +1128,68 @@ stats = [
     caster.Caster('erik', 3000, 1000, 500, 'assassin',
                   ability.Ability("backstab", 350, ability.AbilityType.DAMAGING, 0, callback=backstab),
                   ability.Ability("silentstrike", 350, ability.AbilityType.DAMAGING, 350, callback = silentstrike),
-                  ability.Ability('execute', 750, ability.AbilityType.DAMAGING, 0, callback=execute)),
+                  ability.Ability('execute', 750, ability.AbilityType.DAMAGING, 0, callback=execute), erikAnimation, erikSpellAnimation),
     # high damage ability, ability that makes erik untargetable, ability does damage based on imssing health
     caster.Caster("aliza", 3600, 2600, 250, "mage",
                   ability.Ability("lightningbolt", 300, ability.AbilityType.DAMAGING, 0, callback= lightningbolt),
                   ability.Ability("lightningcharge", 500, ability.AbilityType.DAMAGING, 0, callback = lightningcharge),
-                  ability.Ability("lightningrelease", 700, ability.AbilityType.DAMAGING, 0, callback = lightningrelease),lightningCharges=0),
+                  ability.Ability("lightningrelease", 700, ability.AbilityType.DAMAGING, 0, callback = lightningrelease), alizaAnimation, alizaSpellAnimation,lightningCharges=0),
     # random damage, charging move, release the charge
     caster.Caster("julie", 3500, 1250, 350, "archer",
                   ability.Ability("sniperarrow", 500, ability.AbilityType.DAMAGING, 800),
                   ability.Ability("herbsandpoultices", 500, ability.AbilityType.HEALING, 0, callback = herbsandpoultices),
-                  ability.Ability("gunsling", 1000, ability.AbilityType.DAMAGING, 1200)),
+                  ability.Ability("gunsling", 1000, ability.AbilityType.DAMAGING, 1200), julieAnimation, julieSpellAnimation),
     # boom headshot, heal to her or small heal to ally, throws a gun at someone
     caster.Caster("supreet", 3800, 1750, 300, "noble",
                   ability.Ability("slay", 0, ability.AbilityType.DAMAGING, 0, callback = slay),
                   ability.Ability("darkmagic", 450, ability.AbilityType.DAMAGING, 800),
-                  ability.Ability("revoke", 600, ability.AbilityType.DAMAGING, 0, callback = revoke), slayCounter=0),
+                  ability.Ability("revoke", 600, ability.AbilityType.DAMAGING, 0, callback = revoke), supreetAnimation, supreetSpellAnimation, slayCounter=0),
     # whenever you kill something, the damage permanently goes up, dark pulse magic, enemy can't attack
     caster.Caster("natalie", 3800, 2000, 80, "healer",
                   ability.Ability("heal", 400, ability.AbilityType.HEALING, 1000),
                   ability.Ability("healmore", 800, ability.AbilityType.HEALING, 0, callback = healmore),
-                  ability.Ability("revive", 600, ability.AbilityType.HEALING, 0, callback = revive)),
+                  ability.Ability("revive", 600, ability.AbilityType.HEALING, 0, callback = revive), natAnimation, natSpellAnimation),
     # single target heal, AOE heal, revives an ally
     caster.Caster("jan", 3700, 2600, 150, "mage",
                   ability.Ability("fireball",350, ability.AbilityType.DAMAGING, 800),
                   ability.Ability("flameshell",500,ability.AbilityType.DAMAGING, 0, callback = flameshell),
-                  ability.Ability("firestorm", 1000, ability.AbilityType.DAMAGING, 0, callback= firestorm)),
+                  ability.Ability("firestorm", 1000, ability.AbilityType.DAMAGING, 0, callback= firestorm), janAnimation, janSpellAnimation),
     # Steady just fireball, reflect a certain amount of damage to one enemy, AOE damage that can potentially hit jan as well
     caster.Caster("emily", 5200, 1750, 250, "knight",
                   ability.Ability("taunt",200, ability.AbilityType.DAMAGING, 0, callback = taunt),
                   ability.Ability("stabstabstab",400, ability.AbilityType.DAMAGING, 0, callback= stabstabstab),
-                  ability.Ability("dragonflame", 500, ability.AbilityType.DAMAGING, 800)),
+                  ability.Ability("dragonflame", 500, ability.AbilityType.DAMAGING, 800), emilyAnimation, emilySpellAnimation),
     # taunts target enemy to attack her, normal attack 3 times on an enemy, dragon breath
     caster.Caster("linh", 5500, 2000, 200, "knight",
                   ability.Ability("bigtaunt", 600, ability.AbilityType.DAMAGING, 0, callback = bigtaunt),
                   ability.Ability("shieldsup",500, ability.AbilityType.DAMAGING, 0, callback = shieldsup),
-                  ability.Ability("lancethrow", 500, ability.AbilityType.DAMAGING, 800, callback = lancethrow)),
+                  ability.Ability("lancethrow", 500, ability.AbilityType.DAMAGING, 800, callback = lancethrow), linhAnimation, linhSpellAnimation),
     # all enemies have to attack this char, allies get defend, damage but can't attack next turn
     caster.Caster("priyonto", 3600, 1600, 325, "lord",
                   ability.Ability("fallingsword", 500, ability.AbilityType.DAMAGING, 0, callback = fallingsword),
                   ability.Ability("counterattack", 500, ability.AbilityType.DAMAGING, 0, callback = counterattack),
-                  ability.Ability("preparation", 500, ability.AbilityType.DAMAGING, 0, callback = preparation)),
+                  ability.Ability("preparation", 500, ability.AbilityType.DAMAGING, 0, callback = preparation), priyontoAnimation, priyontoSpellAnimation),
     # falling sword hits a random enemy, deals counter damage, buffffs own next attack
     caster.Caster("minya", 2900, 1800, 100, "healer",
                   ability.Ability("heal", 400, ability.AbilityType.HEALING, 1000),
                   ability.Ability("helpinghand", 500, ability.AbilityType.HEALING, 0, callback = helpinghand),
-                  ability.Ability("shieldaura", 500, ability.AbilityType.DAMAGING, 0, callback = shieldaura)),#TODO: make shieldaura work
+                  ability.Ability("shieldaura", 500, ability.AbilityType.DAMAGING, 0, callback = shieldaura), minyaAnimation, minyaSpellAnimation),#TODO: make shieldaura work
     # single target heal, damage buff to an ally, shield buff to an ally
     caster.Caster("viv", 3400, 1300, 375, "archer",
                   ability.Ability("extravagantshot", 500, ability.AbilityType.DAMAGING, 800, callback = extravagantshot),
                   ability.Ability("biggerandstronger", 500, ability.AbilityType.DAMAGING, 0, callback = biggerandstronger), #TODO: verify these are correctly implemented to the description
-                  ability.Ability("flashyarrow", 800, ability.AbilityType.DAMAGING, 1600, callback = flashyarrow)),
+                  ability.Ability("flashyarrow", 800, ability.AbilityType.DAMAGING, 1600, callback = flashyarrow), vivAnimation, vivSpellAnimation),
     # heals and damages, buffs next damaging attack, big damage but targeted by enemies
     caster.Caster("ogu", 3000, 1250, 500, "assassin",
                   ability.Ability("vampiricstrike", 500, ability.AbilityType.DAMAGING, 800, callback = vampiricstrike),
                   ability.Ability("playdead", 350, ability.AbilityType.DAMAGING, 0, callback = playdead), #TODO: make these work
-                  ability.Ability("analyze", 500, ability.AbilityType.DAMAGING, 0, callback = analyze)),
+                  ability.Ability("analyze", 500, ability.AbilityType.DAMAGING, 0, callback = analyze), oguAnimation, oguSpellAnimation),
     # does damage and heals, can't be targeted by enemies or allies, enemy takes extra damage from all sources for a turn
     #caster.Caster("zak", 3900, 1500, 300, "warrior", "groundslam", "cull", "reap")
     caster.Caster("zak", 3900, 1500, 300, "warrior",
                   ability.Ability("groundslam", 500, ability.AbilityType.DAMAGING, 700),
                   ability.Ability("cull", 600, ability.AbilityType.DAMAGING, 0, callback = cull),
-                  ability.Ability("reap", 700, ability.AbilityType.DAMAGING, 900, callback = reap))
+                  ability.Ability("reap", 700, ability.AbilityType.DAMAGING, 900, callback = reap), zakAnimation, zakSpellAnimation)
     # slams earth into the persons face, slashes 2 times at 2 enemies, attacks an enemy and heals all party members for small amount
 ]
 
@@ -1315,11 +1276,16 @@ def battle(area, battlenum):  # The main battle function
                 elif enemyType == "kim":
                     screen.blit(enemyanimation[5][0][0], (1080 - 15 * i, 400 - 190 * i))
             for players, playerNumber in zip(selectnums, positions):  # This is used for blitting the characters
-                if playerNumber == currentCaster and currentSkillAnimationFrame: # don't draw ability casting player
-                    pass
+                if playerNumber == currentCaster and playAbilityAnimation: # don't draw ability casting player
+                    yourselection[currentCaster].spellAnimation.update()
+                    yourselection[currentCaster].spellAnimation.draw(screen, 325 - 15 * currentCaster,
+                                                                     20 + 190 * currentCaster)
                 elif playerNumber==currentattacker and framedelay==-1: #draw casting player
-                    screen.blit(animations[players][1][int(min((currentattackertime//framedenom),len(animations[players][1])-1))],(325-15*playerNumber,20+190*(playerNumber)))
-                elif yourselection[playerNumber].health > 0:  # draw non casting, standing player
+                    yourselection[currentattacker].animation.update()
+                    yourselection[currentattacker].animation.draw(screen,325-15*playerNumber,  20+190*playerNumber)
+                elif yourselection[playerNumber].is_alive():  # draw non casting, standing player
+                    yourselection[playerNumber].animation.reset()
+                    yourselection[playerNumber].spellAnimation.reset()
                     screen.blit(animations[players][0][0], (325 - 15 * playerNumber, 20 + 190 * playerNumber))
                 else:
                     screen.blit(animations[players][4][0], (325 - 15 * playerNumber, 20 + 190 * playerNumber))
@@ -1330,8 +1296,7 @@ def battle(area, battlenum):  # The main battle function
                 if yourselection[playerNumber].name == 'aliza' and yourselection[playerNumber].health!=0:
                     for i in range(yourselection[playerNumber].get_special_stat("lightningCharges")):
                         screen.blit(transform.scale(lightning, (15, 15)), (26 + 16 * i, 180 + 251 * playerNumber))
-                if currentattackertime >= len(
-                        animations[playerNumber][1]) * framedenom:  # Changing the character to having gone already
+                if yourselection[currentCaster].animation.isFinishedRunning():#currentattackertime >= len(animations[playerNumber][1]) * framedenom:  # Changing the character to having gone already
                     clicked = False
                     currentattacker = -1
                     yourselection[currentCaster].tired = True
@@ -1355,11 +1320,7 @@ def battle(area, battlenum):  # The main battle function
                     framedelay = -1
             if framedelay == 0 and not playAbilityAnimation:
                 framedelay = -1
-            if framedelay == 0 and playAbilityAnimation:
-                screen.blit(animations[selectnums[currentCaster]][2][min(int(currentSkillAnimationFrame // 3),3)],
-                            (325 - 15 * currentCaster, 20 + 190 * currentCaster))
-                currentSkillAnimationFrame += 1
-            if currentSkillAnimationFrame >15:
+            if yourselection[currentCaster].spellAnimation.isFinishedRunning():
                 yourselection[currentCaster].tired = True
                 currentlyCasting = -1
                 framedelay = -1
