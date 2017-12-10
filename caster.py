@@ -1,5 +1,5 @@
 class Caster:
-    def __init__(self, name, health, mana, attack_damage, caster_class, ability1, ability2, ability3, animation, spellAnimation, **kwargs):
+    def __init__(self, name, health, mana, attack_damage, caster_class, ability1, ability2, ability3, animation, spellAnimation, defendAnimation, **kwargs):
         self.name=name
         self.health=health
         self.max_health = health
@@ -16,6 +16,7 @@ class Caster:
         self.damage_multiplier = 1
         self.animation = animation
         self.spellAnimation = spellAnimation
+        self.defendAnimation = defendAnimation
     def regen_mana(self):
         self.mana = min(self.max_mana, self.mana+self.max_mana//5.8)
     def damage(self, amount):
@@ -38,6 +39,10 @@ class Caster:
         return self.health>0
     def can_attack(self):
         return (not self.tired) and self.is_alive()
+    def set_defending(self, state):
+        self.defending = state
+        if self.defending:
+            self.defendAnimation.reset()
     def __str__(self):
         return "%-8s hp:%4d/%d mana:%4d/%d %d %s %s"%(self.name, self.health,self.max_health, self.mana, self.max_mana, self.attack_damage, self.caster_class, str(self.abilities))
 
