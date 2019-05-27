@@ -2,6 +2,9 @@ from pygame import *
 from tkinter import *
 from random import *
 import pickle, caster, enemy, ability, animation
+from constants import *
+import math_tools
+from lib_cutscene import cutscene, dialog_section
 
 import infoCard
 
@@ -10,19 +13,8 @@ root.withdraw()
 init()
 
 # All our colours
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-BLUE = (0, 0, 255)
-BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
-YELLOW = (255, 255, 0)
-GREY = (220, 220, 220)
-ORANGE = (255, 165, 0)
-DORANGE = (255, 140, 0)
-PINK = (255, 20, 147)
-PURPLE = (148, 0, 211)
-BUTTONBACK = (34, 65, 114)
-size = (1260, 755)  # screen resolution
+
+
 mb = mouse.get_pressed()
 mx, my = mouse.get_pos()
 playerturn = True  # Global variable dictating whether its the player's turn or the enemies turn
@@ -34,35 +26,19 @@ framedenom = 3  # This is the number we divide by when the attacking animation h
 
 
 party = 0  # This is the number of people who are in the party when character selection is happening
-screen = display.set_mode(size, SRCALPHA)  # making appropriate window
+screen = display.set_mode(SETTINGS.VIDEO.SCREEN_SIZE, SRCALPHA)  # making appropriate window
 
 display.set_caption("A Boring Negotiation Reality")
 ffont = font.Font("basis33.ttf", 20)
 titleFont = font.Font('basis33.ttf', 35)
 titleFont.set_italic(True)
+
 # use pokemon font
 
 # MUSIC
 # mixer.music.load("eo.ogg")
 # mixer.music.play(-1)
 
-
-# main menu rectangles
-newGameRect = Rect(430, 275, 400, 95)
-contRect = Rect(430, 385, 400, 95)
-instrucRect = Rect(430, 500, 400, 90)
-codeRect = Rect(430, 610, 400, 100)
-exitRect = Rect(485, 805, 190, 87)
-
-# character selection shapes
-selectRect = Rect(514, 638, 230, 90)
-leftTripts = [(412, 325), (412, 590), (303, 457)]
-rightTripts = [(835, 325), (835, 590), (930, 457)]
-whiteRect = Rect(513, 355, 224, 200)
-noRect = Rect(490, 700, 190, 87)
-nameRect = Rect(476, 202, 300, 100)
-storyRect = Rect(980, 308, 250, 300)
-statRect = Rect(24, 308, 250, 300)
 
 # charsel stuff
 # char=["EY","AR","JH","SS","NN","JF","ED","LN","PS","MB","VL","OY","ZH"] #everyone's characters, represented with initials ,SS,NN,JF,ED,LN,PS,VR,MB,VL,OZ,ZH
@@ -75,9 +51,8 @@ pparty = []  # We use this to blit characters profile pictures during cutscenes 
 
 selcurrent = selchar[focusedCard]  # our current selection is the position in selchar
 
-# cutscene shapes and characters speaking
-loreRect = Rect(0, 600, 1260, 150)
-profileRect = Rect(0, 600, 150, 150)
+# lib_cutscene shapes and characters speaking
+
 na = image.load("A BNR/hoodhood.png")
 na = transform.scale(na, (150, 150))
 Vr = image.load("A BNR/vladhead.png")
@@ -86,7 +61,7 @@ Al = image.load("A BNR/aaronhead.png")
 Al = transform.scale(Al, (150, 150))
 KK = image.load("A BNR/kim.png")
 
-# cutscene backgrounds
+# lib_cutscene backgrounds
 abattle = image.load("A BNR/abattle.png")
 abattle = transform.scale(abattle, (1260, 650))
 vbattle = image.load("A BNR/vladbg.png")
@@ -97,22 +72,48 @@ kbattle = transform.scale(kbattle, (1260, 650))
 # image loading for the main menu and cutscenes
 menu1 = image.load("A BNR/main menu real.png")
 
-# These are all the scenes used during the opening cutscene
-begin0 = image.load("A BNR/other/haha.jpg")
-begin0 = transform.scale(begin0, (1260, 650))
-begin2 = image.load("A BNR/other/village.jpg")
-begin2 = transform.scale(begin2, (1260, 650))
-begin3 = image.load("A BNR/other/rita.jpg")
-begin3 = transform.scale(begin3, (1260, 650))
-begin4 = image.load("A BNR/other/baddies.jpg")
-begin4 = transform.scale(begin4, (1260, 650))
-begin5 = image.load("A BNR/other/baddies come.jpg")
-begin5 = transform.scale(begin5, (1260, 650))
-begin6 = image.load("A BNR/other/heroes gather.jpg")
-begin6 = transform.scale(begin6, (1260, 650))
+# These are all the scenes used during the opening lib_cutscene
 
 # This is a list of all of the area's or backgrounds occurring during the cutscenes that is blit using the cscene function
-sceneback = [[begin0, begin0, begin2, begin2, begin3, begin4, begin5, begin6, begin6], [abattle, abattle, abattle],
+
+# cut scene lines
+# intermission cut scenes minion, boss,minions, boss separate Vlad's dialogue later
+# after battle 1?
+tweleve = "We got you!   Tell us who your master is!"
+thirteen = "Me me little boy.... All I know is my master's... home is..."
+fourteen = "..at the upper regions of Mount Dew..."
+fourteenpointfive = "I was hoping to die before I revealed that."
+fifteen = "There, you'll meet the immortal bouncer of the Portal, Vlad."
+
+sixteen = "Nnnnyyeeeessss. Ahh at last you come. You have promise. Alas, it is your naive belief that you can save everyone that blinds you. A shame."
+seventeen = "Tell us where your master is!"
+eighteen = "I do not have the time required nor the desire to indulge you."
+# after battle 2
+
+nineteen = "[One of your party members tries to enter the portal, but gets thrown out!]"
+twenty = "You! How do we enter the portal?"
+twentyone = "You may hold victory in your grasp, but I hold the answers to your progression toward it in mine."
+twentytwo = "Would you destroy us both before learning them?"
+twentythree = "What does that mean?"
+twentyfour = "[One of your party members takes Vlad's severed arm and sticks it through the portal...]"
+twentyfive = "[And they disappear!]"
+twentysix = "[Seeing this, the rest of the party looks at Vlad...]"
+# after battle 3
+
+twentyseven = "[Your party has made to the sorceress' lair!]"
+twentyeight = "It's her! the dark sorceress!"
+twentynine = "Oh! What a cute bunch of insects. I'm surprised you managed to make it this far."
+thirtyone = "No worries, you'll make interesting specimens for my necromacy!"
+thirtytwo = "Mwahahahahahah!"
+# after battle
+
+thirtythree = "Noooooo!"
+thirtyfour = "Hooray!"
+thirtyfive = "[You have saved the land of Petraglade! You shall be rememebered eternally and hailed as GODS by the peasants and only them.]"
+
+
+
+sceneback = [[abattle, abattle, abattle],
              [abattle, abattle, abattle, abattle, ],
              [abattle, abattle, abattle, abattle], [vbattle, vbattle, vbattle, vbattle], [vbattle, vbattle, vbattle],
              [vbattle, vbattle, vbattle, vbattle, vbattle, vbattle, vbattle, vbattle],
@@ -290,7 +291,7 @@ zakprof = transform.smoothscale(zakportrait, (100, 100))
 # All the profile pictures for each character for when they're speaking
 profs = [erikprof, alizaprof, julieprof, supprof, natprof, janprof, emilyprof, linhprof, printerprof, minyaprof,
          vivprof, oguprof, zakprof]
-background = image.load("battle.png")  # The original background for the game
+background = image.load("A BNR/cave.jpg")  # The original background for the game
 fire = image.load("FIREBALL.png")  # An enemies attacking animation
 ice = image.load("icestar.png")  # An enemies attacking animation
 lightning = image.load("lightning.png")  # An enemies attacking animations
@@ -372,58 +373,9 @@ recta = Surface((555, 170), SRCALPHA)
 bar = Rect(0, 0, 555, 170)
 draw.rect(screen, (255, 255, 255), bgRect)
 
-# cut scene lines
-# beginning cut scenes
-zero = "Once upon a time..."
-one = "There was a planet called Petraglade."
-two = "Here, humans lived at peace with nature. "
-three = "Some were even granted special abilities that gave them the strength to protect the weak and the wild."
-four = "One day, an evil source arrived and casted evil magic onto the plants and trees."
-five = "The once docile animals and plants became decaying zombies and beasts."
-six = "These beasts rampaged the countryside and countless villages, claiming many human lives."
-seven = "Those blessed with special abilities decided to band together and fight against this new threat."
-eight = "It is up to you to decide which warriors will get to experience the taste of victory."
-
-# intermission cut scenes minion, boss,minions, boss separate Vlad's dialogue later
-nine = "Who are you?"
-ten = "*slurp slurp slurp * I am the Great General Aaron! Fear me! For I will destroy you!"
-eleven = "After I slay thee I will be the biggest boy.  And milk thy muscles for muscle milk."
-# after battle 1?
-tweleve = "We got you!   Tell us who your master is!"
-thirteen = "Me me little boy.... All I know is my master's... home is..."
-fourteen = "..at the upper regions of Mount Dew..."
-fourteenpointfive = "I was hoping to die before I revealed that."
-fifteen = "There, you'll meet the immortal bouncer of the Portal, Vlad."
-
-sixteen = "Nnnnyyeeeessss. Ahh at last you come. You have promise. Alas, it is your naive belief that you can save everyone that blinds you. A shame."
-seventeen = "Tell us where your master is!"
-eighteen = "I do not have the time required nor the desire to indulge you."
-# after battle 2
-
-nineteen = "[One of your party members tries to enter the portal, but gets thrown out!]"
-twenty = "You! How do we enter the portal?"
-twentyone = "You may hold victory in your grasp, but I hold the answers to your progression toward it in mine."
-twentytwo = "Would you destroy us both before learning them?"
-twentythree = "What does that mean?"
-twentyfour = "[One of your party members takes Vlad's severed arm and sticks it through the portal...]"
-twentyfive = "[And they disappear!]"
-twentysix = "[Seeing this, the rest of the party looks at Vlad...]"
-# after battle 3
-
-twentyseven = "[Your party has made to the sorceress' lair!]"
-twentyeight = "It's her! the dark sorceress!"
-twentynine = "Oh! What a cute bunch of insects. I'm surprised you managed to make it this far."
-thirtyone = "No worries, you'll make interesting specimens for my necromacy!"
-thirtytwo = "Mwahahahahahah!"
-# after battle
-
-thirtythree = "Noooooo!"
-thirtyfour = "Horray!"
-thirtyfive = "[You have saved the land of Petraglade! You shall be rememebered eternally and hailed as GODS by the peasants and only them.]"
 
 # List of all the scenes
-scene = [[zero, one, two, three, four, five, six, seven, eight], [nine, ten, eleven],
-         [tweleve, thirteen, fourteen, fourteenpointfive, fifteen], [sixteen, seventeen, eighteen],
+scene = [[tweleve, thirteen, fourteen, fourteenpointfive, fifteen], [sixteen, seventeen, eighteen],
          [nineteen, twenty, twentyone, twentytwo, twentythree, twentyfour, twentyfive, twentysix],
          [twentyseven, twentyeight, twentynine, thirtyone, thirtytwo], [thirtythree, thirtyfour, thirtyfive]]
 scene = [[j + (' ' * 7) for j in i] for i in scene]
@@ -457,14 +409,7 @@ enemyframedelay = 15  # The enemys delay in order to be a little slower
 ########################################### UI STUFF
 selectpoly = [[(380, 30), (360, 10), (400, 10)], [(375, 220), (355, 200), (395, 200)], [(355, 425), (335, 405), (
 375, 405)]]  # Polygons that blit over your current character or when you're switching characters
-enemyrects = [Rect(1080, 400, 120, 180), Rect(1065, 210, 120, 180),
-              Rect(1050, 20, 120, 180)]  # The enemies rectangles to be pressed when attacking or using skills
-playerrects = [Rect(325, 20, 120, 180), Rect(310, 210, 120, 180),
-               Rect(295, 400, 120, 180)]  # Ally rectangles for when heals are happening
-button = [(Rect(317, 621, 245, 56)), (Rect(634, 620, 248, 59)), (Rect(315, 689, 246, 57)),
-          (Rect(634, 690, 247, 56))]  # The buttons for all your possible options
-skillbuttons = [Rect(660, 620, 245, 41), Rect(660, 667, 245, 41),
-                Rect(660, 714, 245, 41)]  # The buttons for the skills when youre using a skill
+
 values = ["attack", "skills", "defend", "switch"]  # The buttons values to be associated to functions
 # Shiled images for when you're defending
 shield0 = image.load("shield0.png")
@@ -472,10 +417,7 @@ shield1 = image.load("shield1.png")
 shield2 = image.load("shield2.png")
 defendAnimation = animation.Animation([shield2, shield1, shield0, shield0, shield0, shield0, shield0, shield1, shield2],0.3,60)
 # main menu rectangles
-# Rectangles for if you're deselecting something,confirming an action or refilling the buttons screen
-buttonfillrect = Rect(248, 613, 702, 140)
-backbuttonrect = Rect(320, 620, 250, 60)
-confirmrect = Rect(630, 620, 250, 60)
+
 
 positions = [0, 1, 2]  # The enemies or allys postions to be used in some functions
 
@@ -526,9 +468,9 @@ def charsel(
     mb = mouse.get_pressed()
     keys = key.get_pressed()
     screen.blit(tempBirbs,(0,0))
-    draw.rect(screen, (0,0,0), (305 - infoCards[int(focusedCard)].graphic.get_width() // 2, 0, infoCards[int(focusedCard)].graphic.get_width() + 10, 755))
+    draw.rect(screen, COLOURS.BLACK, (305 - infoCards[int(focusedCard)].graphic.get_width() // 2, 0, infoCards[int(focusedCard)].graphic.get_width() + 10, 755))
     rosterRect = Surface((560, 715), SRCALPHA)
-    rosterRect.fill((200, 200, 200, 100))
+    rosterRect.fill(COLOURS.GREY_TRANSLUCENT)
     screen.blit(rosterRect, (680, 20))
     for i in range(min(int(focusedCard)+3, len(infoCards)-1), int(focusedCard), -1):
         v = infoCards[i]
@@ -555,14 +497,14 @@ def charsel(
     else:
         if float(focusedCard).is_integer() and infoCards[int(focusedCard)].characterName.lower() not in [i.name.lower() for i in yourselection] and len(yourselection)<3 and infoCards[int(focusedCard)].workingName.lower() not in [i.name.lower() for i in yourselection]:
             focusedCard = int(focusedCard)
-            draw.polygon(screen, (255,255,255), [
+            draw.polygon(screen, COLOURS.WHITE, [
                 (320 + infoCards[focusedCard].graphic.get_width() // 2, 337),
                 (370 + infoCards[focusedCard].graphic.get_width() // 2, 367),
                 (320 + infoCards[focusedCard].graphic.get_width() // 2, 397),
 
             ])
             if Rect(320 + infoCards[focusedCard].graphic.get_width() // 2, 337, 50, 60).collidepoint(mx, my) or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
-                draw.polygon(screen, (200, 200, 200), [
+                draw.polygon(screen, COLOURS.GREY, [
                     (320 + infoCards[focusedCard].graphic.get_width() // 2, 337),
                     (370 + infoCards[focusedCard].graphic.get_width() // 2, 367),
                     (320 + infoCards[focusedCard].graphic.get_width() // 2, 397),
@@ -574,7 +516,7 @@ def charsel(
                     selectnums.append(focusedCard)
                     clicked = True
     titleFont.set_italic(True)
-    myPartyText = titleFont.render("My Team", False, (255, 255, 255))
+    myPartyText = titleFont.render("My Team", False, COLOURS.WHITE)
     screen.blit(myPartyText, (692, 26))
     for i,v in enumerate([i.name.lower() for i in yourselection]):
         for j in infoCards:
@@ -591,8 +533,8 @@ def charsel(
                         clicked = True
                 else:
                     draw.rect(screen, (255,0,0), delRect)
-                draw.line(screen, WHITE, (delRect.centerx-10, delRect.centery-10), (delRect.centerx+10, delRect.centery+10), 2)
-                draw.line(screen, WHITE, (delRect.centerx - 10, delRect.centery + 10), (delRect.centerx + 10, delRect.centery - 10), 2)
+                draw.line(screen, COLOURS.WHITE, (delRect.centerx-10, delRect.centery-10), (delRect.centerx+10, delRect.centery+10), 2)
+                draw.line(screen, COLOURS.WHITE, (delRect.centerx - 10, delRect.centery + 10), (delRect.centerx + 10, delRect.centery - 10), 2)
     if (keys[K_a] or keys[K_LEFT] or keys[K_BACKSPACE]) and not clicked:
         for i,v in enumerate(yourselection):
             if (infoCards[int(focusedCard)].workingName.lower() == v.name.lower() or infoCards[int(focusedCard)].characterName.lower() == v.name.lower()):
@@ -603,7 +545,7 @@ def charsel(
         clicked = True
     if len(yourselection)>0:
         if len(yourselection)==3:
-            draw.rect(screen, GREEN, (690, 675, 540, 50))
+            draw.rect(screen, COLOURS.GREEN, (690, 675, 540, 50))
             if Rect(690, 675, 540, 50).collidepoint(mx, my):
                 draw.rect(screen, (0, 200, 0), (690, 675, 540, 50))
                 if(mb[0] and not clicked):
@@ -617,9 +559,9 @@ def charsel(
                     abilitydesc = [[image.load("DESCS/" + i.working_name + ".png") for i in skilllist[j]] for j in
                                    range(3)]
                     clicked = True
-                    cscene(clicked, 0, pl, plprof)  # Calling our scene and battle functions
+                    cutscene.load_from_file('lib_cutscene/Cutscene1.json', plprof).show(screen)
                     battle(background, battle(background, battle(background, 0)))
-                    cscene(clicked, 1, pl, plprof)
+                    cutscene.load_from_file('lib_cutscene/Cutscene2.json', plprof).show(screen)
                     battle(background, 3)
                     cscene(clicked, 2, pl, plprof)
                     battle(background, battle(background, battle(background, 4)))
@@ -633,7 +575,7 @@ def charsel(
                     quit()
 
         else:
-            draw.rect(screen, RED, (690, 675, 540, 50))
+            draw.rect(screen, COLOURS.RED, (690, 675, 540, 50))
         titleFont.set_italic(False)
         buttonText = titleFont.render("Start %d/3 >"%len(yourselection), True, (255, 255, 255))
         screen.blit(buttonText, (1220-buttonText.get_width(), 700-buttonText.get_height()//2))
@@ -655,7 +597,7 @@ def cscene(clicked, scenenum, pl,
     global scene
 
     clock = time.Clock()
-    sceneprof = [[na, na, na, na, na, na, na, na, na], [plprof, Al, Al], [plprof, Al, Al, Al], [Vr, plprof, Vr],
+    sceneprof = [ [plprof, Al, Al, Al], [Vr, plprof, Vr],
                  [na, plprof, Vr, Vr, plprof, na, na, na], [na, plprof, KK, KK, KK],
                  [KK, plprof, na]]  # profile picture order for the dialogue
 
@@ -667,9 +609,9 @@ def cscene(clicked, scenenum, pl,
         sceneback[scenenum][j]) == kbattle:
             # For the scenes with the minibosses...
             screen.blit(pl, (200, 250))  # insert the party leader
-        draw.rect(screen, WHITE, loreRect)  # White background for the dialogue/profile
-        draw.rect(screen, BLACK, profileRect, 3)
-        draw.rect(screen, BLACK, loreRect, 3)  # outline for the profile picture
+        draw.rect(screen, COLOURS.WHITE, RECTANGLES.CUTSCENES.LORE_RECT)  # White background for the dialogue/profile
+        draw.rect(screen, COLOURS.BLACK, RECTANGLES.CUTSCENES.PROFILE_RECT, 3)
+        draw.rect(screen, COLOURS.BLACK, RECTANGLES.CUTSCENES.LORE_RECT, 3)  # outline for the profile picture
         screen.blit(sceneprof[scenenum][j], (0, 600))
 
         # find a way to blit profiles with the text
@@ -678,10 +620,10 @@ def cscene(clicked, scenenum, pl,
             for evt in event.get():
                 if evt.type == KEYDOWN:
                     if evt.key == K_RETURN:
-                        return ("xd")
+                        return
 
                         # load the mini pics and test out with a loop?
-            text = ffont.render(scene[scenenum][j][:i], True, BLACK)  # formatting of the text
+            text = ffont.render(scene[scenenum][j][:i], True, COLOURS.BLACK)  # formatting of the text
 
             screen.blit(text, (160, 610))  # centres the text
 
@@ -739,24 +681,24 @@ def menu():  # function for the main menu
         screen.blit(menu1, (0, 0))
 
         # selecting a button and a function
-        if newGameRect.collidepoint(mx, my):
-            draw.rect(screen, PURPLE, newGameRect, 5)
+        if RECTANGLES.MAIN_MENU.NEW_GAME_RECT.collidepoint(mx, my):
+            draw.rect(screen, COLOURS.PURPLE, RECTANGLES.MAIN_MENU.NEW_GAME_RECT, 5)
             if mb[0] == 1:
                 return "NGame"
-        if contRect.collidepoint(mx, my):
-            draw.rect(screen, PURPLE, contRect, 5)
+        if RECTANGLES.MAIN_MENU.CONTINUE_RECT.collidepoint(mx, my):
+            draw.rect(screen, COLOURS.PURPLE, RECTANGLES.MAIN_MENU.CONTINUE_RECT, 5)
             if mb[0] == 1:
                 return "load"
-        if instrucRect.collidepoint(mx, my):
-            draw.rect(screen, PURPLE, instrucRect, 5)
+        if RECTANGLES.MAIN_MENU.INSTRUCTION_RECT.collidepoint(mx, my):
+            draw.rect(screen, COLOURS.PURPLE, RECTANGLES.MAIN_MENU.INSTRUCTION_RECT, 5)
             if mb[0] == 1:
                 return "Instructions"
-        if codeRect.collidepoint(mx, my):
-            draw.rect(screen, PURPLE, codeRect, 5)
+        if RECTANGLES.MAIN_MENU.CODE_RECT.collidepoint(mx, my):
+            draw.rect(screen, COLOURS.PURPLE, RECTANGLES.MAIN_MENU.CODE_RECT, 5)
             if mb[0] == 1:
                 return "Codes"
-        if exitRect.collidepoint(mx, my):
-            draw.rect(screen, PURPLE, exitRect, 5)
+        if RECTANGLES.MAIN_MENU.EXIT_RECT.collidepoint(mx, my):
+            draw.rect(screen, COLOURS.PURPLE, RECTANGLES.MAIN_MENU.EXIT_RECT, 5)
             if mb[0] == 1:
                 return "Exit"
         display.flip()
@@ -1204,22 +1146,22 @@ def UI():  # This is the UI or health bars that need to be blitted
             screen.blit(battleportraits[i][1], (10, [0, 245, 490][num]))
     for playing in positions:
         # drawhealthbar
-        draw.rect(screen, GREEN, (25, 199 + 250 * (playing), 200, 25), 2)
-        draw.rect(screen, BLUE, (25, 225 + 250 * (playing), 200, 25), 2)
-        draw.rect(screen, GREEN,
+        draw.rect(screen, COLOURS.GREEN, (25, 199 + 250 * (playing), 200, 25), 2)
+        draw.rect(screen, COLOURS.BLUE, (25, 225 + 250 * (playing), 200, 25), 2)
+        draw.rect(screen, COLOURS.GREEN,
                   (25, (199 + 250 * (playing)), (2 * (100 * (yourselection[playing].health) / yourselection[playing].max_health)), 25),
                   0)
-        draw.rect(screen, BLUE,
+        draw.rect(screen, COLOURS.BLUE,
                   (25, (225 + 250 * (playing)), (2 * (100 * (yourselection[playing].mana) / yourselection[playing].max_mana)), 25), 0)
-        screen.blit(ffont.render("%4d/%d" % (yourselection[playing].health, yourselection[playing].max_health), True, (100, 200, 100)),
+        screen.blit(ffont.render("%4d/%d" % (yourselection[playing].health, yourselection[playing].max_health), True, COLOURS.LIGHT_GREEN),
                     (28, 203 + 250 * playing))
-        screen.blit(ffont.render("%4d/%d" % (yourselection[playing].mana, yourselection[playing].max_mana), True, (100, 100, 200)),
+        screen.blit(ffont.render("%4d/%d" % (yourselection[playing].mana, yourselection[playing].max_mana), True, COLOURS.LIGHT_BLUE),
                     (28, 228 + 250 * playing))
-    for enemys in range(0, len(enemieselection)):
-        if enemieselection[enemys].is_alive():
-           draw.rect(screen, WHITE, (1000, 700 - 30 * enemys, 200, 10), 1)
-           draw.rect(screen, WHITE,
-                  (1000, 700 - 30 * enemys, (2 * (100 * enemieselection[enemys].health / enemieselection[enemys].max_health)), 10),
+    for i, enemyRect in zip(range(0, len(enemieselection)), RECTANGLES.BATTLE_UI.ENEMY_RECTS):
+        if enemieselection[i].is_alive():
+           draw.rect(screen, COLOURS.WHITE, (enemyRect.x, enemyRect.y-20, 150, 10), 1)
+           draw.rect(screen, COLOURS.WHITE,
+                  (enemyRect.x, enemyRect.y-20, (150 * enemieselection[i].health / enemieselection[i].max_health), 10),
                   0)
 
 
@@ -1255,21 +1197,27 @@ def battle(area, battlenum):  # The main battle function
                 return battlenum
             screen.blit(area, (0, 0))  # Blit the area
             UI()
-            screen.blit(ffont.render('Damage Multipliers '+(' '.join([str(i.damage_multiplier) for i in yourselection])),True,WHITE,BLACK),(0,0))
-            for i, v in enumerate(enemyrects):  # Blitting enemies depending on their health
+            screen.blit(ffont.render('Damage Multipliers '+(' '.join([str(i.damage_multiplier) for i in yourselection])),True,COLOURS.WHITE,COLOURS.BLACK),(0,0))
+            for i, v in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):  # Blitting enemies depending on their health
                 enemyType = enemieselection[i].enemyType
                 if enemyType == "grunt" and enemieselection[i].health > 0:
-                    screen.blit(enemyanimation[0][0][0], (1080 - 15 * i, 400 - 190 * i))
+                    blit_pos = math_tools.get_centered_blit_pos(v, enemyanimation[0][0][0])
+                    screen.blit(enemyanimation[0][0][0], blit_pos)
                 elif enemyType == "tough" and enemieselection[i].health > 0:
-                    screen.blit(enemyanimation[1][0][0], (1080 - 15 * i, 400 - 190 * i))
+                    blit_pos = math_tools.get_centered_blit_pos(v, enemyanimation[1][0][0])
+                    screen.blit(enemyanimation[1][0][0], blit_pos)
                 elif enemyType == "miniboss":
-                    screen.blit(enemyanimation[2][0][0], (1080 - 15 * i, 400 - 190 * i))
+                    blit_pos = math_tools.get_centered_blit_pos(v, enemyanimation[2][0][0])
+                    screen.blit(enemyanimation[2][0][0], blit_pos)
                 elif enemyType == "aaron":
-                    screen.blit(enemyanimation[3][0][0], (1080 - 15 * i, 400 - 190 * i))
+                    blit_pos = math_tools.get_centered_blit_pos(v, enemyanimation[3][0][0])
+                    screen.blit(enemyanimation[3][0][0], blit_pos)
                 elif enemyType == "vlad":
-                    screen.blit(enemyanimation[4][0][0], (1080 - 15 * i, 400 - 190 * i))
+                    blit_pos = math_tools.get_centered_blit_pos(v, enemyanimation[4][0][0])
+                    screen.blit(enemyanimation[4][0][0], blit_pos)
                 elif enemyType == "kim":
-                    screen.blit(enemyanimation[5][0][0], (1080 - 15 * i, 400 - 190 * i))
+                    blit_pos = math_tools.get_centered_blit_pos(v, enemyanimation[5][0][0])
+                    screen.blit(enemyanimation[5][0][0], blit_pos)
             for players, playerNumber in zip(selectnums, positions):  # This is used for blitting the characters
                 if playerNumber == currentCaster and playAbilityAnimation: # don't draw ability casting player
                     yourselection[currentCaster].spellAnimation.update()
@@ -1339,7 +1287,7 @@ def battle(area, battlenum):  # The main battle function
             if playerturn:  # While its the players turn
                 for i in range(3):
                     enemieselection[i].tired=False
-                draw.polygon(screen, PURPLE, (selectpoly[currentCaster]))
+                draw.polygon(screen, COLOURS.PURPLE, (selectpoly[currentCaster]))
                 if framedelay == -1:
                     currentaction = buttons(currentCaster)
                     currentCaster = casting(currentaction, currentCaster)
@@ -1354,7 +1302,7 @@ def battle(area, battlenum):  # The main battle function
                 speechBubbleX = 335+315*randint(0,2)
                 speechBubbleY = 500
                 speechBubbleText = choice(['Oof','Ouch','Owie',"I'm dead", "This sucks"])
-                speechBubbleTime = 300
+                speechBubbleTime = 200
             else:
                 speechBubbleTime-=1
             drawSpeechBubble(speechBubbleX,speechBubbleY,speechBubbleText)
@@ -1363,16 +1311,16 @@ def battle(area, battlenum):  # The main battle function
     return battlenum
 
 def drawSpeechBubble(x ,y, text, drawSurf=screen):
-    renderText=ffont.render(text, True, BLACK)
-    draw.polygon(drawSurf,WHITE,[(x,y+renderText.get_height()+20),(7+x,y+renderText.get_height()+20),(5+x,y+renderText.get_height()+30),(15+x,y+40),(renderText.get_width()+20+x,y+40),(renderText.get_width()+20+x,y),(x,y)])
+    renderText=ffont.render(text, True, COLOURS.BLACK)
+    draw.polygon(drawSurf,COLOURS.WHITE,[(x,y+renderText.get_height()+20),(7+x,y+renderText.get_height()+20),(5+x,y+renderText.get_height()+30),(15+x,y+40),(renderText.get_width()+20+x,y+40),(renderText.get_width()+20+x,y),(x,y)])
     screen.blit(renderText,(x+(renderText.get_width()+20)//2-renderText.get_width()//2,y+(renderText.get_height()+20)//2-renderText.get_height()//2))
 def buttons(caster):  # Pressing a button with a function attached calls the function
     global clicked
     if currentaction == "":
-        for b, v in zip(button, values):
-            draw.rect(screen, BLACK, b, 2)
+        for b, v in zip(RECTANGLES.BATTLE_UI.ACTION_BUTTONS, values):
+            draw.rect(screen, COLOURS.BLACK, b, 2)
             if b.collidepoint(mx, my):
-                draw.rect(screen, BLACK, b, 5)
+                draw.rect(screen, COLOURS.BLACK, b, 5)
                 if mb[0] and not + clicked:
                     clicked = True
                     return v
@@ -1394,24 +1342,24 @@ def casting(action, caster):  # This comes from the button being pressed form be
 
 def skills(caster):  # Your skill function that draws and blits things getting ready for you skill selection
     global currentaction, clicked, currentattacker, selection, framedelay, playAbilityAnimation
-    draw.rect(screen, BUTTONBACK, buttonfillrect, 0)
-    draw.rect(screen, BLACK, backbuttonrect, 2)
+    draw.rect(screen, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
+    draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
     screen.blit(backing, (320, 620))
-    if backbuttonrect.collidepoint(mx, my):
-        draw.rect(screen, BLACK, backbuttonrect, 5)
+    if RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT.collidepoint(mx, my):
+        draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 5)
         if mb[0] and not clicked:
             clicked = True
             currentaction = ""
             return caster
-    for button, skill in zip(skillbuttons, skilllist[caster]):
-        draw.rect(screen, BLUE, button, 2)
-        screen.blit(abilitybutton[caster][skillbuttons.index(button)], (660, 620 + 47 * skillbuttons.index(button)))
+    for button, skill in zip(RECTANGLES.BATTLE_UI.SKILL_BUTTONS, skilllist[caster]):
+        draw.rect(screen, COLOURS.BLUE, button, 2)
+        screen.blit(abilitybutton[caster][RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)], (660, 620 + 47 * RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)))
         if selection == button:
-            draw.rect(screen, WHITE, button, 5)
-            screen.blit(abilitydesc[caster][skillbuttons.index(button)], (320, 683))
+            draw.rect(screen, COLOURS.WHITE, button, 5)
+            screen.blit(abilitydesc[caster][RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)], (320, 683))
             if skill.abilityType == ability.AbilityType.DAMAGING:
-                for selectedEnemyIndex, enemyRect in enumerate(enemyrects):
-                    draw.rect(screen, RED, enemyrects[selectedEnemyIndex], 3)
+                for selectedEnemyIndex, enemyRect in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):
+                    draw.rect(screen, COLOURS.RED, RECTANGLES.BATTLE_UI.ENEMY_RECTS[selectedEnemyIndex], 3)
                     if enemyRect.collidepoint(mx, my) and mb[0] and not clicked:
                         castResult = skill.cast(selectedEnemyIndex,currentCaster, yourselection, enemieselection)
                         if castResult!=None:
@@ -1420,8 +1368,8 @@ def skills(caster):  # Your skill function that draws and blits things getting r
                             playAbilityAnimation = castResult['playAbilityAnimation']
                             yourselection[caster].damage_multiplier = 1
             elif skill.abilityType == ability.AbilityType.HEALING:
-                for selectedAllyIndex, allyRect in enumerate(playerrects):
-                    draw.rect(screen, GREEN, playerrects[selectedAllyIndex], 3)
+                for selectedAllyIndex, allyRect in enumerate(RECTANGLES.BATTLE_UI.PLAYER_RECTS):
+                    draw.rect(screen, COLOURS.GREEN, RECTANGLES.BATTLE_UI.PLAYER_RECTS[selectedAllyIndex], 3)
                     if allyRect.collidepoint(mx, my) and mb[0] and not clicked:
                         castResult = skill.cast(selectedAllyIndex,currentCaster, yourselection, enemieselection)
                         if castResult!=None:
@@ -1430,8 +1378,8 @@ def skills(caster):  # Your skill function that draws and blits things getting r
                             playAbilityAnimation = castResult['playAbilityAnimation']
                             yourselection[caster].damage_multiplier = 1
         if button.collidepoint(mx, my):
-            draw.rect(screen, BLUE, button, 5)
-            screen.blit(abilitydesc[caster][skillbuttons.index(button)], (320, 683))
+            draw.rect(screen, COLOURS.BLUE, button, 5)
+            screen.blit(abilitydesc[caster][RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)], (320, 683))
             if mb[0] and not clicked:
                 selection = button
                 clicked = True
@@ -1440,16 +1388,16 @@ def skills(caster):  # Your skill function that draws and blits things getting r
 
 def attack(caster):  # The attacking function for your character selecting an enemy and dealing their damage
     global currentaction, clicked, currentattacker, framedelay, planneddamage
-    draw.rect(screen, BUTTONBACK, buttonfillrect, 0)
-    draw.rect(screen, BLACK, backbuttonrect, 2)
+    draw.rect(screen, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
+    draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
     screen.blit(backing, (320, 620))
-    if backbuttonrect.collidepoint(mx, my):
-        draw.rect(screen, BLACK, backbuttonrect, 5)
+    if RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT.collidepoint(mx, my):
+        draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 5)
         if mb[0] and not clicked:
             clicked = True
             currentaction = ""
-    for i, v in enumerate(enemyrects):
-        draw.rect(screen, RED, enemyrects[i], 3)
+    for i, v in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):
+        draw.rect(screen, COLOURS.RED, RECTANGLES.BATTLE_UI.ENEMY_RECTS[i], 3)
         if v.collidepoint(mx, my) and mb[0] and not clicked and yourselection[caster].can_attack() and enemieselection[i].is_alive():
             framedelay = 5
             enemieselection[i].damage(yourselection[caster].attack_damage, yourselection[caster])
@@ -1462,18 +1410,18 @@ def attack(caster):  # The attacking function for your character selecting an en
 
 def defend(caster):  # The defending function where the damage gets halved
     global currentaction, clicked, defending, nottired, framedelay
-    draw.rect(screen, BUTTONBACK, buttonfillrect, 0)
-    draw.rect(screen, BLACK, backbuttonrect, 2)
-    draw.rect(screen, BLUE, confirmrect, 2)
+    draw.rect(screen, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
+    draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
+    draw.rect(screen, COLOURS.BLUE, RECTANGLES.BATTLE_UI.CONFIRM_RECT, 2)
     screen.blit(backing, (320, 620))
     screen.blit(confirming, (630, 620))
-    if backbuttonrect.collidepoint(mx, my):
-        draw.rect(screen, BLACK, backbuttonrect, 5)
+    if RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT.collidepoint(mx, my):
+        draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 5)
         if mb[0] and not clicked:
             clicked = True
             currentaction = ""
-    if confirmrect.collidepoint(mx, my):
-        draw.rect(screen, BLUE, confirmrect, 5)
+    if RECTANGLES.BATTLE_UI.CONFIRM_RECT.collidepoint(mx, my):
+        draw.rect(screen, COLOURS.BLUE, RECTANGLES.BATTLE_UI.CONFIRM_RECT, 5)
         if mb[0] and not clicked and not yourselection[caster].tired:
             yourselection[caster].set_defending(True)
             yourselection[caster].tired = True
@@ -1485,17 +1433,17 @@ def defend(caster):  # The defending function where the damage gets halved
 
 def switch(caster):  # Switching between the characters order
     global currentaction, clicked
-    draw.rect(screen, BUTTONBACK, buttonfillrect, 0)
-    draw.rect(screen, BLACK, backbuttonrect, 2)
+    draw.rect(screen, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
+    draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
     screen.blit(backing, (320, 620))
-    if backbuttonrect.collidepoint(mx, my):
-        draw.rect(screen, BLACK, backbuttonrect, 5)
+    if RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT.collidepoint(mx, my):
+        draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 5)
         if mb[0] and not clicked:
             clicked = True
             currentaction = ""
-    for i, v in zip(positions, playerrects):
+    for i, v in zip(positions, RECTANGLES.BATTLE_UI.PLAYER_RECTS):
         if not yourselection[i].tired and caster != i:
-            draw.polygon(screen, WHITE, (selectpoly[i]), 2)
+            draw.polygon(screen, COLOURS.WHITE, (selectpoly[i]), 2)
         if v.collidepoint(mx, my) and mb[0] and not clicked and not yourselection[i].tired:
             clicked = True
             currentaction = ""
@@ -1506,7 +1454,7 @@ def switch(caster):  # Switching between the characters order
 
 def enemycast():  # The enemy attacking, It changes depending on what enemy is in the rotation
     global playerturn, nottired, enemyframedelay, taunted
-    for i, v in enumerate(enemyrects):
+    for i, v in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):
         if enemyframedelay > 0:
             enemyframedelay -= 1
         elif enemyframedelay == 0:

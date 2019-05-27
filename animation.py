@@ -19,3 +19,7 @@ class Animation():
         self.numFramesPassed = 0
     def isRunning(self):
         return self.numFramesPassed == 0
+
+    @staticmethod
+    def loadFromFile(filename): #TODO: load animations from a json file
+        pass

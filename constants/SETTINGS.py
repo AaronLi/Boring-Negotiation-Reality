@@ -1,0 +1,2 @@
+class VIDEO:
+    SCREEN_SIZE = (1260, 750)

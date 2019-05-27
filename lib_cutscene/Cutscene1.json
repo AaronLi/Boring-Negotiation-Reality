@@ -1,0 +1,111 @@
+{
+ "DialogueLines": [
+  {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "Once upon a time...",
+   "Background": "A BNR\\other\\haha.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 3,
+   "FadeOutTime": 0.5,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+   "FontSize": 20
+  },
+   {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "There was a planet called Petraglade.",
+   "Background": "A BNR\\other\\haha.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 0.5,
+   "FadeOutTime": 0.5,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+     "FontSize": 20
+  },
+   {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "Here, humans lived at peace with nature.",
+   "Background": "A BNR\\other\\village.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 0.5,
+   "FadeOutTime": 0.5,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+     "FontSize": 20
+  },
+      {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "Some were even granted special abilities that gave them the strength to protect the weak and the wild.",
+   "Background": "A BNR\\other\\village.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 0.5,
+   "FadeOutTime": 0.5,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+        "FontSize": 20
+  },
+      {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "One day, an evil source arrived and casted evil magic onto the plants and trees.",
+   "Background": "A BNR\\other\\rita.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 0.5,
+   "FadeOutTime": 0.5,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+        "FontSize": 20
+  },
+      {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "The once docile animals and plants became decaying zombies and beasts.",
+   "Background": "A BNR\\other\\baddies.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+        "FontSize": 20
+  },   {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "These beasts rampaged the countryside and countless villages, claiming many human lives.",
+   "Background": "A BNR\\other\\baddies come.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 0.5,
+   "FadeOutTime": 0.5,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+     "FontSize": 20
+  },
+   {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "Those blessed with special abilities decided to band together and fight against this new threat.",
+   "Background": "A BNR\\other\\heroes gather.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 0.5,
+   "FadeOutTime": 0.5,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+     "FontSize": 20
+  },
+   {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "It is up to you to decide which warriors will get to experience the taste of victory.",
+   "Background": "A BNR\\other\\heroes gather.jpg",
+   "Font": "basis33.ttf",
+   "FadeInTime": 0.5,
+   "FadeOutTime": 3,
+   "TextFinishedWaitTime": 2,
+   "CharsPerSec": 15,
+   "FontColour": [0, 0, 0],
+     "FontSize": 20
+  }
+ ]
+}
