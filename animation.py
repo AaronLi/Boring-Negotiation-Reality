@@ -20,6 +20,13 @@ class Animation():
     def isRunning(self):
         return self.numFramesPassed == 0
 
+    def get_clone(self):
+        new_animation = Animation(self.sprites, self.duration, 0)
+
+        new_animation.framesPerSprite = self.framesPerSprite
+
+        return new_animation
+
     @staticmethod
     def loadFromFile(filename): #TODO: load animations from a json file
         pass

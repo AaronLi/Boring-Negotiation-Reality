@@ -1,0 +1,84 @@
+{
+ "DialogueLines": [
+  {
+   "ReaderIcon": "|PLAYER|",
+   "Text": "We got you!   Tell us who your master is!",
+   "Background": "A BNR/abattle.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR/aaronhead.png",
+   "Text": "Me me little boy.... All I know is my master's... home is...",
+   "Background": "A BNR/abattle.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR/aaronhead.png",
+   "Text": "...at the upper regions of Mount Dew...",
+   "Background": "A BNR/abattle.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR/aaronhead.png",
+   "Text": "I was hoping to die before I revealed that.",
+   "Background": "A BNR/abattle.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR/aaronhead.png",
+   "Text": "There, you'll meet the immortal bouncer of the Portal, Vlad.",
+   "Background": "A BNR/abattle.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  }
+ ]
+}
