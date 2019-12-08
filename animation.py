@@ -2,6 +2,7 @@ from pygame import *
 class Animation():
     def __init__(self, sprites, totalDuration, gameClockSpeed):
         self.sprites = sprites+[sprites[-1]]
+        self.sprite_paths = sprites
         self.duration = totalDuration
         secondsPerSprite = totalDuration/len(sprites)
         self.framesPerSprite = int(gameClockSpeed*secondsPerSprite)
@@ -21,11 +22,16 @@ class Animation():
         return self.numFramesPassed == 0
 
     def get_clone(self):
-        new_animation = Animation(self.sprites, self.duration, 0)
+        new_animation = Animation(self.sprite_paths, self.duration, 0)
 
         new_animation.framesPerSprite = self.framesPerSprite
 
         return new_animation
+    def dictify(self):
+        return {
+            'sprite_frames':self.sprite_paths,
+            'animation_duration':self.duration
+        }
 
     @staticmethod
     def loadFromFile(filename): #TODO: load animations from a json file

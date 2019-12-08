@@ -1,0 +1,856 @@
+{
+ "erik": {
+  "name": "erik",
+  "health": 3000,
+  "mana": 1000,
+  "attack_damage": 500,
+  "caster_class": "assassin",
+  "abilities": [
+   {
+    "name": "backstab",
+    "mana_cost": 350,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nbackstab\nq\u0000."
+   },
+   {
+    "name": "silentstrike",
+    "mana_cost": 350,
+    "ability_type": "damaging",
+    "influence_amount": 350,
+    "callback": "\u0080\u0003c__main__\nsilentstrike\nq\u0000."
+   },
+   {
+    "name": "execute",
+    "mana_cost": 750,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nexecute\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/erik 1.png",
+    "game sprites/erik 2.png",
+    "game sprites/erik 3.png",
+    "game sprites/erik 4.png",
+    "game sprites/erik 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/erik 1.png",
+    "game sprites/erik 2.png",
+    "game sprites/erik 3.png",
+    "game sprites/erik skill.png",
+    "game sprites/erik 4.png",
+    "game sprites/erik 5.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "aliza": {
+  "name": "aliza",
+  "health": 3600,
+  "mana": 2600,
+  "attack_damage": 250,
+  "caster_class": "mage",
+  "abilities": [
+   {
+    "name": "lightningbolt",
+    "mana_cost": 300,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nlightningbolt\nq\u0000."
+   },
+   {
+    "name": "lightningcharge",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nlightningcharge\nq\u0000."
+   },
+   {
+    "name": "lightningrelease",
+    "mana_cost": 700,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nlightningrelease\nq\u0000."
+   }
+  ],
+  "special_stats": {
+   "lightningCharges": 0
+  },
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/aliza 1.png",
+    "game sprites/aliza 2.png",
+    "game sprites/aliza 3.png",
+    "game sprites/aliza 4.png",
+    "game sprites/aliza 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/aliza 1.png",
+    "game sprites/aliza 2.png",
+    "game sprites/aliza 3.png",
+    "game sprites/aliza 4.png",
+    "game sprites/aliza 5.png",
+    "game sprites/aliza skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "julie": {
+  "name": "julie",
+  "health": 3500,
+  "mana": 1250,
+  "attack_damage": 350,
+  "caster_class": "archer",
+  "abilities": [
+   {
+    "name": "sniperarrow",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 800,
+    "callback": "\u0080\u0003N."
+   },
+   {
+    "name": "herbsandpoultices",
+    "mana_cost": 500,
+    "ability_type": "healing",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nherbsandpoultices\nq\u0000."
+   },
+   {
+    "name": "gunsling",
+    "mana_cost": 1000,
+    "ability_type": "damaging",
+    "influence_amount": 1200,
+    "callback": "\u0080\u0003N."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/julie 1.png",
+    "game sprites/julie 2.png",
+    "game sprites/julie 3.png",
+    "game sprites/julie 4.png",
+    "game sprites/julie 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/julie 1.png",
+    "game sprites/julie 2.png",
+    "game sprites/julie 3.png",
+    "game sprites/julie 4.png",
+    "game sprites/julie 5.png",
+    "game sprites/julie skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "supreet": {
+  "name": "supreet",
+  "health": 3800,
+  "mana": 1750,
+  "attack_damage": 300,
+  "caster_class": "noble",
+  "abilities": [
+   {
+    "name": "slay",
+    "mana_cost": 0,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nslay\nq\u0000."
+   },
+   {
+    "name": "darkmagic",
+    "mana_cost": 450,
+    "ability_type": "damaging",
+    "influence_amount": 800,
+    "callback": "\u0080\u0003N."
+   },
+   {
+    "name": "revoke",
+    "mana_cost": 600,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nrevoke\nq\u0000."
+   }
+  ],
+  "special_stats": {
+   "slayCounter": 0
+  },
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/supreet 1.png",
+    "game sprites/supreet 2.png",
+    "game sprites/supreet 3.png",
+    "game sprites/supreet 4.png",
+    "game sprites/supreet 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/supreet 1.png",
+    "game sprites/supreet 2.png",
+    "game sprites/supreet 3.png",
+    "game sprites/supreet 4.png",
+    "game sprites/supreet 5.png",
+    "game sprites/supreet skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "natalie": {
+  "name": "natalie",
+  "health": 3800,
+  "mana": 2000,
+  "attack_damage": 80,
+  "caster_class": "healer",
+  "abilities": [
+   {
+    "name": "heal",
+    "mana_cost": 400,
+    "ability_type": "healing",
+    "influence_amount": 1000,
+    "callback": "\u0080\u0003N."
+   },
+   {
+    "name": "healmore",
+    "mana_cost": 800,
+    "ability_type": "healing",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nhealmore\nq\u0000."
+   },
+   {
+    "name": "revive",
+    "mana_cost": 600,
+    "ability_type": "healing",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nrevive\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/nat 1.png",
+    "game sprites/nat 2.png",
+    "game sprites/nat 3.png",
+    "game sprites/nat 4.png",
+    "game sprites/nat 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/nat 1.png",
+    "game sprites/nat 2.png",
+    "game sprites/nat 3.png",
+    "game sprites/nat skill.png",
+    "game sprites/nat 4.png",
+    "game sprites/nat 5.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "jan": {
+  "name": "jan",
+  "health": 3700,
+  "mana": 2600,
+  "attack_damage": 150,
+  "caster_class": "mage",
+  "abilities": [
+   {
+    "name": "fireball",
+    "mana_cost": 350,
+    "ability_type": "damaging",
+    "influence_amount": 800,
+    "callback": "\u0080\u0003N."
+   },
+   {
+    "name": "flameshell",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nflameshell\nq\u0000."
+   },
+   {
+    "name": "firestorm",
+    "mana_cost": 1000,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nfirestorm\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/jan 1.png",
+    "game sprites/jan 2.png",
+    "game sprites/jan 3.png",
+    "game sprites/jan 4.png",
+    "game sprites/jan 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/jan 1.png",
+    "game sprites/jan 2.png",
+    "game sprites/jan 3.png",
+    "game sprites/jan 4.png",
+    "game sprites/jan 5.png",
+    "game sprites/jan skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "emily": {
+  "name": "emily",
+  "health": 5200,
+  "mana": 1750,
+  "attack_damage": 250,
+  "caster_class": "knight",
+  "abilities": [
+   {
+    "name": "taunt",
+    "mana_cost": 200,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\ntaunt\nq\u0000."
+   },
+   {
+    "name": "stabstabstab",
+    "mana_cost": 400,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nstabstabstab\nq\u0000."
+   },
+   {
+    "name": "dragonflame",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 800,
+    "callback": "\u0080\u0003N."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/emily 1.png",
+    "game sprites/emily 2.png",
+    "game sprites/emily 3.png",
+    "game sprites/emily 4.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/emily 1.png",
+    "game sprites/emily 2.png",
+    "game sprites/emily 3.png",
+    "game sprites/emily 4.png",
+    "game sprites/emily skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "linh": {
+  "name": "linh",
+  "health": 5500,
+  "mana": 2000,
+  "attack_damage": 200,
+  "caster_class": "knight",
+  "abilities": [
+   {
+    "name": "bigtaunt",
+    "mana_cost": 600,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nbigtaunt\nq\u0000."
+   },
+   {
+    "name": "shieldsup",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nshieldsup\nq\u0000."
+   },
+   {
+    "name": "lancethrow",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 800,
+    "callback": "\u0080\u0003c__main__\nlancethrow\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/linh 1.png",
+    "game sprites/linh 2.png",
+    "game sprites/linh 3.png",
+    "game sprites/linh 4.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/linh 1.png",
+    "game sprites/linh 2.png",
+    "game sprites/linh 3.png",
+    "game sprites/linh 4.png",
+    "game sprites/linh skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "priyonto": {
+  "name": "priyonto",
+  "health": 3600,
+  "mana": 1600,
+  "attack_damage": 325,
+  "caster_class": "lord",
+  "abilities": [
+   {
+    "name": "fallingsword",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nfallingsword\nq\u0000."
+   },
+   {
+    "name": "counterattack",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\ncounterattack\nq\u0000."
+   },
+   {
+    "name": "preparation",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\npreparation\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/priyonto 1.png",
+    "game sprites/priyonto 2.png",
+    "game sprites/priyonto 3.png",
+    "game sprites/priyonto 4.png",
+    "game sprites/priyonto 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/priyonto 1.png",
+    "game sprites/priyonto 2.png",
+    "game sprites/priyonto 3.png",
+    "game sprites/priyonto 4.png",
+    "game sprites/priyonto 5.png",
+    "game sprites/priyonto skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "minya": {
+  "name": "minya",
+  "health": 2900,
+  "mana": 1800,
+  "attack_damage": 100,
+  "caster_class": "healer",
+  "abilities": [
+   {
+    "name": "heal",
+    "mana_cost": 400,
+    "ability_type": "healing",
+    "influence_amount": 1000,
+    "callback": "\u0080\u0003N."
+   },
+   {
+    "name": "helpinghand",
+    "mana_cost": 500,
+    "ability_type": "healing",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nhelpinghand\nq\u0000."
+   },
+   {
+    "name": "shieldaura",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nshieldaura\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/minya 1.png",
+    "game sprites/minya 2.png",
+    "game sprites/minya 3.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/minya 1.png",
+    "game sprites/minya 2.png",
+    "game sprites/minya 3.png",
+    "game sprites/minya skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "viv": {
+  "name": "viv",
+  "health": 3400,
+  "mana": 1300,
+  "attack_damage": 375,
+  "caster_class": "archer",
+  "abilities": [
+   {
+    "name": "extravagantshot",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 800,
+    "callback": "\u0080\u0003c__main__\nextravagantshot\nq\u0000."
+   },
+   {
+    "name": "biggerandstronger",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nbiggerandstronger\nq\u0000."
+   },
+   {
+    "name": "flashyarrow",
+    "mana_cost": 800,
+    "ability_type": "damaging",
+    "influence_amount": 1600,
+    "callback": "\u0080\u0003c__main__\nflashyarrow\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/viv 1.png",
+    "game sprites/viv 2.png",
+    "game sprites/viv 3.png",
+    "game sprites/viv 4.png",
+    "game sprites/viv 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/viv 1.png",
+    "game sprites/viv 2.png",
+    "game sprites/viv 3.png",
+    "game sprites/viv 4.png",
+    "game sprites/viv 5.png",
+    "game sprites/viv skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "ogu": {
+  "name": "ogu",
+  "health": 3000,
+  "mana": 1250,
+  "attack_damage": 500,
+  "caster_class": "assassin",
+  "abilities": [
+   {
+    "name": "vampiricstrike",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 800,
+    "callback": "\u0080\u0003c__main__\nvampiricstrike\nq\u0000."
+   },
+   {
+    "name": "playdead",
+    "mana_cost": 350,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nplaydead\nq\u0000."
+   },
+   {
+    "name": "analyze",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\nanalyze\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/ogu 1.png",
+    "game sprites/ogu 2.png",
+    "game sprites/ogu 3.png",
+    "game sprites/ogu 4.png",
+    "game sprites/ogu 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/ogu 1.png",
+    "game sprites/ogu 2.png",
+    "game sprites/ogu 3.png",
+    "game sprites/ogu skill.png",
+    "game sprites/ogu 4.png",
+    "game sprites/ogu 5.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "zak": {
+  "name": "zak",
+  "health": 3900,
+  "mana": 1500,
+  "attack_damage": 300,
+  "caster_class": "warrior",
+  "abilities": [
+   {
+    "name": "groundslam",
+    "mana_cost": 500,
+    "ability_type": "damaging",
+    "influence_amount": 700,
+    "callback": "\u0080\u0003N."
+   },
+   {
+    "name": "cull",
+    "mana_cost": 600,
+    "ability_type": "damaging",
+    "influence_amount": 0,
+    "callback": "\u0080\u0003c__main__\ncull\nq\u0000."
+   },
+   {
+    "name": "reap",
+    "mana_cost": 700,
+    "ability_type": "damaging",
+    "influence_amount": 900,
+    "callback": "\u0080\u0003c__main__\nreap\nq\u0000."
+   }
+  ],
+  "special_stats": {},
+  "attack_animation": {
+   "sprite_frames": [
+    "game sprites/zak 1.png",
+    "game sprites/zak 2.png",
+    "game sprites/zak 3.png",
+    "game sprites/zak 4.png",
+    "game sprites/zak 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell_animation": {
+   "sprite_frames": [
+    "game sprites/zak 1.png",
+    "game sprites/zak 2.png",
+    "game sprites/zak 3.png",
+    "game sprites/zak 4.png",
+    "game sprites/zak 5.png",
+    "game sprites/zak skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend_animation": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ }
+}

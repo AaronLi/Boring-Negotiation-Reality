@@ -1,4 +1,5 @@
 from pygame import *
+import json
 font.init()
 cardFont = font.Font("basis33.ttf",45)
 statFont = font.Font("basis33.ttf",30)
@@ -65,25 +66,22 @@ class InfoCard():
             storyLine = storyFont.render(v, True, (0,0,0))
             self.graphic.blit(storyLine, (5,i*fontHeight+114))
         self.graphic = self.graphic.convert_alpha()
-def constructCards(playerStats, profiles, portraits, fileName = 'infoCardContents.txt'):
+def constructCards(playerStats, profiles, portraits, fileName = 'characterInfo.json'):
     cards = []
     personNumber = 0
     with open(fileName) as f:
-        for i in f:
-            if len(i.strip().split())>1:
-                name, workingName = i.strip().split()
-            else:
-                name = i.strip()
-                workingName = name
-            story = ""
-            numStoryLines = int(f.readline())
-            for j in range(numStoryLines):
-                story+=f.readline()
-            health = playerStats[personNumber].max_health
-            mana = playerStats[personNumber].max_mana
-            damage = playerStats[personNumber].attack_damage
-            charType = playerStats[personNumber].caster_class
-            newCard = InfoCard(name, story, (charType, health, mana, damage), profiles[personNumber], portraits[personNumber], workingName)
+        infoCardData = json.load(f)
+        for working_name in infoCardData:
+            name = infoCardData[working_name]['name']
+            story = infoCardData[working_name]['story']
+            character_stats = [i for i in playerStats if i.name.lower() == working_name.lower()][0]
+            character_stats.name = name
+            
+            health = character_stats.max_health
+            mana = character_stats.max_mana
+            damage = character_stats.attack_damage
+            charType = character_stats.caster_class
+            newCard = InfoCard(name, story, (charType, health, mana, damage), profiles[personNumber], portraits[personNumber], working_name)
             personNumber+=1
             cards.append(newCard)
     return cards

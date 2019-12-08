@@ -14,9 +14,24 @@ class Caster:
         self.targetable = True
         self.specialStats = kwargs
         self.damage_multiplier = 1
-        self.animation = animation
-        self.spellAnimation = spellAnimation
-        self.defendAnimation = defendAnimation
+        self.attack_animation = animation
+        self.spell_animation = spellAnimation
+        self.defend_animation = defendAnimation
+
+    def dictify(self):
+        return {
+            'name':self.name,
+            'health':self.max_health,
+            'mana':self.max_mana,
+            'attack_damage':self.attack_damage,
+            'caster_class':self.caster_class,
+            'abilities':[i.dictify() for i in self.abilities],
+            'special_stats':self.specialStats,
+            'attack_animation':self.attack_animation.dictify(),
+            'spell_animation':self.spell_animation.dictify(),
+            'defend_animation':self.defend_animation.dictify()
+        }
+
     def regen_mana(self):
         self.mana = min(self.max_mana, self.mana+self.max_mana//5.8)
     def damage(self, amount):
@@ -42,7 +57,7 @@ class Caster:
     def set_defending(self, state):
         self.defending = state
         if self.defending:
-            self.defendAnimation.reset()
+            self.defend_animation.reset()
     def __str__(self):
         return "%-8s hp:%4d/%d mana:%4d/%d %d %s %s"%(self.name, self.health,self.max_health, self.mana, self.max_mana, self.attack_damage, self.caster_class, str(self.abilities))
 
