@@ -1,11 +1,12 @@
-import caster, ability, animation, infoCard
+import caster, ability, os
 import json, pickle, glob
 import src.caster_animation_handler as caster_animation_handler
 
 class CastersLoader:
     def __init__(self, filepath, game_clock, image_cacher) -> None:
         self.filepath = filepath
-        files = glob.iglob(filepath + '/*_stats.json')
+        search_path = os.path.join(filepath, '*_stats.json')
+        files = glob.iglob(search_path)
         self.casters = {}
         self.loaded_files = {}
 

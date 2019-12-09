@@ -763,7 +763,6 @@ def lightningbolt(target, caster, casters, enemies):
 
 
 def lightningcharge(target, caster, casters, enemies):
-    print('lighting Charge!')
     if casters[caster].get_special_stat("lightningCharges") < 5:
         yourselection[currentCaster].modify_special_stat("lightningCharges",1)
     else:
@@ -995,11 +994,11 @@ def battle(area, battlenum):  # The main battle function
                 else:
                     screen.blit(stats[players].animation_handler.dead, (325 - 15 * playerNumber, 20 + 190 * playerNumber))
                 #draw caster specific icons
-                if yourselection[playerNumber].name == 'supreet' and yourselection[
+                if yourselection[playerNumber].name.lower() == 'supreet' and yourselection[
                     playerNumber].health != 0:  # draw supreet's slay counter
                     for i in range(yourselection[playerNumber].get_special_stat('slayCounter')):
                         screen.blit(transform.scale(fire, (15, 15)), (26 + 16 * i, 180 + 251 * playerNumber))
-                if yourselection[playerNumber].name == 'aliza' and yourselection[playerNumber].health!=0:
+                if yourselection[playerNumber].name.lower() == 'aliza' and yourselection[playerNumber].health!=0:
                     for i in range(yourselection[playerNumber].get_special_stat("lightningCharges")):
                         screen.blit(transform.scale(lightning, (15, 15)), (26 + 16 * i, 180 + 251 * playerNumber))
 
@@ -1301,7 +1300,8 @@ def attacken(someone, somedmg, animation, enemypos,
              enemynum):  # This is the main function where an enemy applies his damage to the party member
     screen.blit(animation, (randint(0, 1000), randint(0, 700)))
     if yourselection[someone].defending:  # If the ally is defending then the damage is halved
-        screen.blit(shield1, (325 - 15 * someone, 20 + 190 * someone))
+        #screen.blit(shield1, (325 - 15 * someone, 20 + 190 * someone))
+        pass
     yourselection[someone].damage(somedmg)
     enemieselection[enemynum].tired = True
     screen.blit(enemyanimation[enemypos][1][0], (1080 - 15 * enemynum, 400 - 190 * enemynum))
