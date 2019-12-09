@@ -1,0 +1,35 @@
+{
+ "name": "Aliza",
+ "health": 3600,
+ "mana": 2600,
+ "attack_damage": 250,
+ "caster_class": "mage",
+ "abilities": [
+  {
+   "name": "lightningbolt",
+   "mana_cost": 300,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nlightningbolt\nq\u0000."
+  },
+  {
+   "name": "lightningcharge",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nlightningcharge\nq\u0000."
+  },
+  {
+   "name": "lightningrelease",
+   "mana_cost": 700,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nlightningrelease\nq\u0000."
+  }
+ ],
+ "special_stats": {
+  "lightningCharges": 0
+ },
+ "visual_data": "datafiles/visual_datafiles/aliza_visual.json",
+ "story": "Lightning mage from Lumos village. Usually she is a nice, calm person.\nHowever, one day she went to her favourite spellbook store in town,\nfinding it burnt down by a gaping fire mage. Fuming, she released a\nflurry of thunder. Instead of fearing her, the mage, Jan, invited her\nto join the battlefront.\n"
+}

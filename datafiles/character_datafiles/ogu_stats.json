@@ -1,0 +1,33 @@
+{
+ "name": "Ogu",
+ "health": 3000,
+ "mana": 1250,
+ "attack_damage": 500,
+ "caster_class": "assassin",
+ "abilities": [
+  {
+   "name": "vampiricstrike",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 800,
+   "callback": "\u0080\u0003c__main__\nvampiricstrike\nq\u0000."
+  },
+  {
+   "name": "playdead",
+   "mana_cost": 350,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nplaydead\nq\u0000."
+  },
+  {
+   "name": "analyze",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nanalyze\nq\u0000."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/ogu_visual.json",
+ "story": "From the village of Chipol'Eh. Oguzhan's pale complexion along with his routine\nnocturnal assassination tactics have made people think he is a vampire. His best\nfriend, Zak doesn't think so. In fact, the two entered the war, promising to avenge\nthe other if they had died.\n"
+}

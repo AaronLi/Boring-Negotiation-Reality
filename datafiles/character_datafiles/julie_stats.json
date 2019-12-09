@@ -1,0 +1,33 @@
+{
+ "name": "Julie",
+ "health": 3500,
+ "mana": 1250,
+ "attack_damage": 350,
+ "caster_class": "archer",
+ "abilities": [
+  {
+   "name": "sniperarrow",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 800,
+   "callback": "\u0080\u0003N."
+  },
+  {
+   "name": "herbsandpoultices",
+   "mana_cost": 500,
+   "ability_type": "healing",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nherbsandpoultices\nq\u0000."
+  },
+  {
+   "name": "gunsling",
+   "mana_cost": 1000,
+   "ability_type": "damaging",
+   "influence_amount": 1200,
+   "callback": "\u0080\u0003N."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/julie_visual.json",
+ "story": "Ranger of S'gleera. Wanted to be a gunslinger like her father but never\nliked the recoil of the gun. Instead she focused her talent for accuracy\ninto the bow and arrow. She won an archery competition in town. Needing\nanother thrill for her skill besides hunting, she decided to join the\nfight against the taints.\n"
+}

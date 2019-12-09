@@ -1,0 +1,33 @@
+{
+ "name": "Priyonto",
+ "health": 3600,
+ "mana": 1600,
+ "attack_damage": 325,
+ "caster_class": "lord",
+ "abilities": [
+  {
+   "name": "fallingsword",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nfallingsword\nq\u0000."
+  },
+  {
+   "name": "counterattack",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\ncounterattack\nq\u0000."
+  },
+  {
+   "name": "preparation",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\npreparation\nq\u0000."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/priyonto_visual.json",
+ "story": "From the village of Bubsy. He is known to be the swordsman with the most laid\nback attitude. When he is not following Linh, he can be found sparring Erik.\nIt was only because of Linh that he decided to support the war effort.\n"
+}

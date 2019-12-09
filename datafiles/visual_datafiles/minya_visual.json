@@ -1,0 +1,39 @@
+{
+ "animations": {
+  "attack": {
+   "sprite_frames": [
+    "game sprites/minya 1.png",
+    "game sprites/minya 2.png",
+    "game sprites/minya 3.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell": {
+   "sprite_frames": [
+    "game sprites/minya 1.png",
+    "game sprites/minya 2.png",
+    "game sprites/minya 3.png",
+    "game sprites/minya skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "portrait": "A BNR/battle/minya portrait.png",
+ "dead": "game sprites/minya ded.png",
+ "hurt": "game sprites/minya ow.png",
+ "idle": "A BNR/stands/minya stand.png"
+}

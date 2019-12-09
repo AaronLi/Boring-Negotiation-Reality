@@ -1,0 +1,43 @@
+{
+ "animations": {
+  "attack": {
+   "sprite_frames": [
+    "game sprites/nat 1.png",
+    "game sprites/nat 2.png",
+    "game sprites/nat 3.png",
+    "game sprites/nat 4.png",
+    "game sprites/nat 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell": {
+   "sprite_frames": [
+    "game sprites/nat 1.png",
+    "game sprites/nat 2.png",
+    "game sprites/nat 3.png",
+    "game sprites/nat skill.png",
+    "game sprites/nat 4.png",
+    "game sprites/nat 5.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "portrait": "A BNR/battle/natalie portrait.png",
+ "dead": "game sprites/nat ded.png",
+ "hurt": "game sprites/nat ow.png",
+ "idle": "A BNR/stands/nat stand.png"
+}

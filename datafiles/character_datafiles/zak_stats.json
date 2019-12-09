@@ -1,0 +1,33 @@
+{
+ "name": "Zak",
+ "health": 3900,
+ "mana": 1500,
+ "attack_damage": 300,
+ "caster_class": "warrior",
+ "abilities": [
+  {
+   "name": "groundslam",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 700,
+   "callback": "\u0080\u0003N."
+  },
+  {
+   "name": "cull",
+   "mana_cost": 600,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\ncull\nq\u0000."
+  },
+  {
+   "name": "reap",
+   "mana_cost": 700,
+   "ability_type": "damaging",
+   "influence_amount": 900,
+   "callback": "\u0080\u0003c__main__\nreap\nq\u0000."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/zak_visual.json",
+ "story": "From the village of Chipol'Eh. Growing up as a farmer's son, Zak dreamed of becoming\na swordsman. Running away from home to find a mentor, he bumped into the same master\nthat taught Oguzhan. Now best friends, he and Oguzhan made a pact to avenge the other's\ndeath on the battlefield."
+}

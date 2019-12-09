@@ -1,0 +1,35 @@
+{
+ "name": "Supreet",
+ "health": 3800,
+ "mana": 1750,
+ "attack_damage": 300,
+ "caster_class": "noble",
+ "abilities": [
+  {
+   "name": "slay",
+   "mana_cost": 0,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nslay\nq\u0000."
+  },
+  {
+   "name": "darkmagic",
+   "mana_cost": 450,
+   "ability_type": "damaging",
+   "influence_amount": 800,
+   "callback": "\u0080\u0003N."
+  },
+  {
+   "name": "revoke",
+   "mana_cost": 600,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nrevoke\nq\u0000."
+  }
+ ],
+ "special_stats": {
+  "slayCounter": 0
+ },
+ "visual_data": "datafiles/visual_datafiles/supreet_visual.json",
+ "story": "From the village of Carmon. Was originally trained to be a healer, but it\nwasn't ~her area of expertise~\u00e2\u201e\u00a2. Tired of healing all of the injured, she\nbecame a swordswoman and decided to end the battle herself. Sassy, yet\ncaring, Supreet puts her all into battle.\n"
+}

@@ -1,2 +1,7 @@
 class VIDEO:
     SCREEN_SIZE = (1260, 750)
+
+class STATS:
+    MAX_HEALTH = 5500
+    MAX_MANA = 2600
+    MAX_DAMAGE = 500

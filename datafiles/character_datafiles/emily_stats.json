@@ -1,0 +1,33 @@
+{
+ "name": "Emily",
+ "health": 5200,
+ "mana": 1750,
+ "attack_damage": 250,
+ "caster_class": "knight",
+ "abilities": [
+  {
+   "name": "taunt",
+   "mana_cost": 200,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\ntaunt\nq\u0000."
+  },
+  {
+   "name": "stabstabstab",
+   "mana_cost": 400,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nstabstabstab\nq\u0000."
+  },
+  {
+   "name": "dragonflame",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 800,
+   "callback": "\u0080\u0003N."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/emily_visual.json",
+ "story": "The youngest knight from the village of Hi-kup. Her title was disgraced when\nshe was framed. She continued to live as a hermit in the mountains. One day,\nEmily came back to her village to find it rampaged by Taints. In grief,  she\ntook her spear and armour and became a knight once more.\n"
+}

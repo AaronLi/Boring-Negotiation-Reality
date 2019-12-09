@@ -1,0 +1,33 @@
+{
+ "name": "Linh",
+ "health": 5500,
+ "mana": 2000,
+ "attack_damage": 200,
+ "caster_class": "knight",
+ "abilities": [
+  {
+   "name": "bigtaunt",
+   "mana_cost": 600,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nbigtaunt\nq\u0000."
+  },
+  {
+   "name": "shieldsup",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nshieldsup\nq\u0000."
+  },
+  {
+   "name": "lancethrow",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 800,
+   "callback": "\u0080\u0003c__main__\nlancethrow\nq\u0000."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/linh_visual.json",
+ "story": "From the village of Bubsy. SHe is known to be a knight to be reckoned with,\ndespite her small stature. Priyonto often accompanies her, interested in how\nshe sees the world. Intrigued by the battlefront, Linh decided to join the\nbattle for herself.\n"
+}

@@ -1,0 +1,33 @@
+{
+ "name": "Minya",
+ "health": 2900,
+ "mana": 1800,
+ "attack_damage": 100,
+ "caster_class": "healer",
+ "abilities": [
+  {
+   "name": "heal",
+   "mana_cost": 400,
+   "ability_type": "healing",
+   "influence_amount": 1000,
+   "callback": "\u0080\u0003N."
+  },
+  {
+   "name": "helpinghand",
+   "mana_cost": 500,
+   "ability_type": "healing",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nhelpinghand\nq\u0000."
+  },
+  {
+   "name": "shieldaura",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nshieldaura\nq\u0000."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/minya_visual.json",
+ "story": "From the village of Carmon. Despite being considered a prodigious healer in the\nvillage, Minya feels she isn't good enough. Wanting to gelp those who are\nfightning against the Taints, Minya decided to head out into the battle. Cheerful\nand kind.\n"
+}

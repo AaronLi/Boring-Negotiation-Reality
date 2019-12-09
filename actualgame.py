@@ -1,7 +1,7 @@
 from pygame import *
 from tkinter import *
 from random import *
-import enemy, ability, animation, src.caster_loader
+import enemy, ability, src.image_cacher, src.caster_loader
 from constants import *
 import math_tools
 from lib_cutscene import cutscene
@@ -122,84 +122,12 @@ sceneback = [[abattle, abattle, abattle, abattle, ],
 instructionsPic = image.load(
     "A BNR/help.png")  # The instructions as a single picture to be blit when being called as a function
 # order: ER,AR,JH,SS,NN,JF,ED,LN,PS,MB,VL,OZ,ZH
-# This is all the characters standing normally that is used during character select as well as during the main game
-erikstand = image.load("A BNR/stands/erik stand.png")
-alizastand = image.load("A BNR/stands/aliza stand.png")
-juliestand = image.load("A BNR/stands/julie stand.png")
-supstand = image.load("A BNR/stands/supreet stand.png")
-natstand = image.load("A BNR/stands/nat stand.png")
-janstand = image.load("A BNR/stands/jan stand.png")
-emilystand = image.load("A BNR/stands/emily stand.png")
-linhstand = image.load("A BNR/stands/linh stand.png")
-printerstand = image.load("A BNR/stands/priyonto stand.png")
-# vladstand was cut due to time constraints
-minyastand = image.load("A BNR/stands/minya stand.png")
-vivstand = image.load("A BNR/stands/viv stand.png")
-ogustand = image.load("A BNR/stands/ogu stand.png")
-zakstand = image.load("A BNR/stands/zak stand.png")
-
-# The following is all attacking animations for each character that are also recycled for skill animations
 
 
-# Each characters final frame in their skill animations that distinguishes between their attack and skill
-erikskill = 'game sprites/erik skill.png'
-alizaskill = 'game sprites/aliza skill.png'
-julieskill = 'game sprites/julie skill.png'
-supreetskill = 'game sprites/supreet skill.png'
-natskill = 'game sprites/nat skill.png'
-janskill = 'game sprites/jan skill.png'
-emilyskill = 'game sprites/emily skill.png'
-linhskill = 'game sprites/linh skill.png'
-priyontoskill = 'game sprites/priyonto skill.png'
-minyaskill = 'game sprites/minya skill.png'
-vivskill = 'game sprites/viv skill.png'
-oguskill = 'game sprites/ogu skill.png'
-zakskill = 'game sprites/zak skill.png'
+# The following is all attacking animations for each character that are also recycled for skils animations
 
-# This is all of the character's greyed out or dead forms
-erikded = image.load('game sprites/erik ded.png')
-julieded = image.load('game sprites/julie ded.png')
-alizaded = image.load('game sprites/aliza ded.png')
-supreetded = image.load('game sprites/supreet ded.png')
-natded = image.load('game sprites/nat ded.png')
-janded = image.load('game sprites/jan ded.png')
-emilyded = image.load('game sprites/emily ded.png')
-linhded = image.load('game sprites/linh ded.png')
-priyontoded = image.load('game sprites/priyonto ded.png')
-minyaded = image.load('game sprites/minya ded.png')
-vivded = image.load('game sprites/viv ded.png')
-oguded = image.load('game sprites/ogu ded.png')
-zakded = image.load('game sprites/zak ded.png')
 
-# These are sprites that blit when the character is damaged
-erikow = image.load('game sprites/erik ow.png')
-julieow = image.load('game sprites/julie ow.png')
-alizaow = image.load('game sprites/aliza ow.png')
-supreetow = image.load('game sprites/supreet ow.png')
-natow = image.load('game sprites/nat ow.png')
-janow = image.load('game sprites/jan ow.png')
-emilyow = image.load('game sprites/emily ow.png')
-linhow = image.load('game sprites/linh ow.png')
-priyontoow = image.load('game sprites/priyonto ow.png')
-minyaow = image.load('game sprites/minya ow.png')
-vivow = image.load('game sprites/viv ow.png')
-oguow = image.load('game sprites/ogu ow.png')
-zakow = image.load('game sprites/zak ow.png')
 
-# All the battle portraits that blit when the character has died
-erikdedportrait = image.load('game sprites/battle portraits/erik portraitded.png')
-juliededportrait = image.load('game sprites/battle portraits/julie portraitded.png')
-alizadedportrait = image.load('game sprites/battle portraits/aliza portraitded.png')
-minyadedportrait = image.load('game sprites/battle portraits/minya portraitded.png')
-supreetdedportrait = image.load('game sprites/battle portraits/supreet portraitded.png')
-natdedportrait = image.load('game sprites/battle portraits/natalie portraitded.png')
-jandedportrait = image.load('game sprites/battle portraits/jan portraitded.png')
-vivdedportrait = image.load('game sprites/battle portraits/viv portraitded.png')
-ogudedportrait = image.load('game sprites/battle portraits/ogu portraitded.png')
-zakdedportrait = image.load('game sprites/battle portraits/zak portraitded.png')
-emilydedportrait = image.load('game sprites/battle portraits/emily portraitded.png')
-linhdedportrait = image.load('game sprites/battle portraits/linh portraitded.png')
-priyontodedportrait = image.load('game sprites/battle portraits/priyonto portraitded.png')
 
 clicked = False
 # name tags
@@ -213,39 +141,7 @@ punzPics = [(image.load("A BNR/CODESYS/punz" + str(i) + ".png")) for i in range(
 naePics = [(image.load("A BNR/CODESYS/nae" + str(i) + ".png")) for i in range(10)]
 guckPics = [(image.load("A BNR/CODESYS/guck" + str(i) + ".png")) for i in range(10)]
 
-# selected for the party pics
-# if the person is first in the party, they get the first spot and so forth...
-# These also double up as the portraits for the characters during battles
-erikportrait = image.load("A BNR/battle/erik portrait.png")
-erikprof = transform.smoothscale(erikportrait, (100, 100))
-alizaportrait = image.load("A BNR/battle/aliza portrait.png")
-alizaprof = transform.smoothscale(alizaportrait, (100, 100))
-julieportrait = image.load("A BNR/battle/julie portrait.png")
-julieprof = transform.smoothscale(julieportrait, (100, 100))
-supportrait = image.load("A BNR/battle/supreet portrait.png")
-supprof = transform.smoothscale(supportrait, (100, 100))
-natportrait = image.load("A BNR/battle/natalie portrait.png")
-natprof = transform.smoothscale(natportrait, (100, 100))
-janportrait = image.load("A BNR/battle/jan portrait.png")
-janprof = transform.smoothscale(janportrait, (100, 100))
-emilyportrait = image.load("A BNR/battle/emily portrait.png")
-emilyprof = transform.smoothscale(emilyportrait, (100, 100))
-linhportrait = image.load("A BNR/battle/linh portrait.png")
-linhprof = transform.smoothscale(linhportrait, (100, 100))
-printerportrait = image.load("A BNR/battle/priyonto portrait.png")
-printerprof = transform.smoothscale(printerportrait, (100, 100))
-minyaportrait = image.load("A BNR/battle/minya portrait.png")
-minyaprof = transform.smoothscale(minyaportrait, (100, 100))
-vivportrait = image.load("A BNR/battle/viv portrait.png")
-vivprof = transform.smoothscale(vivportrait, (100, 100))
-oguportrait = image.load("A BNR/battle/ogu portrait.png")
-oguprof = transform.smoothscale(oguportrait, (100, 100))
-zakportrait = image.load("A BNR/battle/zak portrait.png")
-zakprof = transform.smoothscale(zakportrait, (100, 100))
 
-# All the profile pictures for each character for when they're speaking
-profs = [erikprof, alizaprof, julieprof, supprof, natprof, janprof, emilyprof, linhprof, printerprof, minyaprof,
-         vivprof, oguprof, zakprof]
 background = image.load("A BNR/cave.jpg")  # The original background for the game
 fire = image.load("FIREBALL.png")  # An enemies attacking animation
 ice = image.load("icestar.png")  # An enemies attacking animation
@@ -281,25 +177,6 @@ vladow = image.load('game sprites/vlad ow.png')
 vlad1 = image.load('game sprites/vlad1.png')
 
 # All of the characters in battle animations compiled into a 3d list
-animations = [
-    [[erikstand], [], [], [erikow], [erikded]],
-    [[alizastand], [], [], [alizaow],
-     [alizaded]],
-    [[juliestand], [], [], [julieow],
-     [julieded]],
-    [[supstand], [], [],
-     [supreetow], [supreetded]],
-    [[natstand], [], [], [natow], [natded]],
-    [[janstand], [], [], [janow], [janded]],
-    [[emilystand], [], [], [emilyow], [emilyded]],
-    [[linhstand], [], [], [linhow], [linhded]],
-    [[printerstand], [],
-     [], [priyontoow], [priyontoded]],
-    [[minyastand], [], [], [minyaow], [minyaded]],
-    [[vivstand], [], [], [vivow], [vivded]],
-    [[ogustand], [], [], [oguow], [oguded]],
-    [[zakstand], [], [], [zakow], [zakded]]
-]
 
 # Same as above except for enemies
 enemyanimation = [
@@ -340,18 +217,7 @@ see = 0
 confirming = image.load("confirm.png")
 backing = image.load("back.png")
 # lets be lazy and let the only party leader speak.
-# scenee=[[na,na,na,na,na,na,na,na],[Ey,Al,Al],[Ey,Al,Al,Vr,Ey,Vr],[na,Ey,Vr,Ey,na,na,na],[na,Ey,rr,rr,rr],[rr,Ey,na]]
 
-
-
-# The portraits either ded or alive
-battleportraits = [[erikportrait, erikdedportrait], [alizaportrait, alizadedportrait],
-                   [julieportrait, juliededportrait],
-                   [supportrait, supreetdedportrait], [natportrait, natdedportrait], [janportrait, jandedportrait],
-                   [emilyportrait, emilydedportrait], [linhportrait, linhdedportrait],
-                   [printerportrait, priyontodedportrait],
-                   [minyaportrait, minyadedportrait], [vivportrait, vivdedportrait], [oguportrait, ogudedportrait],
-                   [zakportrait, zakdedportrait]]
 selectnums = []  # The numbers in the ordered list that each specific character is associated with from your selection
 
 yourselection = []  # A 2D list with all of the selected characters stats
@@ -366,11 +232,6 @@ selectpoly = [[(380, 30), (360, 10), (400, 10)], [(375, 220), (355, 200), (395, 
 375, 405)]]  # Polygons that blit over your current character or when you're switching characters
 
 character_move_choices = ["attack", "skills", "defend", "switch"]  # The buttons values to be associated to functions
-# Shiled images for when you're defending
-shield0 = image.load("shield0.png").convert_alpha()
-shield1 = image.load("shield1.png").convert_alpha()
-shield2 = image.load("shield2.png").convert_alpha()
-# main menu rectangles
 
 
 positions = [0, 1, 2]  # The enemies or allys postions to be used in some functions
@@ -451,7 +312,7 @@ def charsel(
             direction = 0
             focusedCard = int(focusedCard)
     else:
-        if float(focusedCard).is_integer() and infoCards[int(focusedCard)].characterName.lower() not in [i.name.lower() for i in yourselection] and len(yourselection)<3 and infoCards[int(focusedCard)].workingName.lower() not in [i.name.lower() for i in yourselection]:
+        if float(focusedCard).is_integer() and infoCards[int(focusedCard)].characterName.lower() not in [i.name.lower() for i in yourselection] and len(yourselection)<3 and infoCards[int(focusedCard)].characterName.lower() not in [i.name.lower() for i in yourselection]:
             focusedCard = int(focusedCard)
             draw.polygon(screen, COLOURS.WHITE, [
                 (320 + infoCards[focusedCard].graphic.get_width() // 2, 337),
@@ -468,7 +329,7 @@ def charsel(
                 ])
                 if mb[0] and not clicked and len(pparty)<3 or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
                     yourselection.append(stats[focusedCard])
-                    pparty.append(profs[focusedCard])
+                    pparty.append(stats[focusedCard].animation_handler.profile)
                     selectnums.append(focusedCard)
                     clicked = True
     titleFont.set_italic(True)
@@ -476,7 +337,7 @@ def charsel(
     screen.blit(myPartyText, (692, 26))
     for i,v in enumerate([i.name.lower() for i in yourselection]):
         for j in infoCards:
-            if j.characterName.lower() == v  or v == j.workingName.lower():
+            if j.characterName.lower() == v:
                 smallCard = j.graphic.subsurface([0,0,500,110])
                 screen.blit(smallCard,(690, i*(smallCard.get_height()+2)+60))
                 delRect = Rect(695+smallCard.get_width(), i*(smallCard.get_height()+2)+60, 40, smallCard.get_height())
@@ -506,7 +367,7 @@ def charsel(
                 draw.rect(screen, (0, 200, 0), (690, 675, 540, 50))
                 if(mb[0] and not clicked):
                     for i in infoCards:
-                        if i.characterName.lower() == yourselection[0].name.lower() or i.workingName.lower() == yourselection[0].name.lower():
+                        if i.characterName.lower() == yourselection[0].name.lower():
                             pl = i.portrait
                             plprof = i.profile
                     skilllist = [yourselection[0].abilities, yourselection[1].abilities, yourselection[2].abilities]  # Appending the necessary values and images for our abilities/skills
@@ -1021,19 +882,19 @@ def reap(target, caster, casters, enemies):
     for i in livingAllies:
         i.heal(healedAmount/len(livingAllies))
 
-caster_loader = src.caster_loader.CastersLoader('characterStats.json', 60)
+image_cacher = src.image_cacher.ImageCacher()
+
+caster_loader = src.caster_loader.CastersLoader('datafiles/character_datafiles', 60, image_cacher)
 stats = list(caster_loader.casters.values())
 
-infoCards = infoCard.constructCards(stats,
-                                    [erikprof, alizaprof, julieprof, supprof, natprof, janprof, emilyprof, linhprof, printerprof, minyaprof, vivprof, oguprof, zakprof],
-                                    [erikportrait, alizaportrait, julieportrait, supportrait, natportrait, janportrait, emilyportrait, linhportrait, printerportrait, minyaportrait, vivportrait, oguportrait, zakportrait],
-                                    )
+infoCards = [i.info_card for i in stats]
+print(infoCards, stats)
 def UI():  # This is the UI or health bars that need to be blitted
     for num, i in enumerate(selectnums):
         if yourselection[num].health > 0:
-            screen.blit(battleportraits[i][0], (10, [0, 245, 490][num]))
+            screen.blit(stats[i].animation_handler.portrait, (10, [0, 245, 490][num]))
         else:
-            screen.blit(battleportraits[i][1], (10, [0, 245, 490][num]))
+            screen.blit(stats[i].animation_handler.dead, (10, [0, 245, 490][num]))
     for playing in positions:
         # drawhealthbar
         draw.rect(screen, COLOURS.GREEN, (25, 199 + 250 * (playing), 200, 25), 2)
@@ -1130,9 +991,9 @@ def battle(area, battlenum):  # The main battle function
                 elif yourselection[playerNumber].is_alive():  # draw non casting, standing player
                     yourselection[playerNumber].attack_animation.reset()
                     yourselection[playerNumber].spell_animation.reset()
-                    screen.blit(animations[players][0][0], (325 - 15 * playerNumber, 20 + 190 * playerNumber))
+                    screen.blit(stats[players].animation_handler.stance, (325 - 15 * playerNumber, 20 + 190 * playerNumber))
                 else:
-                    screen.blit(animations[players][4][0], (325 - 15 * playerNumber, 20 + 190 * playerNumber))
+                    screen.blit(stats[players].animation_handler.dead, (325 - 15 * playerNumber, 20 + 190 * playerNumber))
                 #draw caster specific icons
                 if yourselection[playerNumber].name == 'supreet' and yourselection[
                     playerNumber].health != 0:  # draw supreet's slay counter
@@ -1186,7 +1047,7 @@ def battle(area, battlenum):  # The main battle function
             #death screen
             screen.blit(deathScreen,(0,0))
             for i,v in enumerate(selectnums):
-                screen.blit(animations[v][4][0],(315+i*315-animations[v][4][0].get_width()/2,500))
+                screen.blit(stats[v].animation_handler.dead,(315+i*315-stats[v].animation_handler.dead.get_width()/2,500))
             if speechBubbleTime == 0:
                 speechBubbleX = 335+315*randint(0,2)
                 speechBubbleY = 500
@@ -1444,7 +1305,7 @@ def attacken(someone, somedmg, animation, enemypos,
     yourselection[someone].damage(somedmg)
     enemieselection[enemynum].tired = True
     screen.blit(enemyanimation[enemypos][1][0], (1080 - 15 * enemynum, 400 - 190 * enemynum))
-    screen.blit(animations[selectnums[someone]][3][0], (325 - 15 * someone, 20 + 190 * someone))
+    screen.blit(stats[selectnums[someone]].animation_handler.hurt, (325 - 15 * someone, 20 + 190 * someone))
     display.flip()
 
 
@@ -1456,7 +1317,7 @@ def attackaoe(somedmg, animation, enemypos,
             screen.blit(shield1, (325 - 15 * i, 20 + 190 * i))
         yourselection[currentCaster].damage(somedmg)
         screen.blit(enemyanimation[enemypos][1][0], (1080 - 15 * enemynum, 400 - 190 * enemynum))
-        screen.blit(animations[selectnums[i]][3][0], (325 - 15 * i, 20 + 190 * i))
+        screen.blit(stats[selectnums[i]].animation_handler.hurt, (325 - 15 * i, 20 + 190 * i))
     enemieselection[enemynum] = True
 
 

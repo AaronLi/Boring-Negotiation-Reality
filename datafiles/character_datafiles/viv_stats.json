@@ -1,0 +1,33 @@
+{
+ "name": "Viv",
+ "health": 3400,
+ "mana": 1300,
+ "attack_damage": 375,
+ "caster_class": "archer",
+ "abilities": [
+  {
+   "name": "extravagantshot",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 800,
+   "callback": "\u0080\u0003c__main__\nextravagantshot\nq\u0000."
+  },
+  {
+   "name": "biggerandstronger",
+   "mana_cost": 500,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nbiggerandstronger\nq\u0000."
+  },
+  {
+   "name": "flashyarrow",
+   "mana_cost": 800,
+   "ability_type": "damaging",
+   "influence_amount": 1600,
+   "callback": "\u0080\u0003c__main__\nflashyarrow\nq\u0000."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/viv_visual.json",
+ "story": "Ranger of S'gleera. Lost the archery match of her life to Julie. Sassy and uncaring,\nshe heads out into the battlefield, hoping that she'll gain a better reputation\nthan her ultimate rival.\n"
+}

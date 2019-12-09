@@ -1,0 +1,41 @@
+{
+ "animations": {
+  "attack": {
+   "sprite_frames": [
+    "game sprites/emily 1.png",
+    "game sprites/emily 2.png",
+    "game sprites/emily 3.png",
+    "game sprites/emily 4.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell": {
+   "sprite_frames": [
+    "game sprites/emily 1.png",
+    "game sprites/emily 2.png",
+    "game sprites/emily 3.png",
+    "game sprites/emily 4.png",
+    "game sprites/emily skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "portrait": "A BNR/battle/emily portrait.png",
+ "dead": "game sprites/emily ded.png",
+ "hurt": "game sprites/emily ow.png",
+ "idle": "A BNR/stands/emily stand.png"
+}

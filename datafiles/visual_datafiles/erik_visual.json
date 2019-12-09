@@ -1,0 +1,43 @@
+{
+ "animations": {
+  "attack": {
+   "sprite_frames": [
+    "game sprites/erik 1.png",
+    "game sprites/erik 2.png",
+    "game sprites/erik 3.png",
+    "game sprites/erik 4.png",
+    "game sprites/erik 5.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell": {
+   "sprite_frames": [
+    "game sprites/erik 1.png",
+    "game sprites/erik 2.png",
+    "game sprites/erik 3.png",
+    "game sprites/erik skill.png",
+    "game sprites/erik 4.png",
+    "game sprites/erik 5.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "portrait": "A BNR/battle/erik portrait.png",
+ "dead": "game sprites/erik ded.png",
+ "hurt": "game sprites/erik ow.png",
+ "idle": "A BNR/stands/erik stand.png"
+}

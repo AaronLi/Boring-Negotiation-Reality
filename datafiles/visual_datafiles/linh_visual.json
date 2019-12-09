@@ -1,0 +1,41 @@
+{
+ "animations": {
+  "attack": {
+   "sprite_frames": [
+    "game sprites/linh 1.png",
+    "game sprites/linh 2.png",
+    "game sprites/linh 3.png",
+    "game sprites/linh 4.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell": {
+   "sprite_frames": [
+    "game sprites/linh 1.png",
+    "game sprites/linh 2.png",
+    "game sprites/linh 3.png",
+    "game sprites/linh 4.png",
+    "game sprites/linh skill.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "portrait": "A BNR/battle/linh portrait.png",
+ "dead": "game sprites/linh ded.png",
+ "hurt": "game sprites/linh ow.png",
+ "idle": "A BNR/stands/linh stand.png"
+}

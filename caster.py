@@ -1,5 +1,7 @@
+import infoCard
+
 class Caster:
-    def __init__(self, name, health, mana, attack_damage, caster_class, ability1, ability2, ability3, animation, spellAnimation, defendAnimation, **kwargs):
+    def __init__(self, name, health, mana, attack_damage, caster_class, ability1, ability2, ability3, animation_handler, story, **kwargs):
         self.name=name
         self.health=health
         self.max_health = health
@@ -14,9 +16,14 @@ class Caster:
         self.targetable = True
         self.specialStats = kwargs
         self.damage_multiplier = 1
-        self.attack_animation = animation
-        self.spell_animation = spellAnimation
-        self.defend_animation = defendAnimation
+        self.animation_handler = animation_handler
+        self.attack_animation = animation_handler.attack_animation
+        self.spell_animation = animation_handler.spell_animation
+        self.defend_animation = animation_handler.defend_animation
+        self.story = story
+
+        self.info_card = infoCard.InfoCard(self, self.animation_handler)
+
 
     def dictify(self):
         return {

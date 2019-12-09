@@ -1,0 +1,33 @@
+{
+ "name": "Erik",
+ "health": 3000,
+ "mana": 1000,
+ "attack_damage": 500,
+ "caster_class": "assassin",
+ "abilities": [
+  {
+   "name": "backstab",
+   "mana_cost": 350,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nbackstab\nq\u0000."
+  },
+  {
+   "name": "silentstrike",
+   "mana_cost": 350,
+   "ability_type": "damaging",
+   "influence_amount": 350,
+   "callback": "\u0080\u0003c__main__\nsilentstrike\nq\u0000."
+  },
+  {
+   "name": "execute",
+   "mana_cost": 750,
+   "ability_type": "damaging",
+   "influence_amount": 0,
+   "callback": "\u0080\u0003c__main__\nexecute\nq\u0000."
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/erik_visual.json",
+ "story": "Assassin of Iskr. With his daggers Ishlock and Galavan, Erik would\nalways be doing jobs as long as you gave him the right payment. But\nnow with the Taints taking his victims, petty Erik heads out to\ntake them down, because only he is allowed to kill the people he\nwants to kill.\n"
+}
