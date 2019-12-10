@@ -5,10 +5,10 @@ class AbilityType:
     DAMAGING = 'damaging'
 
 class AbilityCastResult:
-    def __init__(self, frame_delay, current_action, play_ability_animation) -> None:
+    def __init__(self, frame_delay, current_action, success) -> None:
         self.frame_delay = frame_delay
         self.current_action = current_action
-        self.play_ability_animation = play_ability_animation
+        self.success = success
 
 class Ability:
     def __init__(self, working_name, manaCost, abilityType, influenceAmount, callback = None):
@@ -23,13 +23,14 @@ class Ability:
             if self.callback != None:
                 status = self.callback(target,caster,casters,enemies)
                 if status == 1: #callback has indicated that additional requirements have not been met
-                    return None
+                    return AbilityCastResult(0, COMBAT_MENU_MODES.SKILLS, False)
             casters[caster].mana -= self.mana_cost
             if self.ability_type == AbilityType.DAMAGING:
                 enemies[target].damage(self.influence_amount, casters[caster])
             elif self.ability_type == AbilityType.HEALING:
                 casters[target].heal(self.influence_amount)
             return AbilityCastResult(5, COMBAT_MENU_MODES.MAIN_COMBAT_MENU, True)
+        return AbilityCastResult(0, COMBAT_MENU_MODES.SKILLS, False)
 
     def dictify(self):
         return {

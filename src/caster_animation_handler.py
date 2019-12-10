@@ -11,6 +11,10 @@ class CasterVisualHandler(VisualHandler):
         self.portrait = None
         self.profile = None
 
+        self.animations = [self.defend_animation, self.attack_animation, self.spell_animation]
+
+    def animations_done(self):
+        return all([not animation.isRunning() for animation in self.animations])
 
     def load_from_file(self, file, image_cacher: src.image_cacher.ImageCacher):
         with open(file) as f:

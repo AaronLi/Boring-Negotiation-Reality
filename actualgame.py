@@ -1,7 +1,8 @@
 from pygame import *
 from tkinter import *
 from random import *
-import enemy, ability, src.image_cacher, src.caster_loader
+import enemy, ability
+from src import image_cacher, caster_loader, party
 from src.enemy_animation_handler import EnemyVisualHandler
 from constants import *
 import math_tools
@@ -17,7 +18,6 @@ playerturn = True  # Global variable dictating whether its the player's turn or 
 currentCaster = 0  # This is the global variable that we will be using in order to distinguish who on your team is making the move during the players turn
 selection = 0  # This is the global variable used for when we're using skills inside the battle function
 
-party = 0  # This is the number of people who are in the party when character selection is happening
 screen = display.set_mode(SETTINGS.VIDEO.SCREEN_SIZE, SRCALPHA)  # making appropriate window
 
 display.set_caption("A Boring Negotiation Reality")
@@ -25,43 +25,29 @@ ffont = font.Font("basis33.ttf", 20)
 titleFont = font.Font('basis33.ttf', 35)
 titleFont.set_italic(True)
 
-image_cacher = src.image_cacher.ImageCacher()
+image_cacher = image_cacher.ImageCacher()
 # use pokemon font
 
 # MUSIC
 # mixer.music.load("eo.ogg")
 # mixer.music.play(-1)
 
-
-# charsel stuff
-# char=["EY","AR","JH","SS","NN","JF","ED","LN","PS","MB","VL","OY","ZH"] #everyone's characters, represented with initials ,SS,NN,JF,ED,LN,PS,VR,MB,VL,OZ,ZH
-selchar = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-           0]  # This allows us to know if we're selecting characters at the associated positions
 focusedCard = 0  # This tells us what our players position is relevant to one another
-pplparty = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
-            11]  # This ties together with selchar as well depicting what position the characters we've selected are
-pparty = []  # We use this to blit characters profile pictures during cutscenes as well as during character selection
 
-selcurrent = selchar[focusedCard]  # our current selection is the position in selchar
+
 
 # lib_cutscene shapes and characters speaking
 
-na = image.load("A BNR/hoodhood.png")
+na = image_cacher.try_load("A BNR/hoodhood.png")
 na = transform.scale(na, (150, 150))
-Vr = image.load("A BNR/vladhead.png")
-Vr = transform.scale(Vr, (150, 150))
-Al = image.load("A BNR/aaronhead.png")
-Al = transform.scale(Al, (150, 150))
-KK = image.load("A BNR/kim.png")
+KK = image_cacher.try_load("A BNR/kim.png")
 
 # lib_cutscene backgrounds
-vbattle = image.load("A BNR/vladbg.png")
-vbattle = transform.scale(vbattle, (1260, 650))
-kbattle = image.load("A BNR/kimbg.png")
+kbattle = image_cacher.try_load("A BNR/kimbg.png")
 kbattle = transform.scale(kbattle, (1260, 650))
 
 # image loading for the main menu and cutscenes
-menu1 = image.load("A BNR/main menu real.png")
+menu1 = image_cacher.try_load("A BNR/main menu real.png")
 
 # These are all the scenes used during the opening lib_cutscene
 # after battle 3
@@ -77,76 +63,66 @@ thirtythree = "Noooooo!"
 thirtyfour = "Hooray!"
 thirtyfive = "[You have saved the land of Petraglade! You shall be rememebered eternally and hailed as GODS by the peasants and only them.]"
 
-sceneback = [[vbattle, vbattle, vbattle, vbattle, vbattle, vbattle, vbattle, vbattle],
-             [kbattle, kbattle, kbattle, kbattle, kbattle], [kbattle, kbattle, kbattle]]
+sceneback = [[kbattle, kbattle, kbattle, kbattle, kbattle], [kbattle, kbattle, kbattle]]
 
 # List of all the scenes
-scene = [
-         [twentyseven, twentyeight, twentynine, thirtyone, thirtytwo], [thirtythree, thirtyfour, thirtyfive]]
+scene = [[twentyseven, twentyeight, twentynine, thirtyone, thirtytwo], [thirtythree, thirtyfour, thirtyfive]]
 
 
-instructionsPic = image.load(
+instructionsPic = image_cacher.try_load(
     "A BNR/help.png")  # The instructions as a single picture to be blit when being called as a function
-# order: ER,AR,JH,SS,NN,JF,ED,LN,PS,MB,VL,OZ,ZH
-
-
-# The following is all attacking animations for each character that are also recycled for skils animations
 
 
 clicked = False
 # name tags
 
-juvivPics = [(image.load("A BNR/CODESYS/juviv" + str(i) + ".png")) for i in
+juvivPics = [(image_cacher.try_load("A BNR/CODESYS/juviv" + str(i) + ".png")) for i in
              range(10)]  # list of the pictures for the code "juviv"
-swankPics = [(image.load("A BNR/CODESYS/swank" + str(i) + ".png")) for i in
+swankPics = [(image_cacher.try_load("A BNR/CODESYS/swank" + str(i) + ".png")) for i in
              range(10)]  # same as above, except for different codes
-corgiPics = [(image.load("A BNR/CODESYS/corgi" + str(i) + ".png")) for i in range(10)]
-punzPics = [(image.load("A BNR/CODESYS/punz" + str(i) + ".png")) for i in range(10)]
-naePics = [(image.load("A BNR/CODESYS/nae" + str(i) + ".png")) for i in range(10)]
-guckPics = [(image.load("A BNR/CODESYS/guck" + str(i) + ".png")) for i in range(10)]
+corgiPics = [(image_cacher.try_load("A BNR/CODESYS/corgi" + str(i) + ".png")) for i in range(10)]
+punzPics = [(image_cacher.try_load("A BNR/CODESYS/punz" + str(i) + ".png")) for i in range(10)]
+naePics = [(image_cacher.try_load("A BNR/CODESYS/nae" + str(i) + ".png")) for i in range(10)]
+guckPics = [(image_cacher.try_load("A BNR/CODESYS/guck" + str(i) + ".png")) for i in range(10)]
 
-background = image.load("A BNR/cave.jpg")  # The original background for the game
-fire = image.load("FIREBALL.png")  # An enemies attacking animation
-ice = image.load("icestar.png")  # An enemies attacking animation
-lightning = image.load("lightning.png")  # An enemies attacking animations
-dumpling = image.load("dumpling.png")
-diamond = image.load("diamond.png")
-music = image.load("musicnotes.png")
+background = image_cacher.try_load("A BNR/cave.jpg")  # The original background for the game
+fire = image_cacher.try_load("FIREBALL.png")  # An enemies attacking animation
+ice = image_cacher.try_load("icestar.png")  # An enemies attacking animation
+lightning = image_cacher.try_load("lightning.png")  # An enemies attacking animations
+dumpling = image_cacher.try_load("dumpling.png")
+diamond = image_cacher.try_load("diamond.png")
+music = image_cacher.try_load("musicnotes.png")
 
 # Pokemon font
 font = font.SysFont("Pokemon GB", 100)
 # The following is all for the code system
 bgRect = Rect(0, 0, 1260, 750)
-bg = image.load("A BNR/CODESYS/code screen.png")
-invalidCode = image.load("A BNR/CODESYS/invalid.png")  # Code system image if an invalid code is enterred
-validCode = image.load("A BNR/CODESYS/valid.png")  # Same as above except for other pictures
-codeFace = image.load("A BNR/CODESYS/code scr face0.png")
-codeIMG = image.load("A BNR/CODESYS/code0.png")
-boisIMG = image.load("A BNR/CODESYS/bois0.png")
-wahIMG = image.load("A BNR/CODESYS/wah.png")
-cheatIMG = image.load("A BNR/CODESYS/cheat.png")
+bg = image_cacher.try_load("A BNR/CODESYS/code screen.png")
+invalidCode = image_cacher.try_load("A BNR/CODESYS/invalid.png")  # Code system image if an invalid code is enterred
+validCode = image_cacher.try_load("A BNR/CODESYS/valid.png")  # Same as above except for other pictures
+codeFace = image_cacher.try_load("A BNR/CODESYS/code scr face0.png")
+codeIMG = image_cacher.try_load("A BNR/CODESYS/code0.png")
+boisIMG = image_cacher.try_load("A BNR/CODESYS/bois0.png")
+wahIMG = image_cacher.try_load("A BNR/CODESYS/wah.png")
+cheatIMG = image_cacher.try_load("A BNR/CODESYS/cheat.png")
 
 # More needed things for the coding system
 recta = Surface((555, 170), SRCALPHA)
 bar = Rect(0, 0, 555, 170)
 draw.rect(screen, (255, 255, 255), bgRect)
 
-
-see = 0
-
 # Confirm and back pictures
-confirming = image.load("confirm.png")
-backing = image.load("back.png")
+confirming = image_cacher.try_load("confirm.png")
+backing = image_cacher.try_load("back.png")
 # lets be lazy and let the only party leader speak.
 
 selectnums = []  # The numbers in the ordered list that each specific character is associated with from your selection
 
-yourselection = []  # A 2D list with all of the selected characters stats
+player_party = party.Party()  # A 2D list with all of the selected characters stats
 skilllist = []  # Another 2D list that has all of the skills for each character
 abilitybutton = []  # These are all the ability button names that i load in depending on the characters you select
 abilitydesc = []  # Same as above except descriptions for those abilities
 framedelay = -1  # This delays each of your characters moves to make for a smoother transition
-playAbilityAnimation = False
 enemyframedelay = 15  # The enemys delay in order to be a little slower
 ########################################### UI STUFF
 selectpoly = [[(380, 30), (360, 10), (400, 10)], [(375, 220), (355, 200), (395, 200)], [(355, 425), (335, 405), (
@@ -185,30 +161,25 @@ enemyrotations = [
      enemy.Enemy("miniboss", 2500, miniboss_animations, 800, 600, 500)]
 ]
 enemieselection = []  # 2D list that has the current enemies inside of it to be blitted and use their stats
-planneddamage = 0  # When an enemy is attacking
-currentattacker = -1  # This is used for blitting the current attacker
-currentattackertime = 0  # This is used to regulate frames when attacking
 currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU  # This depicts what function is being used (Skills,Attacking,Switching,Defending or none)
 currentlyCasting = -1  # Same situation with the current attacker
 scenenum = 0  # This is which scene is happening inside of the cscene function
 battlenum = 0  # This is which round you are on
-taunted = [False, False, False]  # Taunting enemies to attack a specific person
 beforehealth = -1  # Another variable for an ability (jan's flame shell)
 beforehealthtarget = -1  # Also being used for jan's flame shell
 
-deathScreen = image.load("A BNR/deathScreen.png")
+deathScreen = image_cacher.try_load("A BNR/deathScreen.png")
 
 running = True  # boolean variable
 
 direction = 0
 scrollMode = True
-tempBirbs = image.load('birbs.png').convert()  # TODO: remove when I have good art
-
+tempBirbs = image_cacher.try_load('birbs.png').convert()  # TODO: remove when I have good art
 
 def charsel(
         clicked):  # This is the character selection function for choosing which characters will be in your party and you'll play the game with
     # TODO: remove magic numbers
-    global focusedCard, party, skilllist, abilitybutton, abilitydesc, direction, scrollMode  # hee is index of the character that is currently selected in all of the lists
+    global focusedCard, skilllist, abilitybutton, abilitydesc, direction, scrollMode  # hee is index of the character that is currently selected in all of the lists
     mx, my = mouse.get_pos()
     mb = mouse.get_pressed()
     keys = key.get_pressed()
@@ -250,9 +221,9 @@ def charsel(
     else:
         if float(focusedCard).is_integer() and infoCards[int(focusedCard)].characterName.lower() not in [i.name.lower()
                                                                                                          for i in
-                                                                                                         yourselection] and len(
-                yourselection) < 3 and infoCards[int(focusedCard)].characterName.lower() not in [i.name.lower() for i in
-                                                                                                 yourselection]:
+                                                                                                         player_party.members] and len(
+                player_party.members) < 3 and infoCards[int(focusedCard)].characterName.lower() not in [i.name.lower() for i in
+                                                                                                player_party.members]:
             focusedCard = int(focusedCard)
             draw.polygon(screen, COLOURS.WHITE, [
                 (320 + infoCards[focusedCard].graphic.get_width() // 2, 337),
@@ -268,15 +239,14 @@ def charsel(
                     (320 + infoCards[focusedCard].graphic.get_width() // 2, 397),
 
                 ])
-                if mb[0] and not clicked and len(pparty) < 3 or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
-                    yourselection.append(stats[focusedCard])
-                    pparty.append(stats[focusedCard].animation_handler.profile)
+                if mb[0] and not clicked and len(player_party.members) < 3 or keys[K_RETURN] or keys[K_RIGHT] or keys[K_d]:
+                    player_party.members.append(stats[focusedCard])
                     selectnums.append(focusedCard)
                     clicked = True
     titleFont.set_italic(True)
     myPartyText = titleFont.render("My Team", False, COLOURS.WHITE)
     screen.blit(myPartyText, (692, 26))
-    for i, v in enumerate([i.name.lower() for i in yourselection]):
+    for i, v in enumerate([i.name.lower() for i in player_party.members]):
         for j in infoCards:
             if j.characterName.lower() == v:
                 smallCard = j.graphic.subsurface([0, 0, 500, 110])
@@ -286,8 +256,7 @@ def charsel(
                 if delRect.collidepoint(mx, my):
                     draw.rect(screen, (200, 0, 0), delRect)
                     if (mb[0] and not clicked):
-                        del yourselection[i]
-                        del pparty[i]
+                        del player_party.members[i]
                         del selectnums[i]
                         clicked = True
                 else:
@@ -297,49 +266,51 @@ def charsel(
                 draw.line(screen, COLOURS.WHITE, (delRect.centerx - 10, delRect.centery + 10),
                           (delRect.centerx + 10, delRect.centery - 10), 2)
     if (keys[K_a] or keys[K_LEFT] or keys[K_BACKSPACE]) and not clicked:
-        for i, v in enumerate(yourselection):
+        for i, v in enumerate(player_party.members):
             if infoCards[int(focusedCard)].characterName.lower() == v.name.lower():
                 clicked = True
-                del yourselection[i]
-                del pparty[i]
+                del player_party.members[i]
                 del selectnums[i]
         clicked = True
-    if len(yourselection) > 0:
-        if len(yourselection) == 3:
+    if len(player_party.members) > 0:
+        if len(player_party.members) == 3:
             draw.rect(screen, COLOURS.GREEN, (690, 675, 540, 50))
             if Rect(690, 675, 540, 50).collidepoint(mx, my):
                 draw.rect(screen, (0, 200, 0), (690, 675, 540, 50))
                 if (mb[0] and not clicked):
                     for i in infoCards:
-                        if i.characterName.lower() == yourselection[0].name.lower():
+                        if i.characterName.lower() == player_party.members[0].name.lower():
                             pl = i.portrait
                             plprof = i.profile
-                    skilllist = [yourselection[0].abilities, yourselection[1].abilities, yourselection[
+                    skilllist = [player_party.members[0].abilities, player_party.members[1].abilities, player_party.members[
                         2].abilities]  # Appending the necessary values and images for our abilities/skills
-                    abilitybutton = [[image.load("ATTACKS/" + i.working_name + ".png") for i in skilllist[j]] for j in
+                    abilitybutton = [[image_cacher.try_load("ATTACKS/" + i.working_name + ".png") for i in skilllist[j]] for j in
                                      range(3)]
-                    abilitydesc = [[image.load("DESCS/" + i.working_name + ".png") for i in skilllist[j]] for j in
+                    abilitydesc = [[image_cacher.try_load("DESCS/" + i.working_name + ".png") for i in skilllist[j]] for j in
                                    range(3)]
                     clicked = True
-                    cutscene.load_from_file('lib_cutscene/Cutscene1.json', plprof).show(screen)
+                    cutscene.load_from_file('lib_cutscene/Cutscene1.json', plprof, image_cacher).show(screen)
                     battle(background, battle(background, battle(background, 0)))
-                    cutscene.load_from_file('lib_cutscene/Cutscene2.json', plprof).show(screen)
+                    cutscene.load_from_file('lib_cutscene/Cutscene2.json', plprof, image_cacher).show(screen)
+                    player_party.restore_all()
                     battle(background, 3)
-                    cutscene.load_from_file('lib_cutscene/Cutscene3.json', plprof).show(screen)
+                    cutscene.load_from_file('lib_cutscene/Cutscene3.json', plprof, image_cacher).show(screen)
                     battle(background, battle(background, battle(background, 4)))
-                    cutscene.load_from_file('lib_cutscene/Cutscene4.json', plprof).show(screen)
+                    cutscene.load_from_file('lib_cutscene/Cutscene4.json', plprof, image_cacher).show(screen)
+                    player_party.restore_all()
                     battle(background, 7)
-                    cutscene.load_from_file('lib_cutscene/Cutscene5.json', plprof).show(screen)
+                    cutscene.load_from_file('lib_cutscene/Cutscene5.json', plprof, image_cacher).show(screen)
                     battle(background, battle(background, battle(background, 8)))
-                    cscene(clicked, 1, pl, plprof)
+                    cscene(clicked, 0, pl, plprof)
+                    player_party.restore_all()
                     battle(background, 11)
-                    cscene(clicked, 2, pl, plprof)
+                    cscene(clicked, 1, pl, plprof)
                     quit()
 
         else:
             draw.rect(screen, COLOURS.RED, (690, 675, 540, 50))
         titleFont.set_italic(False)
-        buttonText = titleFont.render("Start %d/3 >" % len(yourselection), True, (255, 255, 255))
+        buttonText = titleFont.render("Start %d/3 >" % len(player_party.members), True, (255, 255, 255))
         screen.blit(buttonText, (1220 - buttonText.get_width(), 700 - buttonText.get_height() // 2))
     if (not clicked) and scrollMode:
         if (focusedCard < len(infoCards) - 1):
@@ -348,7 +319,6 @@ def charsel(
         if (focusedCard > 0):
             if (mb[0] and my < screen.get_height() // 2) or keys[K_UP] or keys[K_w]:
                 direction = -0.03
-    # TODO: Main Mengyu
     return clicked
 
 
@@ -408,7 +378,7 @@ def ngame():  # When you press the new game button
                 clicked = False
         clicked = charsel(clicked)
         display.flip()
-        clockity.tick(60)
+        clockity.tick(SETTINGS.VIDEO.FRAME_RATE)
     return "Menu"
 
 
@@ -713,17 +683,17 @@ def lightningbolt(target, caster, casters, enemies):
 
 def lightningcharge(target, caster, casters, enemies):
     if casters[caster].get_special_stat("lightningCharges") < 5:
-        yourselection[currentCaster].modify_special_stat("lightningCharges", 1)
+        player_party.members[currentCaster].modify_special_stat("lightningCharges", 1)
     else:
         return 1
 
 
 def lightningrelease(target, caster, casters, enemies):
-    if yourselection[currentCaster].get_special_stat('lightningCharges') >= 5:
+    if player_party.members[currentCaster].get_special_stat('lightningCharges') >= 5:
         for j in range(3):
             enemies[j].damage(1400, casters[caster])  # TODO: make sure multiplier is applied evenly
     else:
-        enemies[target].damage(300 + 250 * yourselection[currentCaster].get_special_stat("lightningCharges"),
+        enemies[target].damage(300 + 250 * player_party.members[currentCaster].get_special_stat("lightningCharges"),
                                casters[caster])
     casters[caster].set_special_stat('lightningCharges', 0)
 
@@ -733,16 +703,16 @@ def herbsandpoultices(target, caster, casters, enemies):
 
 
 def slay(target, caster, casters, enemies):
-    cast_cost = min(300 + 150 * yourselection[currentCaster].get_special_stat("slayCounter"), 1000)
+    cast_cost = min(300 + 150 * player_party.members[currentCaster].get_special_stat("slayCounter"), 1000)
 
-    damage = 300 + 100 * yourselection[currentCaster].get_special_stat('slayCounter')
+    damage = 300 + 100 * player_party.members[currentCaster].get_special_stat('slayCounter')
 
-    if yourselection[currentCaster].mana < cast_cost:
+    if player_party.members[currentCaster].mana < cast_cost:
         return 1
     enemies[target].damage(damage, casters[caster])
-    yourselection[currentCaster].mana -= cast_cost
+    player_party.members[currentCaster].mana -= cast_cost
     if not enemies[target].is_alive():
-        yourselection[currentCaster].modify_special_stat('slayCounter', 1)
+        player_party.members[currentCaster].modify_special_stat('slayCounter', 1)
 
 
 def revoke(target, caster, casters, enemies):
@@ -751,7 +721,7 @@ def revoke(target, caster, casters, enemies):
 
 def healmore(target, caster, casters, enemies):
     for i in range(3):
-        if caster[i].is_alive():
+        if casters[i].is_alive():
             casters[i].heal(900)
 
 
@@ -762,12 +732,11 @@ def revive(target, caster, casters, enemies):
 
 
 def flameshell(target, caster, casters, enemies):
-    global beforehealthtarget, currentaction, framedelay, beforehealth, playAbilityAnimation
+    global beforehealthtarget, currentaction, framedelay, beforehealth
     beforehealthtarget = enemies[target].health  # TODO: flameshell deals 200-400 damage to attacking enemies and lasts 2-3 turns
-    beforehealth = yourselection[currentCaster].health
-    yourselection[currentCaster].tired = False
+    beforehealth = player_party.members[currentCaster].health
+    player_party.members[currentCaster].tired = False
     currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
-    playAbilityAnimation = True
 
 
 def firestorm(target, caster, casters, enemies):
@@ -778,9 +747,7 @@ def firestorm(target, caster, casters, enemies):
 
 
 def taunt(target, caster, casters, enemies):
-    global taunted
-    taunted[
-        target] = True  # TODO: make taunted a property of Caster, sidenote: taunted probably doesn't work, haven't tested but have a suspicion
+    enemies[target].add_taunt_target(casters[caster])
 
 
 def stabstabstab(target, caster, casters, enemies):
@@ -788,9 +755,8 @@ def stabstabstab(target, caster, casters, enemies):
 
 
 def bigtaunt(target, caster, casters, enemies):
-    global taunted
-    for j in range(3):
-        taunted[j] = True
+    for enemy in enemies:
+        enemy.add_taunt_target(casters[caster])
 
 
 def shieldsup(target, caster, casters, enemies):
@@ -836,8 +802,8 @@ def biggerandstronger(target, caster, casters, enemies):
 
 
 def flashyarrow(target, caster, casters, enemies):
-    pass
-    # TODO: this requires taunting to work
+    for enemy in enemies:
+        enemy.add_taunt_target(casters[caster])
 
 
 def vampiricstrike(target, caster, casters, enemies):
@@ -870,7 +836,7 @@ def reap(target, caster, casters, enemies):
 
 
 
-caster_loader = src.caster_loader.CastersLoader('datafiles/character_datafiles', SETTINGS.VIDEO.FRAME_RATE, image_cacher)
+caster_loader = caster_loader.CastersLoader('datafiles/character_datafiles', SETTINGS.VIDEO.FRAME_RATE, image_cacher)
 stats = list(caster_loader.casters.values())
 
 infoCards = [i.info_card for i in stats]
@@ -878,7 +844,7 @@ infoCards = [i.info_card for i in stats]
 
 def UI():  # This is the UI or health bars that need to be blitted
     for num, i in enumerate(selectnums):
-        if yourselection[num].health > 0:
+        if player_party.members[num].health > 0:
             screen.blit(stats[i].animation_handler.portrait, (10, [0, 245, 490][num]))
         else:
             screen.blit(stats[i].animation_handler.dead, (10, [0, 245, 490][num]))
@@ -888,15 +854,15 @@ def UI():  # This is the UI or health bars that need to be blitted
         draw.rect(screen, COLOURS.BLUE, (25, 225 + 250 * (playing), 200, 25), 2)
         draw.rect(screen, COLOURS.GREEN,
                   (25, (199 + 250 * (playing)),
-                   (2 * (100 * (yourselection[playing].health) / yourselection[playing].max_health)), 25),
+                   (2 * (100 * (player_party.members[playing].health) / player_party.members[playing].max_health)), 25),
                   0)
         draw.rect(screen, COLOURS.BLUE,
                   (25, (225 + 250 * (playing)),
-                   (2 * (100 * (yourselection[playing].mana) / yourselection[playing].max_mana)), 25), 0)
-        screen.blit(ffont.render("%4d/%d" % (yourselection[playing].health, yourselection[playing].max_health), True,
+                   (2 * (100 * (player_party.members[playing].mana) / player_party.members[playing].max_mana)), 25), 0)
+        screen.blit(ffont.render("%4d/%d" % (player_party.members[playing].health, player_party.members[playing].max_health), True,
                                  COLOURS.LIGHT_GREEN),
                     (28, 203 + 250 * playing))
-        screen.blit(ffont.render("%4d/%d" % (yourselection[playing].mana, yourselection[playing].max_mana), True,
+        screen.blit(ffont.render("%4d/%d" % (player_party.members[playing].mana, player_party.members[playing].max_mana), True,
                                  COLOURS.LIGHT_BLUE),
                     (28, 228 + 250 * playing))
     for i, enemyRect in zip(range(0, len(enemieselection)), RECTANGLES.BATTLE_UI.ENEMY_RECTS):
@@ -909,19 +875,11 @@ def UI():  # This is the UI or health bars that need to be blitted
 
 
 def battle(area, battlenum):  # The main battle function
-    global currentCaster, currentaction, currentattacker, currentattackertime, mx, my, mb, clicked, playerturn, framedelay, planneddamage, currentlyCasting, healing, enemieselection, enemieshealths, beforehealth, beforehealthtarget, playAbilityAnimation
-    defendingcounter = 0  # A counter used for blitting defense
-    currentSkillAnimationFrame = 0  # Same as above except for skills
+    global currentCaster, currentaction, mx, my, mb, clicked, playerturn, framedelay, currentlyCasting, healing, enemieselection, enemieshealths, beforehealth, beforehealthtarget
     enemieselection = [enemyrotations[battlenum][i] for i in range(3)]
     running = True
     clockity = time.Clock()
     speechBubbleTime, speechBubbleText, speechBubbleX, speechBubbleY = 0, '', 0, 0
-    if battlenum == 3 or battlenum == 7 or battlenum == 11:
-        for i in range(3):
-            yourselection[i].health = yourselection[i].max_health
-            yourselection[i].mana = yourselection[i].max_mana
-            yourselection[i].tired = False
-        playerturn = True
     while running:
         for evt in event.get():
             mb = mouse.get_pressed()
@@ -936,92 +894,87 @@ def battle(area, battlenum):  # The main battle function
                     for enemy in enemieselection:
                         enemy.health = 0
                     print('die')
-        if any([i.health for i in yourselection]):
-            if currentattacker != -1 and framedelay == -1:
-                currentattackertime += 1  # This initializes the attacking animation
+        if any([i.health for i in player_party.members]):
             if not any([i.health for i in enemieselection]):
                 battlenum += 1  # If the enemies are dead then they move on to the next wave
+                currentCaster = 0
+                for caster in player_party.members:
+                    caster.tired = False
                 return battlenum
             screen.blit(area, (0, 0))  # Blit the area
             UI()
             screen.blit(
-                ffont.render('Damage Multipliers ' + (' '.join([str(i.damage_multiplier) for i in yourselection])),
+                ffont.render('Damage Multipliers ' + (' '.join([str(i.damage_multiplier) for i in player_party.members])),
                              True, COLOURS.WHITE, COLOURS.BLACK), (0, 0))
             for i, v in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):  # Blitting enemies depending on their health
                 enemyInfo = enemieselection[i]
-                enemyType = enemyInfo.enemyType
                 if not enemieselection[i].is_alive():
                     continue
                 blit_pos = math_tools.get_centered_blit_pos(v, enemyInfo.animations.stance)
                 screen.blit(enemyInfo.animations.stance, blit_pos)
 
+                for target in list(enemyInfo.taunt_targets):
+                    target_index = player_party.get_member_index(target)
+                    draw.line(screen, (255,0, 0), (325 - 15 * target_index, 20 + 190 * target_index), blit_pos)
+
             for players, playerNumber in zip(selectnums, positions):  # This is used for blitting the characters
-                if playerNumber == currentCaster and playAbilityAnimation:  # don't draw ability casting player
-                    yourselection[currentCaster].spell_animation.update()
-                    yourselection[currentCaster].spell_animation.draw(screen, 325 - 15 * currentCaster,
-                                                                      20 + 190 * currentCaster)
-                    if yourselection[currentCaster].spell_animation.isFinishedRunning():
-                        yourselection[currentCaster].tired = True
+                if player_party.members[playerNumber].spell_animation.isRunning() and framedelay == -1:  # don't draw ability casting player
+                    player_party.members[playerNumber].spell_animation.draw(screen, 325 - 15 * playerNumber,
+                                                                     20 + 190 * playerNumber)
+                    player_party.members[playerNumber].spell_animation.update()
+                    if player_party.members[playerNumber].spell_animation.isFinishedRunning():
                         currentlyCasting = -1
                         framedelay = -1
-                        playAbilityAnimation = False
-                elif playerNumber == currentattacker and framedelay == -1:  # draw casting player
-                    yourselection[currentattacker].attack_animation.update()
-                    yourselection[currentattacker].attack_animation.draw(screen, 325 - 15 * playerNumber,
-                                                                         20 + 190 * playerNumber)
-                    if yourselection[
-                        currentCaster].attack_animation.isFinishedRunning():
-                        clicked = False
-                        currentattacker = -1
-                        yourselection[currentCaster].tired = True
-                        currentattackertime = 0
-                elif yourselection[playerNumber].is_alive():  # draw non casting, standing player
-                    yourselection[playerNumber].attack_animation.reset()
-                    yourselection[playerNumber].spell_animation.reset()
-                    screen.blit(stats[players].animation_handler.stance,
-                                (325 - 15 * playerNumber, 20 + 190 * playerNumber))
+                        player_party.members[playerNumber].spell_animation.reset()
+                elif player_party.members[playerNumber].attack_animation.isRunning() and framedelay == -1:  # draw attacking player
+                    player_party.members[playerNumber].attack_animation.draw(screen, 325 - 15 * playerNumber,
+                                                                        20 + 190 * playerNumber)
+                    player_party.members[playerNumber].attack_animation.update()
+                    if player_party.members[playerNumber].attack_animation.isFinishedRunning():
+                        currentlyCasting = -1
+                        framedelay = -1
+                        player_party.members[playerNumber].attack_animation.reset()
+                elif player_party.members[playerNumber].is_alive():  # draw non casting, standing player
+                    screen.blit(stats[players].animation_handler.stance, (325 - 15 * playerNumber, 20 + 190 * playerNumber))
                 else:
-                    screen.blit(stats[players].animation_handler.dead,
-                                (325 - 15 * playerNumber, 20 + 190 * playerNumber))
+                    screen.blit(stats[players].animation_handler.dead, (325 - 15 * playerNumber, 20 + 190 * playerNumber))
                 # draw caster specific icons
-                if yourselection[playerNumber].name.lower() == 'supreet' and yourselection[
-                    playerNumber].health != 0:  # draw supreet's slay counter
-                    for i in range(yourselection[playerNumber].get_special_stat('slayCounter')):
+                if player_party.members[playerNumber].name.lower() == 'supreet' and player_party.members[
+                    playerNumber].is_alive():  # draw supreet's slay counter
+                    for i in range(player_party.members[playerNumber].get_special_stat('slayCounter')):
                         screen.blit(transform.scale(fire, (15, 15)), (26 + 16 * i, 180 + 251 * playerNumber))
-                if yourselection[playerNumber].name.lower() == 'aliza' and yourselection[playerNumber].health != 0:
-                    for i in range(yourselection[playerNumber].get_special_stat("lightningCharges")):
+                if player_party.members[playerNumber].name.lower() == 'aliza' and player_party.members[playerNumber].is_alive():
+                    for i in range(player_party.members[playerNumber].get_special_stat("lightningCharges")):
                         screen.blit(transform.scale(lightning, (15, 15)), (26 + 16 * i, 180 + 251 * playerNumber))
 
-                if yourselection[playerNumber].defending and not yourselection[
+                if player_party.members[playerNumber].defending and not player_party.members[
                     playerNumber].defend_animation.isFinishedRunning():
-                    yourselection[playerNumber].defend_animation.update()
-                    yourselection[playerNumber].defend_animation.draw(screen, 325 - 15 * playerNumber,
-                                                                      40 + 190 * playerNumber)
-                    if yourselection[playerNumber].defend_animation.isFinishedRunning():
+                    player_party.members[playerNumber].defend_animation.update()
+                    player_party.members[playerNumber].defend_animation.draw(screen, 325 - 15 * playerNumber,
+                                                                     40 + 190 * playerNumber)
+                    if player_party.members[playerNumber].defend_animation.isFinishedRunning():
                         clicked = False
-                        currentattacker = -1
-                        currentattackertime = 0
             if (framedelay >= 0):
                 framedelay -= 1
             if beforehealth != -1:  # Used for Jan's Flame Shell
                 for i in range(3):
-                    if yourselection[i][0] == "jan":
-                        if beforehealth != yourselection[i].health:
+                    if player_party.members[i][0] == "jan":
+                        if beforehealth != player_party.members[i].health:
                             enemieshealths[beforehealthtarget] = max(0, enemieshealths[beforehealthtarget] - (
-                                    beforehealth - yourselection[currentCaster].health))
+                                    beforehealth - player_party.members[currentCaster].health))
                 beforehealth = -1
                 beforehealthtarget = -1
 
             if framedelay == -1:  # If your characters went to determine the next ally to go or if its the enemies turn
-                if any([i.health for i in yourselection]):
-                    while yourselection[currentCaster].health == 0:
-                        yourselection[currentCaster].tired = True
+                if any([i.health for i in player_party.members]):
+                    while player_party.members[currentCaster].health == 0:
+                        player_party.members[currentCaster].tired = True
                         currentCaster = (currentCaster + 1) % 3
-                if yourselection[currentCaster].tired and currentCaster + 1 == 3:
+                if player_party.members[currentCaster].tired and currentCaster + 1 == 3:
                     currentCaster = 0
-                while yourselection[currentCaster].tired and currentCaster + 1 != 3:
+                while player_party.members[currentCaster].tired and currentCaster + 1 != 3:
                     currentCaster += 1
-                if all([i.tired for i in yourselection]):
+                if all([i.tired for i in player_party.members]):
                     currentCaster = 0
                     playerturn = False
             if playerturn:  # While its the players turn
@@ -1088,7 +1041,7 @@ def casting(action, caster):  # This comes from the button being pressed form be
 
 
 def skills(caster):  # Your skill function that draws and blits things getting ready for you skill selection
-    global currentaction, clicked, currentattacker, selection, framedelay, playAbilityAnimation
+    global currentaction, clicked, selection, framedelay
     draw.rect(screen, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
     draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
     screen.blit(backing, (320, 620))
@@ -1109,22 +1062,24 @@ def skills(caster):  # Your skill function that draws and blits things getting r
                 for selectedEnemyIndex, enemyRect in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):
                     draw.rect(screen, COLOURS.RED, RECTANGLES.BATTLE_UI.ENEMY_RECTS[selectedEnemyIndex], 3)
                     if enemyRect.collidepoint(mx, my) and mb[0] and not clicked:
-                        castResult = skill.cast(selectedEnemyIndex, currentCaster, yourselection, enemieselection)
-                        if castResult != None:
+                        castResult = skill.cast(selectedEnemyIndex, currentCaster, player_party.members, enemieselection)
+                        currentaction = castResult.current_action
+                        if castResult.success:
                             framedelay = castResult.frame_delay
-                            currentaction = castResult.current_action
-                            playAbilityAnimation = castResult.play_ability_animation
-                            yourselection[caster].damage_multiplier = 1
+                            player_party.members[caster].tired = True
+                            player_party.members[currentCaster].spell_animation.update()
+                            player_party.members[caster].damage_multiplier = 1
             elif skill.ability_type == ability.AbilityType.HEALING:
                 for selectedAllyIndex, allyRect in enumerate(RECTANGLES.BATTLE_UI.PLAYER_RECTS):
                     draw.rect(screen, COLOURS.GREEN, RECTANGLES.BATTLE_UI.PLAYER_RECTS[selectedAllyIndex], 3)
                     if allyRect.collidepoint(mx, my) and mb[0] and not clicked:
-                        castResult = skill.cast(selectedAllyIndex, currentCaster, yourselection, enemieselection)
-                        if castResult != None:
+                        castResult = skill.cast(selectedAllyIndex, currentCaster, player_party.members, enemieselection)
+                        currentaction = castResult.current_action
+                        if castResult.success:
                             framedelay = castResult.frame_delay
-                            currentaction = castResult.current_action
-                            playAbilityAnimation = castResult.play_ability_animation
-                            yourselection[caster].damage_multiplier = 1
+                            player_party.members[caster].tired = True
+                            player_party.members[currentCaster].spell_animation.update()
+                            player_party.members[caster].damage_multiplier = 1
         if button.collidepoint(mx, my):
             draw.rect(screen, COLOURS.BLUE, button, 5)
             screen.blit(abilitydesc[caster][RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)], (320, 683))
@@ -1135,7 +1090,7 @@ def skills(caster):  # Your skill function that draws and blits things getting r
 
 
 def attack(caster):  # The attacking function for your character selecting an enemy and dealing their damage
-    global currentaction, clicked, currentattacker, framedelay, planneddamage
+    global currentaction, clicked, framedelay
     draw.rect(screen, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
     draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
     screen.blit(backing, (320, 620))
@@ -1146,19 +1101,20 @@ def attack(caster):  # The attacking function for your character selecting an en
             currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
     for i, v in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):
         draw.rect(screen, COLOURS.RED, RECTANGLES.BATTLE_UI.ENEMY_RECTS[i], 3)
-        if v.collidepoint(mx, my) and mb[0] and not clicked and yourselection[caster].can_attack() and enemieselection[
+        if v.collidepoint(mx, my) and mb[0] and not clicked and player_party.members[caster].can_attack() and enemieselection[
             i].is_alive():
             framedelay = 5
-            enemieselection[i].damage(yourselection[caster].attack_damage, yourselection[caster])
+            enemieselection[i].damage(player_party.members[caster].attack_damage, player_party.members[caster])
             clicked = True
-            currentattacker = caster
+            player_party.members[caster].attack_animation.update()
+            player_party.members[caster].tired = True
             currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
-            yourselection[caster].damage_multiplier = 1
+            player_party.members[caster].damage_multiplier = 1
     return caster
 
 
 def defend(caster):  # The defending function where the damage gets halved
-    global currentaction, clicked, defending, nottired, framedelay
+    global currentaction, clicked, defending, framedelay
     draw.rect(screen, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
     draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
     draw.rect(screen, COLOURS.BLUE, RECTANGLES.BATTLE_UI.CONFIRM_RECT, 2)
@@ -1171,9 +1127,9 @@ def defend(caster):  # The defending function where the damage gets halved
             currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
     if RECTANGLES.BATTLE_UI.CONFIRM_RECT.collidepoint(mx, my):
         draw.rect(screen, COLOURS.BLUE, RECTANGLES.BATTLE_UI.CONFIRM_RECT, 5)
-        if mb[0] and not clicked and not yourselection[caster].tired:
-            yourselection[caster].set_defending(True)
-            yourselection[caster].tired = True
+        if mb[0] and not clicked and not player_party.members[caster].tired:
+            player_party.members[caster].set_defending(True)
+            player_party.members[caster].tired = True
             framedelay = 5
             clicked = True
             currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
@@ -1191,9 +1147,9 @@ def switch(caster):  # Switching between the characters order
             clicked = True
             currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
     for i, v in zip(positions, RECTANGLES.BATTLE_UI.PLAYER_RECTS):
-        if not yourselection[i].tired and caster != i:
+        if not player_party.members[i].tired and caster != i:
             draw.polygon(screen, COLOURS.WHITE, (selectpoly[i]), 2)
-        if v.collidepoint(mx, my) and mb[0] and not clicked and not yourselection[i].tired:
+        if v.collidepoint(mx, my) and mb[0] and not clicked and not player_party.members[i].tired:
             clicked = True
             currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
             return i
@@ -1201,28 +1157,29 @@ def switch(caster):  # Switching between the characters order
 
 
 def enemycast():  # The enemy attacking, It changes depending on what enemy is in the rotation
-    global playerturn, nottired, enemyframedelay, taunted
+    global playerturn, nottired, enemyframedelay
     for i, v in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):
+        current_enemy_info = enemieselection[i]
         if enemyframedelay > 0:
             enemyframedelay -= 1
         elif enemyframedelay == 0:
             enemieselection[i].apply_status_effects()
             if enemieselection[i].enemyType == "grunt" and enemieselection[i].can_attack():
-                if taunted[i]:
-                    attacken(positions[selectnums.index(6)], enemieselection[i].attackDamages[0], fire, i)
+                if current_enemy_info.taunted:
+                    attacken(current_enemy_info.taunt_target, enemieselection[i].attackDamages[0], fire, i)
                 else:
                     target_random(enemieselection[i].attackDamages[0], fire, i)
             elif enemieselection[i].enemyType == "tough" and enemieselection[i].can_attack():
                 move = randint(0, 3)
-                if taunted[i]:
-                    attacken(positions[selectnums.index(6)], enemieselection[i].attackDamages[0], ice, i)
+                if current_enemy_info.taunted:
+                    attacken(current_enemy_info.taunt_target, enemieselection[i].attackDamages[0], ice, i)
                 if move == 0:
-                    target_random(enemieselection[i].attackDamages[1], ice, i)
+                    target_random(current_enemy_info.attackDamages[1], ice, i)
                 else:
-                    target_priority(enemieselection[i].attackDamages[0], ice, i)
-            elif enemieselection[i].enemyType == "miniboss" and enemieselection[i].can_attack():
-                if taunted[i]:
-                    attacken(positions[selectnums.index(6)], enemieselection[i].attackDamages[0], lightning, i)
+                    target_priority(current_enemy_info.attackDamages[0], ice, i)
+            elif current_enemy_info.enemyType == "miniboss" and enemieselection[i].can_attack():
+                if current_enemy_info.taunted:
+                    attacken(current_enemy_info.taunt_target, enemieselection[i].attackDamages[0], lightning, i)
                 if enemieselection[i].health > (enemieselection[i].health // 2):
                     move = randint(0, 6)
                 else:
@@ -1235,8 +1192,8 @@ def enemycast():  # The enemy attacking, It changes depending on what enemy is i
                     target_priority(enemieselection[i].attackDamages[2], lightning, i)
             elif enemieselection[i].enemyType == "aaron":
                 #screen.blit(enemyanimation[3][0][0], (1080 - 15 * i, 400 - 190 * i))
-                if taunted[i]:
-                    attacken(positions[selectnums.index(6)], enemieselection[i].attackDamages[0], dumpling, 3, i)
+                if current_enemy_info.taunted:
+                    attacken(current_enemy_info.taunt_target, enemieselection[i].attackDamages[0], dumpling, 3, i)
                 if enemieselection[i].health > (enemieselection[i].max_health // 2):
                     move = randint(0, 6)
                 else:
@@ -1249,8 +1206,8 @@ def enemycast():  # The enemy attacking, It changes depending on what enemy is i
                     attackaoe(enemieselection[i].attackDamages[2], dumpling, i)
             elif enemieselection[i].enemyType == "vlad":
                 #screen.blit(enemyanimation[4][0][0], (1080 - 15 * i, 400 - 190 * i))
-                if taunted[i]:
-                    attacken(positions[selectnums.index(6)], enemieselection[i].attackDamages[0], music, 4, i)
+                if current_enemy_info.taunted:
+                    attacken(current_enemy_info.taunt_target, enemieselection[i].attackDamages[0], music, 4, i)
                 if enemieselection[i].health > (enemieselection[i].health // 2):
                     move = randint(0, 6)
                 else:  # Depending on which numer is picked, either a stronger or weaker move is made
@@ -1262,8 +1219,8 @@ def enemycast():  # The enemy attacking, It changes depending on what enemy is i
                 elif move == 0:
                     attackaoe(enemieselection[i].attackDamages[2], music, i)
             elif enemieselection[i].enemyType == "kim":
-                if taunted[i]:
-                    attacken(positions[selectnums.index(6)], enemieselection[i].attackDamages[0], diamond, i)
+                if current_enemy_info.taunted:
+                    attacken(current_enemy_info.taunt_target, enemieselection[i].attackDamages[0], diamond, i)
                 if enemieselection[i].health > (enemieselection[i].health // 2):
                     move = randint(0, 6)
                 else:
@@ -1277,59 +1234,61 @@ def enemycast():  # The enemy attacking, It changes depending on what enemy is i
                 #screen.blit(enemyanimation[5][0][0], (1080 - 15 * i, 400 - 190 * i))
             print(enemieselection)
             if all([not i.can_attack() for i in enemieselection]):  # When all the enemies go it becomes the partys turn
-                print(yourselection)
-                for i in range(3):
-                    yourselection[i].set_defending(False)
-                    yourselection[i].dodging = False
-                    yourselection[i].tired = False
+                print(player_party.members)
+                for party_member in player_party.members:
+                    party_member.set_defending(False)
+                    party_member.dodging = False
+                    party_member.tired = False
+                    party_member.regen_mana()
+                for enemy in enemieselection:
+                    enemy.clear_taunt_targets()
                 playerturn = True
-                taunted = [False, False, False]
                 enemyframedelay = 15
-                for i in range(3):
-                    yourselection[i].regen_mana()
+
                 return playerturn
             enemyframedelay = 15
     return playerturn
 
 
-def attacken(someone, somedmg, animation, enemynum):  # This is the main function where an enemy applies his damage to the party member
+def attacken(target, somedmg, animation, enemynum):  # This is the main function where an enemy applies his damage to the party member
     screen.blit(animation, (randint(0, 1000), randint(0, 700)))
-    if yourselection[someone].defending:  # If the ally is defending then the damage is halved
+    if target.defending:  # If the ally is defending then the damage is halved
         # screen.blit(shield1, (325 - 15 * someone, 20 + 190 * someone))
         pass
-    yourselection[someone].damage(somedmg)
+    target.damage(somedmg)
     enemieselection[enemynum].tired = True
     screen.blit(enemieselection[enemynum].animations.attack, (1080 - 15 * enemynum, 400 - 190 * enemynum))
-    screen.blit(stats[selectnums[someone]].animation_handler.hurt, (325 - 15 * someone, 20 + 190 * someone))
+    draw_index = player_party.get_member_index(target)
+    screen.blit(target.animation_handler.hurt, (325 - 15 * draw_index, 20 + 190 * draw_index))
     display.flip()
 
 
 def attackaoe(somedmg, animation, enemynum):  # The attacking function for the bosses where it deals damage to the entire party
     for i in range(3):
-        screen.blit(animation, (randint(0, 1000), randint(0, 1000)))
+        for j in range(1000):
+            screen.blit(animation, (randint(0, 1000), randint(0, 1000)))
         # if yourselection[i].defending:
         #    screen.blit(shield1, (325 - 15 * i, 20 + 190 * i))
-        yourselection[currentCaster].damage(somedmg)
+        player_party.members[currentCaster].damage(somedmg)
         screen.blit(stats[selectnums[i]].animation_handler.hurt, (325 - 15 * i, 20 + 190 * i))
     screen.blit(enemieselection[enemynum].animations.attack, (1080 - 15 * enemynum, 400 - 190 * enemynum))
     enemieselection[enemynum].tired = True
 
 
 def target_priority(dmg, animation, enemynum):  # Prioritizing the party member with the lowest health percentage to attack
-    target = yourselection.index(min([i for i in yourselection if i.is_alive()]))
+    target = min([i for i in player_party.members if i.is_alive()])
     attacken(target, dmg, animation, enemynum)
 
 
 def target_random(dmg, animation, enemynum):  # Targeting a random party member to attack
-    target = yourselection.index(choice([i for i in yourselection if
-                                         i.is_alive()]))
+    target = choice([i for i in player_party.members if i.is_alive()])
     attacken(target, dmg, animation, enemynum)
 
 
 def load():  # The loading function
-    global pparty, selectnums, abilitybutton, abilitydesc, healths, manas, battlenum, scenenum
     print("Loading is not implemented yet!")
 
+print("Image cacher loaded %d files with %d hits and %d misses"%(image_cacher.requests, image_cacher.hits, image_cacher.misses))
 
 ########################################################################################
 

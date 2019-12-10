@@ -19,7 +19,7 @@ class Animation():
     def reset(self):
         self.numFramesPassed = 0
     def isRunning(self):
-        return self.numFramesPassed == 0
+        return 0<self.numFramesPassed<len(self.sprites)*self.framesPerSprite
 
     def get_clone(self):
         new_animation = Animation(self.sprite_paths, self.duration, 0)

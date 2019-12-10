@@ -1,8 +1,8 @@
 {
  "name": "Erik",
- "health": 2500,
+ "health": 2750,
  "mana": 1000,
- "attack_damage": 800,
+ "attack_damage": 600,
  "caster_class": "assassin",
  "abilities": [
   {

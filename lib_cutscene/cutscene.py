@@ -4,7 +4,7 @@ from lib_cutscene import dialog_section
 
 loaded_cutscene_files = {}
 
-def get_file(fName: str, scaled_size = None, smooth_scale = True, font_size = 20):
+def get_file(fName: str, scaled_size = None, smooth_scale = True, font_size = 20, image_cacher = None):
     if fName in loaded_cutscene_files:
         found_file = loaded_cutscene_files[fName]
         file_type = type(found_file)
@@ -14,21 +14,17 @@ def get_file(fName: str, scaled_size = None, smooth_scale = True, font_size = 20
                 print('Found cached version of', fName)
                 return found_file
 
-        elif file_type == Surface:
-
-            if found_file.get_size() == scaled_size:
-                print('Found cached version of', fName)
-                return found_file
-
     if fName.endswith('.png') or fName.endswith('.jpg'):
         print('Loaded', fName)
-        loadedImage = image.load(fName).convert()
+        if image_cacher is None:
+            loadedImage = image.load(fName).convert()
+        else:
+            loadedImage = image_cacher.try_load(fName)
         if scaled_size is not None:
             if smooth_scale:
                 loadedImage = transform.smoothscale(loadedImage, scaled_size)
             else:
                 loadedImage = transform.scale(loadedImage, scaled_size)
-        loaded_cutscene_files[fName] = loadedImage
 
         return loadedImage
     elif fName.endswith('.ttf'):
@@ -72,7 +68,7 @@ class CutScene:
             clockity.tick(60)
 
 
-def load_from_file(fname, playerProfileIcon):
+def load_from_file(fname, playerProfileIcon, image_cacher = None):
     with open(fname) as f:
         data = json.load(f)
 
@@ -89,7 +85,7 @@ def load_from_file(fname, playerProfileIcon):
                 if dialogueLine['ReaderIcon'] == '|PLAYER|':
                     newDialogue.reader_icon = transform.smoothscale(playerProfileIcon, (150,150))
                 else:
-                    newDialogue.reader_icon = get_file(dialogueLine['ReaderIcon'], scaled_size = (150, 150))
+                    newDialogue.reader_icon = get_file(dialogueLine['ReaderIcon'], scaled_size = (150, 150), image_cacher=image_cacher)
 
             if 'FadeInTime' in dialogueLine:
                 newDialogue.fade_in_time = dialogueLine['FadeInTime']
@@ -104,7 +100,7 @@ def load_from_file(fname, playerProfileIcon):
                 newDialogue.text = dialogueLine['Text']
 
             if 'Background' in dialogueLine:
-                newDialogue.background_image = get_file(dialogueLine['Background'], scaled_size=(1260, 650))
+                newDialogue.background_image = get_file(dialogueLine['Background'], scaled_size=(1260, 650), image_cacher=image_cacher)
 
             if 'Font' in dialogueLine:
                 if 'FontSize' in dialogueLine:
