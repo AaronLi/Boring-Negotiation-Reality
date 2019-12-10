@@ -1,0 +1,132 @@
+{
+ "DialogueLines": [
+  {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "[One of your party members tries to enter the portal, but gets thrown out!]",
+   "Background": "A BNR\\vladbg.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "|PLAYER|",
+   "Text": "You! How do we enter the portal?",
+   "Background": "A BNR\\vladbg.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR/vladhead.png",
+   "Text": "You may hold victory in your grasp, but I hold the answers to your progression toward it in mine.",
+   "Background": "A BNR\\vladbg.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR\\vladhead.png",
+   "Text": "Would you destroy us both before learning them?",
+   "Background": "A BNR\\vladbg.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "|PLAYER|",
+   "Text": "What does that mean?",
+   "Background": "A BNR\\vladbg.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "[One of your party members takes Vlad's severed arm and sticks it through the portal...]",
+   "Background": "A BNR\\vladbg.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "[And they disappear!]",
+   "Background": "A BNR\\vladbg.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  },
+  {
+   "ReaderIcon": "A BNR\\hoodhood.png",
+   "Text": "[Seeing this, the rest of the party looks at Vlad...]",
+   "Background": "A BNR\\vladbg.png",
+   "Font": "basis33.ttf",
+   "FadeInTime": 1,
+   "FadeOutTime": 1,
+   "TextFinishedWaitTime": 1,
+   "CharsPerSec": 15,
+   "FontColour": [
+    0,
+    0,
+    0
+   ],
+   "FontSize": 20
+  }
+ ]
+}

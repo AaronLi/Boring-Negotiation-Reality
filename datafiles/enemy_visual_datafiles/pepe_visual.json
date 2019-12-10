@@ -1,0 +1,16 @@
+{
+ "animations": {
+  "death": {
+   "sprite_frames": [
+    "game sprites/pepeow.png",
+    "game sprites/pepeow1.png",
+    "game sprites/pepeow2.png"
+   ],
+   "animation_duration": 0.4
+  }
+ },
+ "dead": "game sprites/pepeow.png",
+ "hurt": "game sprites/pepeow.png",
+ "idle": "game sprites/pepe.png",
+ "attack": "game sprites/pepe1.png"
+}

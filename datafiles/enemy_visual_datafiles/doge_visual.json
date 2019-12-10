@@ -1,0 +1,16 @@
+{
+ "animations": {
+  "death": {
+   "sprite_frames": [
+    "game sprites/dogeow.png",
+    "game sprites/dogeow1.png",
+    "game sprites/dogeow2.png"
+   ],
+   "animation_duration": 0.4
+  }
+ },
+ "dead": "game sprites/dogeow.png",
+ "hurt": "game sprites/dogeow.png",
+ "idle": "game sprites/doge.png",
+ "attack": "game sprites/doge1.png"
+}

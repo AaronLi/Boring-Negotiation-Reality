@@ -1,0 +1,16 @@
+{
+ "animations": {
+  "death": {
+   "sprite_frames": [
+    "game sprites/spinnerow.png",
+    "game sprites/spinnerow1.png",
+    "game sprites/spinnerow2.png"
+   ],
+   "animation_duration": 0.4
+  }
+ },
+ "dead": "game sprites/spinnerow.png",
+ "hurt": "game sprites/spinnerow.png",
+ "idle": "game sprites/spinner.png",
+ "attack": "game sprites/spinner1.png"
+}

@@ -1,0 +1,6 @@
+class COMBAT_MENU_MODES:
+    MAIN_COMBAT_MENU = -1
+    ATTACK = 0
+    SKILLS = 1
+    DEFEND = 2
+    SWITCH = 3

@@ -1,16 +1,16 @@
 import src.image_cacher, json, pygame.transform
+from src.visual_handler import VisualHandler
 
-class VisualHandler:
+
+class CasterVisualHandler(VisualHandler):
     def __init__(self, game_clock) -> None:
+        super().__init__(game_clock)
         self.defend_animation = None
         self.attack_animation = None
         self.spell_animation = None
         self.portrait = None
         self.profile = None
-        self.dead = None
-        self.stance = None
-        self.hurt = None
-        self.game_clock = game_clock
+
 
     def load_from_file(self, file, image_cacher: src.image_cacher.ImageCacher):
         with open(file) as f:

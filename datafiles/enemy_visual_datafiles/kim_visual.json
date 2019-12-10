@@ -1,0 +1,7 @@
+{
+ "animations": {},
+ "dead": "game sprites/vlad ow.png",
+ "hurt": "game sprites/vlad ow.png",
+ "idle": "game sprites/vlad stand.png",
+ "attack": "game sprites/vlad1.png"
+}

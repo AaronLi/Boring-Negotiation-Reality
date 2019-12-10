@@ -1,5 +1,6 @@
 class VIDEO:
     SCREEN_SIZE = (1260, 750)
+    FRAME_RATE = 60
 
 class STATS:
     MAX_HEALTH = 5500

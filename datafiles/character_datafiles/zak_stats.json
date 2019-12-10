@@ -23,7 +23,7 @@
    "name": "reap",
    "mana_cost": 700,
    "ability_type": "damaging",
-   "influence_amount": 900,
+   "influence_amount": 800,
    "callback": "\u0080\u0003c__main__\nreap\nq\u0000."
   }
  ],

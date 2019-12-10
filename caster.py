@@ -69,4 +69,6 @@ class Caster:
         return "%-8s hp:%4d/%d mana:%4d/%d %d %s %s"%(self.name, self.health,self.max_health, self.mana, self.max_mana, self.attack_damage, self.caster_class, str(self.abilities))
 
     def __lt__(self, other):
-        return self.health < other.health
+        if isinstance(other, Caster):
+            return (self.health/self.max_health) < (other.health/other.max_health)
+        raise TypeError()

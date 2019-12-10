@@ -1,1 +1,1 @@
-__all__ = ['COLOURS', 'SETTINGS', 'RECTANGLES']
+__all__ = ['COLOURS', 'SETTINGS', 'RECTANGLES', 'MENU']
