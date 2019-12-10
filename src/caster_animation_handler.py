@@ -11,7 +11,9 @@ class CasterVisualHandler(VisualHandler):
         self.portrait = None
         self.profile = None
 
-        self.animations = [self.defend_animation, self.attack_animation, self.spell_animation]
+    @property
+    def animations(self):
+        return [self.attack_animation, self.spell_animation, self.defend_animation]
 
     def animations_done(self):
         return all([not animation.isRunning() for animation in self.animations])

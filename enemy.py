@@ -19,6 +19,7 @@ class Enemy:
         print(self.enemyType, 'took', amount * attackingCaster.damage_multiplier,
               'damage (%.2f%% of base damage)' % (attackingCaster.damage_multiplier * 100))
         damageDealt = min(self.health, amount * attackingCaster.damage_multiplier)
+        attackingCaster.damage_multiplier = 1
         self.health -= damageDealt
         return damageDealt
 
@@ -46,12 +47,23 @@ class Enemy:
     def taunt_target(self):
         return random.choice(list(self.taunt_targets))
 
+    def add_status_effect(self, status_effect):
+        print("%s has been inflicted with %s (%d) for %d turns!"%(self.enemyType, status_effect.name, status_effect.influence_amount, status_effect.duration))
+        self.dot_effects.append(status_effect)
+
     def apply_status_effects(self):
+        if not self.is_alive():
+            self.dot_effects.clear()
         for effectIndex in range(len(self.dot_effects) - 1, -1, -1):
             effect = self.dot_effects[effectIndex]
             try:
                 effect.step()
                 if isinstance(effect, DOTEffect):
-                    self.health -= effect.influence_amount
+                    if effect.influence_amount > 0:
+                        print("%s inflicted %d damage to %s"%(effect.name, effect.influence_amount, self.enemyType))
+                        self.health = max(0, self.health - effect.influence_amount)
+                    else:
+                        print("%s healed %d damage on %s"%(effect.name, -effect.influence_amount, self.enemyType))
+                        self.health = min(self.max_health, self.health - effect.influence_amount)
             except EffectEndedException:
                 self.dot_effects.remove(effect)

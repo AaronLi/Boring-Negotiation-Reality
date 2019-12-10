@@ -3,5 +3,6 @@
  "dead": "game sprites/aaronow.png",
  "hurt": "game sprites/aaronow.png",
  "idle": "game sprites/aaron.png",
- "attack": "game sprites/aaron1.png"
+ "attack": "game sprites/aaron1.png",
+ "attack_effect": "dumpling.png"
 }

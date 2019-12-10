@@ -12,5 +12,6 @@
  "dead": "game sprites/dogeow.png",
  "hurt": "game sprites/dogeow.png",
  "idle": "game sprites/doge.png",
- "attack": "game sprites/doge1.png"
+ "attack": "game sprites/doge1.png",
+ "attack_effect": "FIREBALL.png"
 }

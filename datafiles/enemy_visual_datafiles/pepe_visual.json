@@ -12,5 +12,6 @@
  "dead": "game sprites/pepeow.png",
  "hurt": "game sprites/pepeow.png",
  "idle": "game sprites/pepe.png",
- "attack": "game sprites/pepe1.png"
+ "attack": "game sprites/pepe1.png",
+ "attack_effect": "icestar.png"
 }

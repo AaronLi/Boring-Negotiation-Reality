@@ -1,33 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f91c0ccf-832d-4eb2-ba0e-ce953caaec89" name="Default" comment="Removed unused values,&#10;Added new system for enemy visual animations&#10;Added new system for player visual animations&#10;Too much to write &gt;.&lt;">
-      <change afterPath="$PROJECT_DIR$/src/party.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BNR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BNR.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/dumpl.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/dumpl.xml" afterDir="false" />
+    <list default="true" id="f91c0ccf-832d-4eb2-ba0e-ce953caaec89" name="Default" comment="Removed redundant variables&#10;Taunting works">
+      <change afterPath="$PROJECT_DIR$/src/code_system.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enemyparty.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/playerparty.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/aliza story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/emily story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/erik story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/jan story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/julie story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/linh story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/minya story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nat story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/ogu story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/printer story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/sup story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/viv story.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/zak story.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ability.py" beforeDir="false" afterPath="$PROJECT_DIR$/ability.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actualgame.py" beforeDir="false" afterPath="$PROJECT_DIR$/actualgame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/animation.py" beforeDir="false" afterPath="$PROJECT_DIR$/animation.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/caster.py" beforeDir="false" afterPath="$PROJECT_DIR$/caster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/erik_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/character_datafiles/erik_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/emily_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/character_datafiles/emily_stats.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/aaron_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/aaron_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/doge_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/doge_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/kim_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/kim_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/pepe_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/pepe_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/spinner_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/spinner_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/vlad_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/vlad_visual.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib_cutscene/cutscene.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/cutscene.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/caster_animation_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/caster_animation_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/image_cacher.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/image_cacher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enemy_animation_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/enemy_animation_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/party.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +151,7 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -330,7 +322,7 @@
       <workItem from="1575950675967" duration="14718000" />
       <workItem from="1575966483574" duration="57000" />
       <workItem from="1575966649729" duration="66000" />
-      <workItem from="1575997088936" duration="7477000" />
+      <workItem from="1575997088936" duration="22637000" />
     </task>
     <task id="LOCAL-00001" summary="smol bug when going past vivianne">
       <created>1512368917599</created>
@@ -381,7 +373,14 @@
       <option name="project" value="LOCAL" />
       <updated>1575966317661</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Removed redundant variables&#10;Taunting works">
+      <created>1576004781179</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1576004781179</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -418,7 +417,8 @@
     <MESSAGE value="Added new character loading system, hopefully it will be easier to add characters. Still need to group character info and character stats together" />
     <MESSAGE value="Finished character loading system, character data is split between visual and stat data" />
     <MESSAGE value="Removed unused values,&#10;Added new system for enemy visual animations&#10;Added new system for player visual animations&#10;Too much to write &gt;.&lt;" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed unused values,&#10;Added new system for enemy visual animations&#10;Added new system for player visual animations&#10;Too much to write &gt;.&lt;" />
+    <MESSAGE value="Removed redundant variables&#10;Taunting works" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant variables&#10;Taunting works" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575849580907">
@@ -496,7 +496,7 @@
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$cutscene.coverage" NAME="cutscene Coverage Results" MODIFIED="1575960080218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib_cutscene" />
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$bulk_add.coverage" NAME="bulk_add Coverage Results" MODIFIED="1575858933978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datafiles/visual_datafiles" />
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1575849548498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1576004140087" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1576020522648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="masterDetails">
     <states>

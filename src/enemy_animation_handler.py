@@ -23,4 +23,5 @@ class EnemyVisualHandler(VisualHandler):
             self.stance = image_cacher.try_load(data['idle'])
             self.hurt = image_cacher.try_load(data['hurt'])
             self.attack = image_cacher.try_load(data['attack'])
+            self.attack_effect = image_cacher.try_load(data['attack_effect'])
         return self

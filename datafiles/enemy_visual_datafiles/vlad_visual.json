@@ -3,5 +3,6 @@
  "dead": "game sprites/kimow.png",
  "hurt": "game sprites/kimow.png",
  "idle": "game sprites/kim.png",
- "attack": "game sprites/kim1.png"
+ "attack": "game sprites/kim1.png",
+ "attack_effect": "musicnotes.png"
 }

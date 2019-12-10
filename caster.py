@@ -16,6 +16,7 @@ class Caster:
         self.dodging = False
         self.tired = False
         self.targetable = True
+        self.injured = False
         self.specialStats = kwargs
         self.damage_multiplier = 1
         self.animation_handler = animation_handler
@@ -49,8 +50,10 @@ class Caster:
         elif self.defending:
             self.health = max(0, self.health - (amount // 2))
             self.defending = False
+            self.injured = True
         else:
             self.health = max(0, self.health - amount)
+            self.injured = True
 
     def heal(self, amount):
         self.health = min(self.max_health, self.health + amount)
@@ -82,6 +85,7 @@ class Caster:
         self.defending = state
         if self.defending:
             self.defend_animation.reset()
+            self.defend_animation.update()
 
     def __str__(self):
         return "%-8s hp:%4d/%d mana:%4d/%d %d %s %s" % (

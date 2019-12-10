@@ -19,16 +19,17 @@ class Ability:
         self.callback = callback
 
     def cast(self,target, caster, casters, enemies): #caster is the currentcaster, enemies is the list of all Enemies on the field, casters is the list of all casters
-        if casters[caster].mana >= self.mana_cost:
+        if caster.mana >= self.mana_cost:
             if self.callback != None:
                 status = self.callback(target,caster,casters,enemies)
                 if status == 1: #callback has indicated that additional requirements have not been met
                     return AbilityCastResult(0, COMBAT_MENU_MODES.SKILLS, False)
-            casters[caster].mana -= self.mana_cost
-            if self.ability_type == AbilityType.DAMAGING:
-                enemies[target].damage(self.influence_amount, casters[caster])
-            elif self.ability_type == AbilityType.HEALING:
-                casters[target].heal(self.influence_amount)
+            caster.mana -= self.mana_cost
+            if self.influence_amount > 0:
+                if self.ability_type == AbilityType.DAMAGING:
+                    enemies[target].damage(self.influence_amount, caster)
+                elif self.ability_type == AbilityType.HEALING:
+                    casters[target].heal(self.influence_amount)
             return AbilityCastResult(5, COMBAT_MENU_MODES.MAIN_COMBAT_MENU, True)
         return AbilityCastResult(0, COMBAT_MENU_MODES.SKILLS, False)
 

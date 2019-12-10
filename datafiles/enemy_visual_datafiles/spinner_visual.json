@@ -12,5 +12,6 @@
  "dead": "game sprites/spinnerow.png",
  "hurt": "game sprites/spinnerow.png",
  "idle": "game sprites/spinner.png",
- "attack": "game sprites/spinner1.png"
+ "attack": "game sprites/spinner1.png",
+ "attack_effect": "lightning.png"
 }

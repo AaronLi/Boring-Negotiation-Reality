@@ -23,8 +23,8 @@
    "name": "dragonflame",
    "mana_cost": 500,
    "ability_type": "damaging",
-   "influence_amount": 800,
-   "callback": "\u0080\u0003N."
+   "influence_amount": 500,
+   "callback": "\u0080\u0003c__main__\ndragonflame\nq\u0000."
   }
  ],
  "special_stats": {},
