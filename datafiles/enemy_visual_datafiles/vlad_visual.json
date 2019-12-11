@@ -1,8 +1,8 @@
 {
  "animations": {},
- "dead": "game sprites/kimow.png",
- "hurt": "game sprites/kimow.png",
- "idle": "game sprites/kim.png",
- "attack": "game sprites/kim1.png",
+ "dead": "game sprites/vlad ow.png",
+ "hurt": "game sprites/vlad ow.png",
+ "idle": "game sprites/vlad stand.png",
+ "attack": "game sprites/vlad1.png",
  "attack_effect": "musicnotes.png"
 }

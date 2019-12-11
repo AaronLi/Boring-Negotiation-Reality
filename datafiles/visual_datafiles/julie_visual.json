@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/julie portrait.png",
+ "portrait": "game sprites/battle portraits/julie portrait.png",
  "dead": "game sprites/julie ded.png",
  "hurt": "game sprites/julie ow.png",
- "idle": "A BNR/stands/julie stand.png"
+ "idle": "game sprites/julie stand.png",
+ "name": "julie",
+ "dead_portrait": "game sprites/battle portraits/julie portraitded.png"
 }

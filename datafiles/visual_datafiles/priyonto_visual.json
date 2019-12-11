@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/priyonto portrait.png",
+ "portrait": "game sprites/battle portraits/priyonto portrait.png",
  "dead": "game sprites/priyonto ded.png",
  "hurt": "game sprites/priyonto ow.png",
- "idle": "A BNR/stands/priyonto stand.png"
+ "idle": "game sprites/priyonto stand.png",
+ "name": "priyonto",
+ "dead_portrait": "game sprites/battle portraits/priyonto portraitded.png"
 }

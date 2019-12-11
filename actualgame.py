@@ -68,8 +68,7 @@ sceneback = [[kbattle, kbattle, kbattle, kbattle, kbattle], [kbattle, kbattle, k
 scene = [[twentyseven, twentyeight, twentynine, thirtyone, thirtytwo], [thirtythree, thirtyfour, thirtyfive]]
 
 
-instructionsPic = image_cacher.try_load(
-    "A BNR/help.png")  # The instructions as a single picture to be blit when being called as a function
+instructionsPic = image_cacher.try_load("A BNR/help.png")  # The instructions as a single picture to be blit when being called as a function
 
 
 
@@ -103,8 +102,8 @@ grunt_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file(
 tough_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/pepe_visual.json", image_cacher)
 miniboss_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/spinner_visual.json", image_cacher)
 aaron_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/aaron_visual.json", image_cacher)
-vlad_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/vlad_visual.json", image_cacher)
 kim_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/kim_visual.json", image_cacher)
+vlad_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/vlad_visual.json", image_cacher)
 
 # All the enemy rounds in order of how they will be coming in a 3D list
 enemyrotations = [
@@ -599,7 +598,7 @@ def UI():  # This is the UI or health bars that need to be blitted
         if player_party.members[num].health > 0:
             screen.blit(stats[i].animation_handler.portrait, (10, [0, 245, 490][num]))
         else:
-            screen.blit(stats[i].animation_handler.dead, (10, [0, 245, 490][num]))
+            screen.blit(stats[i].animation_handler.dead_portrait, (10, [0, 245, 490][num]))
     for playerNum, playerInfo in enumerate(player_party.members):
         # drawhealthbar
         draw.rect(screen, COLOURS.GREEN, (25, 199 + 250 * playerNum, 200, 25), 2)

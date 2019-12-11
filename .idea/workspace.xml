@@ -1,25 +1,141 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f91c0ccf-832d-4eb2-ba0e-ce953caaec89" name="Default" comment="Removed redundant variables&#10;Taunting works">
-      <change afterPath="$PROJECT_DIR$/src/code_system.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/enemyparty.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/playerparty.py" afterDir="false" />
+    <list default="true" id="f91c0ccf-832d-4eb2-ba0e-ce953caaec89" name="Default" comment="Cleaned up actualgame.py by moving redundant methods to respective classes">
+      <change afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/bulk_edit.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ability.py" beforeDir="false" afterPath="$PROJECT_DIR$/ability.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/CODESYS/code txt2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/STATSBOX.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/aaron.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/aliza standd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/arronback.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/Thumbs.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/aliza portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/emily portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/erik portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/jan portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/julie portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/linh portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/minya portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/natalie portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/ogu portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/priyonto portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/supreet portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/viv portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/battle/zak portrait.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/charArrow1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/desel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/deselect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/kimcave.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/kimm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/landscape.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/landscapee.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/alizanom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/charseltitle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/emilynom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/eriknom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/jannom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/julienom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/linhnom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/minyanom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/natnom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/oguzhannom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/printernom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/supreetnom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/vivnom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/vladnom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/nom/zacnom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/jan 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/jan 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/jan 4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/jan 5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/minya 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/minya 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/minya 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/other/playarrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/play arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/portal.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/portal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/sel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/aliza stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/aliza standd.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/desktop.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/emily stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/erik stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/jan stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/julie stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/linh stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/minya stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/nat stand.png" beforeDir="false" afterPath="$PROJECT_DIR$/game sprites/natalie stand.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/ogu stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/priyonto stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/supreet stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/viv stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stands/zak stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/alizastats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/emilystats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/erikstats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/janstats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/juliestats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/linhstats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/minyastats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/natstats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/ogustats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/priyontostats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/supstats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/vivstats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/stats/zakstats.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/vlad stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/vladhead.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/A BNR/zak stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pokemon GB Japan HR.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pokemon GB Japan KT.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pokemon Unown GB.ttf" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/actualgame.py" beforeDir="false" afterPath="$PROJECT_DIR$/actualgame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/caster.py" beforeDir="false" afterPath="$PROJECT_DIR$/caster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/emily_stats.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/character_datafiles/emily_stats.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/aaron_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/aaron_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/doge_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/doge_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/battle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/battlesave.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/buttonsave.p" beforeDir="false" afterPath="$PROJECT_DIR$/dependency_checker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/bulk_edit.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/wa2igi_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/wa3igi_stats.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/waluigi_stats.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/kim_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/kim_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/pepe_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/pepe_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/spinner_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/spinner_visual.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/vlad_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/vlad_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/enemy.py" beforeDir="false" afterPath="$PROJECT_DIR$/enemy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/aliza_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/aliza_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/bulk_add.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/emily_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/emily_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/erik_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/erik_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/jan_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/jan_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/julie_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/julie_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/linh_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/linh_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/minya_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/minya_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/natalie_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/natalie_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/ogu_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/ogu_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/priyonto_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/priyonto_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/supreet_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/supreet_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/viv_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/viv_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/waluigi_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/waluigi_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/zak_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/zak_visual.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/descsave.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/game sprites/nat stand.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/healthsave.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/help.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib_cutscene/Cutscene3.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/Cutscene3.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib_cutscene/Cutscene4.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/Cutscene4.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib_cutscene/Cutscene5.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/Cutscene5.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manasave.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/numssave.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/partysave.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/scenesave.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/selectsave.p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/skillsave.p" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/caster_animation_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/caster_animation_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enemy_animation_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/enemy_animation_handler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/party.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,14 +270,15 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\enemy_visual_datafiles" />
-      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\character_datafiles" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\visual_datafiles" />
       <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles" />
       <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality" />
       <recent name="D:\BNR" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\enemy_visual_datafiles" />
+      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\character_datafiles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -199,7 +316,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="bulk_add" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="bulk_edit (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BNR" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -212,7 +329,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/datafiles/visual_datafiles/bulk_add.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/datafiles/visual_datafiles/bulk_edit.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -234,7 +351,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/datafiles/character_datafiles/bulk_edit.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\visual_datafiles\bulk_edit.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -265,20 +382,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="scratch" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="dependency_checker" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="BNR" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\dumpl\AppData\Local\Programs\Python\Python36\python.exe" />
+      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dependency_checker.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -289,18 +406,18 @@
     </configuration>
     <list>
       <item itemvalue="Python.actualgame" />
-      <item itemvalue="Python.scratch" />
       <item itemvalue="Python.bulk_edit" />
-      <item itemvalue="Python.bulk_add" />
       <item itemvalue="Python.cutscene" />
+      <item itemvalue="Python.dependency_checker" />
+      <item itemvalue="Python.bulk_edit (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.actualgame" />
+        <item itemvalue="Python.dependency_checker" />
         <item itemvalue="Python.cutscene" />
-        <item itemvalue="Python.bulk_add" />
+        <item itemvalue="Python.bulk_edit (1)" />
         <item itemvalue="Python.bulk_edit" />
-        <item itemvalue="Python.scratch" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +439,8 @@
       <workItem from="1575950675967" duration="14718000" />
       <workItem from="1575966483574" duration="57000" />
       <workItem from="1575966649729" duration="66000" />
-      <workItem from="1575997088936" duration="22637000" />
+      <workItem from="1575997088936" duration="22742000" />
+      <workItem from="1576036219700" duration="5956000" />
     </task>
     <task id="LOCAL-00001" summary="smol bug when going past vivianne">
       <created>1512368917599</created>
@@ -380,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1576004781179</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Cleaned up actualgame.py by moving redundant methods to respective classes">
+      <created>1576020617471</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1576020617471</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -418,7 +543,8 @@
     <MESSAGE value="Finished character loading system, character data is split between visual and stat data" />
     <MESSAGE value="Removed unused values,&#10;Added new system for enemy visual animations&#10;Added new system for player visual animations&#10;Too much to write &gt;.&lt;" />
     <MESSAGE value="Removed redundant variables&#10;Taunting works" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed redundant variables&#10;Taunting works" />
+    <MESSAGE value="Cleaned up actualgame.py by moving redundant methods to respective classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up actualgame.py by moving redundant methods to respective classes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575849580907">
@@ -491,12 +617,14 @@
     <state x="701" y="163" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575768413523" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$bulk_edit.coverage" NAME="bulk_edit Coverage Results" MODIFIED="1575852520236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datafiles/character_datafiles" />
+    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$bulk_edit.coverage" NAME="bulk_edit Coverage Results" MODIFIED="1576039288372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datafiles/character_datafiles" />
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1575851217023" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$cutscene.coverage" NAME="cutscene Coverage Results" MODIFIED="1575960080218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib_cutscene" />
+    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$dependency_checker.coverage" NAME="dependency_checker Coverage Results" MODIFIED="1576042066695" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$bulk_edit__1_.coverage" NAME="bulk_edit (1) Coverage Results" MODIFIED="1576039972269" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datafiles/visual_datafiles" />
+    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$cutscene.coverage" NAME="cutscene Coverage Results" MODIFIED="1576040038206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/lib_cutscene" />
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$bulk_add.coverage" NAME="bulk_add Coverage Results" MODIFIED="1575858933978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datafiles/visual_datafiles" />
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1575849548498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1576020522648" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1576042180328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="masterDetails">
     <states>

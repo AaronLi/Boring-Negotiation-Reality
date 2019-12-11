@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/natalie portrait.png",
+ "portrait": "game sprites/battle portraits/natalie portrait.png",
  "dead": "game sprites/nat ded.png",
  "hurt": "game sprites/nat ow.png",
- "idle": "A BNR/stands/nat stand.png"
+ "idle": "game sprites/natalie stand.png",
+ "name": "natalie",
+ "dead_portrait": "game sprites/battle portraits/natalie portraitded.png"
 }

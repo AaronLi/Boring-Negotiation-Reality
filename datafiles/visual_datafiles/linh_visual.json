@@ -34,8 +34,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/linh portrait.png",
+ "portrait": "game sprites/battle portraits/linh portrait.png",
  "dead": "game sprites/linh ded.png",
  "hurt": "game sprites/linh ow.png",
- "idle": "A BNR/stands/linh stand.png"
+ "idle": "game sprites/linh stand.png",
+ "name": "linh",
+ "dead_portrait": "game sprites/battle portraits/linh portraitded.png"
 }

@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/ogu portrait.png",
+ "portrait": "game sprites/battle portraits/ogu portrait.png",
  "dead": "game sprites/ogu ded.png",
  "hurt": "game sprites/ogu ow.png",
- "idle": "A BNR/stands/ogu stand.png"
+ "idle": "game sprites/ogu stand.png",
+ "name": "ogu",
+ "dead_portrait": "game sprites/battle portraits/ogu portraitded.png"
 }

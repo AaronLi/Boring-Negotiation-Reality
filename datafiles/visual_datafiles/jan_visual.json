@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/jan portrait.png",
+ "portrait": "game sprites/battle portraits/jan portrait.png",
  "dead": "game sprites/jan ded.png",
  "hurt": "game sprites/jan ow.png",
- "idle": "A BNR/stands/jan stand.png"
+ "idle": "game sprites/jan stand.png",
+ "name": "jan",
+ "dead_portrait": "game sprites/battle portraits/jan portraitded.png"
 }

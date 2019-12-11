@@ -33,7 +33,7 @@
    "FontSize": 20
   },
   {
-   "ReaderIcon": "A BNR/vladhead.png",
+   "ReaderIcon": "game sprites/vladhead.png",
    "Text": "You may hold victory in your grasp, but I hold the answers to your progression toward it in mine.",
    "Background": "A BNR\\vladbg.png",
    "Font": "basis33.ttf",
@@ -49,7 +49,7 @@
    "FontSize": 20
   },
   {
-   "ReaderIcon": "A BNR\\vladhead.png",
+   "ReaderIcon": "game sprites/vladhead.png",
    "Text": "Would you destroy us both before learning them?",
    "Background": "A BNR\\vladbg.png",
    "Font": "basis33.ttf",

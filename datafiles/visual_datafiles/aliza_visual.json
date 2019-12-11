@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/aliza portrait.png",
+ "portrait": "game sprites/battle portraits/aliza portrait.png",
+ "dead_portrait": "game sprites/battle portraits/aliza portraitded.png",
  "dead": "game sprites/aliza ded.png",
  "hurt": "game sprites/aliza ow.png",
- "idle": "A BNR/stands/aliza stand.png"
+ "idle": "game sprites/aliza stand.png",
+ "name": "aliza"
 }

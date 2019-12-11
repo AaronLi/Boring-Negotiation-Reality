@@ -149,8 +149,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/waluigi/profile.png",
+ "portrait": "game sprites/battle portraits/waluigi portrait.png",
  "dead": "A BNR/waluigi/deadGray.png",
  "hurt": "A BNR/waluigi/hurt.png",
- "idle": "A BNR/waluigi/stand.png"
+ "idle": "game sprites/waluigi stand.png",
+ "name": "waluigi",
+ "dead_portrait": "game sprites/battle portraits/waluigi portraitded.png"
 }

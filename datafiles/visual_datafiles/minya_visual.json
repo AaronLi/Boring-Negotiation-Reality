@@ -32,8 +32,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/minya portrait.png",
+ "portrait": "game sprites/battle portraits/minya portrait.png",
  "dead": "game sprites/minya ded.png",
  "hurt": "game sprites/minya ow.png",
- "idle": "A BNR/stands/minya stand.png"
+ "idle": "game sprites/minya stand.png",
+ "name": "minya",
+ "dead_portrait": "game sprites/battle portraits/minya portraitded.png"
 }

@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/zak portrait.png",
+ "portrait": "game sprites/battle portraits/zak portrait.png",
  "dead": "game sprites/zak ded.png",
  "hurt": "game sprites/zak ow.png",
- "idle": "A BNR/stands/zak stand.png"
+ "idle": "game sprites/zak stand.png",
+ "name": "zak",
+ "dead_portrait": "game sprites/battle portraits/zak portraitded.png"
 }

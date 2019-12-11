@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/supreet portrait.png",
+ "portrait": "game sprites/battle portraits/supreet portrait.png",
  "dead": "game sprites/supreet ded.png",
  "hurt": "game sprites/supreet ow.png",
- "idle": "A BNR/stands/supreet stand.png"
+ "idle": "game sprites/supreet stand.png",
+ "name": "supreet",
+ "dead_portrait": "game sprites/battle portraits/supreet portraitded.png"
 }

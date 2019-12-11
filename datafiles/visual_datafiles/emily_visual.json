@@ -34,8 +34,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/emily portrait.png",
+ "portrait": "game sprites/battle portraits/emily portrait.png",
+ "dead_portrait": "game sprites/battle portraits/emily portraitded.png",
  "dead": "game sprites/emily ded.png",
  "hurt": "game sprites/emily ow.png",
- "idle": "A BNR/stands/emily stand.png"
+ "idle": "game sprites/emily stand.png",
+ "name": "emily"
 }

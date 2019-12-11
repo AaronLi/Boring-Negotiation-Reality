@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/viv portrait.png",
+ "portrait": "game sprites/battle portraits/viv portrait.png",
  "dead": "game sprites/viv ded.png",
  "hurt": "game sprites/viv ow.png",
- "idle": "A BNR/stands/viv stand.png"
+ "idle": "game sprites/viv stand.png",
+ "name": "viv",
+ "dead_portrait": "game sprites/battle portraits/viv portraitded.png"
 }

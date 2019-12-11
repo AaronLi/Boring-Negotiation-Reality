@@ -10,6 +10,7 @@ class CasterVisualHandler(VisualHandler):
         self.spell_animation = None
         self.portrait = None
         self.profile = None
+        self.dead_portrait = None
 
     @property
     def animations(self):
@@ -29,6 +30,7 @@ class CasterVisualHandler(VisualHandler):
             self.spell_animation = image_cacher.load_animation(animations_info['spell'], self.game_clock)
 
             self.portrait = image_cacher.try_load(data['portrait'])
+            self.dead_portrait = image_cacher.try_load(data['dead_portrait'])
             self.profile = pygame.transform.smoothscale(self.portrait, (100, 100))
             self.dead = image_cacher.try_load(data['dead'])
             self.stance = image_cacher.try_load(data['idle'])

@@ -1,7 +1,7 @@
 {
  "DialogueLines": [
   {
-   "ReaderIcon": "A BNR\\vladhead.png",
+   "ReaderIcon": "game sprites/vladhead.png",
    "Text": "Nnnnyyeeeessss. Ahh at last you come. You have promise. Alas, it is your naive belief that you can save everyone that blinds you. A shame.",
    "Background": "A BNR\\vladbg.png",
    "Font": "basis33.ttf",
@@ -33,7 +33,7 @@
    "FontSize": 20
   },
   {
-   "ReaderIcon": "A BNR\\vladhead.png",
+   "ReaderIcon": "game sprites/vladhead.png",
    "Text": "I do not have the time required nor the desire to indulge you.",
    "Background": "A BNR\\vladbg.png",
    "Font": "basis33.ttf",

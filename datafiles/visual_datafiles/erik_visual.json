@@ -36,8 +36,10 @@
    "animation_duration": 0.5
   }
  },
- "portrait": "A BNR/battle/erik portrait.png",
+ "portrait": "game sprites/battle portraits/erik portrait.png",
+ "dead_portrait": "game sprites/battle portraits/erik portraitded.png",
  "dead": "game sprites/erik ded.png",
  "hurt": "game sprites/erik ow.png",
- "idle": "A BNR/stands/erik stand.png"
+ "idle": "game sprites/erik stand.png",
+ "name": "erik"
 }

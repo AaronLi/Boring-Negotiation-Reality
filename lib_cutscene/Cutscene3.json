@@ -17,7 +17,7 @@
    "FontSize": 20
   },
   {
-   "ReaderIcon": "A BNR/aaronhead.png",
+   "ReaderIcon": "game sprites/aaronhead.png",
    "Text": "Me me little boy.... All I know is my master's... home is...",
    "Background": "A BNR/abattle.png",
    "Font": "basis33.ttf",
@@ -33,7 +33,7 @@
    "FontSize": 20
   },
   {
-   "ReaderIcon": "A BNR/aaronhead.png",
+   "ReaderIcon": "game sprites/aaronhead.png",
    "Text": "...at the upper regions of Mount Dew...",
    "Background": "A BNR/abattle.png",
    "Font": "basis33.ttf",
@@ -49,7 +49,7 @@
    "FontSize": 20
   },
   {
-   "ReaderIcon": "A BNR/aaronhead.png",
+   "ReaderIcon": "game sprites/aaronhead.png",
    "Text": "I was hoping to die before I revealed that.",
    "Background": "A BNR/abattle.png",
    "Font": "basis33.ttf",
@@ -65,7 +65,7 @@
    "FontSize": 20
   },
   {
-   "ReaderIcon": "A BNR/aaronhead.png",
+   "ReaderIcon": "game sprites/aaronhead.png",
    "Text": "There, you'll meet the immortal bouncer of the Portal, Vlad.",
    "Background": "A BNR/abattle.png",
    "Font": "basis33.ttf",
