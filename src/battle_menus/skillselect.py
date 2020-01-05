@@ -101,13 +101,15 @@ class SkillSelect:
             self.selected_ability = button_number
             print(button_number)
 
+        def create_per_button_callbacks(button_number):
+            return lambda surf, shap: skill_button_hover_callback(surf, shap, button_number), lambda: skill_button_clicked_callback(button_number)
+
         ability_buttons = (self.__ability_0_title, self.__ability_1_title, self.__ability_2_title) # since these are properties, they act like fields but are actually functions
 
         for i, button_rect in enumerate(RECTANGLES.BATTLE_UI.SKILL_BUTTONS):
             skill_button = button.Button(button_rect, normal_icon=ability_buttons[i], hover_icon=ability_buttons[i]) #hopefully the button icons will change automatically because of the usage of properties in this way
-            skill_button.hover_callback = lambda surf, shap: skill_button_hover_callback(surf, shap, i)
+            skill_button.hover_callback, skill_button.click_callback = create_per_button_callbacks(i)
             skill_button.normal_callback = skill_button_normal_callback
-            skill_button.click_callback = lambda: skill_button_clicked_callback(i)
 
             self.skill_buttons.append(skill_button)
         for i,v in enumerate(self.skill_buttons):

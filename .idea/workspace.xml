@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f91c0ccf-832d-4eb2-ba0e-ce953caaec89" name="Default" comment="Cleaned up actualgame.py by moving redundant methods to respective classes">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/battle_menus/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/battle_menus/skillselect.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/menu_objects/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/menu_objects/button.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/menu_objects/menuobject.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/BNR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BNR.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="f91c0ccf-832d-4eb2-ba0e-ce953caaec89" name="Default" comment="almost working">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ability.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ability.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/actualgame.py" beforeDir="false" afterPath="$PROJECT_DIR$/actualgame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/COLOURS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/COLOURS.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/MENU.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/MENU.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/RECTANGLES.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/RECTANGLES.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/SETTINGS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/SETTINGS.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/constants/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/infoCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/infoCard.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib_cutscene/dialog_section.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/dialog_section.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/caster_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/caster_loader.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/enemyparty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/enemyparty.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/playerparty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/playerparty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/battle_menus/skillselect.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/battle_menus/skillselect.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,16 +18,16 @@
     <SUITE FILE_PATH="coverage/BNR$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1512867822291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BNR$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1512663659662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/BNR$caster.coverage" NAME="caster Coverage Results" MODIFIED="1510808388176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1578205436826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1578240677538" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BNR$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1512660900235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="true">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/actualgame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="736" column="48" selection-start-line="736" selection-start-column="48" selection-end-line="736" selection-end-column="48" />
+            <state relative-caret-position="12087">
+              <caret line="719" column="34" selection-start-line="719" selection-start-column="34" selection-end-line="719" selection-end-column="34" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -58,18 +38,29 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/caster.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51" />
+            <state relative-caret-position="1037">
+              <caret line="61" column="30" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/battle_menus/skillselect.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1003">
+              <caret line="110" column="100" selection-start-line="110" selection-start-column="100" selection-end-line="110" selection-end-column="100" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/battle_menus/skillselect.py">
+        <entry file="file://$PROJECT_DIR$/src/constants/RECTANGLES.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="83" column="72" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="697">
+              <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
             </state>
           </provider>
         </entry>
@@ -87,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/src/menu_objects/menuobject.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="170">
-              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+              <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
             </state>
           </provider>
         </entry>
@@ -95,8 +86,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/menu_objects/button.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            <state relative-caret-position="255">
+              <caret line="15" selection-start-line="15" selection-end-line="15" />
             </state>
           </provider>
         </entry>
@@ -151,7 +142,11 @@
       <find>draw(</find>
       <find>mb</find>
       <find>mb =</find>
+      <find>backing</find>
+      <find>backing =</find>
+      <find>casting</find>
       <find>casting(</find>
+      <find>attack</find>
     </findStrings>
     <replaceStrings>
       <replace>self.player_party</replace>
@@ -160,6 +155,11 @@
   <component name="Git.Settings">
     <option name="UPDATE_TYPE" value="MERGE" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
@@ -175,9 +175,10 @@
         <option value="$PROJECT_DIR$/src/menu_objects/menu_object.py" />
         <option value="$PROJECT_DIR$/src/menu_objects/menuobject.py" />
         <option value="$PROJECT_DIR$/src/playerparty.py" />
-        <option value="$PROJECT_DIR$/src/menu_objects/button.py" />
-        <option value="$PROJECT_DIR$/src/battle_menus/skillselect.py" />
         <option value="$PROJECT_DIR$/actualgame.py" />
+        <option value="$PROJECT_DIR$/src/menu_objects/button.py" />
+        <option value="$PROJECT_DIR$/src/constants/RECTANGLES.py" />
+        <option value="$PROJECT_DIR$/src/battle_menus/skillselect.py" />
       </list>
     </option>
   </component>
@@ -503,7 +504,8 @@
       <workItem from="1575966649729" duration="66000" />
       <workItem from="1575997088936" duration="22742000" />
       <workItem from="1576036219700" duration="5956000" />
-      <workItem from="1578190384554" duration="10313000" />
+      <workItem from="1578190384554" duration="13149000" />
+      <workItem from="1578240593928" duration="335000" />
     </task>
     <task id="LOCAL-00001" summary="smol bug when going past vivianne">
       <created>1512368917599</created>
@@ -568,11 +570,25 @@
       <option name="project" value="LOCAL" />
       <updated>1576020617471</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="working on a menu system for combat, menu system is very messy and non functional">
+      <created>1578205540876</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1578205540877</updated>
+    </task>
+    <task id="LOCAL-00011" summary="almost working">
+      <created>1578208251064</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1578208251064</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10313000" />
+    <option name="totallyTimeSpent" value="13484000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -587,15 +603,9 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
@@ -603,11 +613,17 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
-      <window_info anchor="right" id="SciView" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32936078" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32936078" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -656,77 +672,45 @@
     <MESSAGE value="Removed unused values,&#10;Added new system for enemy visual animations&#10;Added new system for player visual animations&#10;Too much to write &gt;.&lt;" />
     <MESSAGE value="Removed redundant variables&#10;Taunting works" />
     <MESSAGE value="Cleaned up actualgame.py by moving redundant methods to respective classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cleaned up actualgame.py by moving redundant methods to respective classes" />
+    <MESSAGE value="working on a menu system for combat, menu system is very messy and non functional" />
+    <MESSAGE value="almost working" />
+    <option name="LAST_COMMIT_MESSAGE" value="almost working" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1575849580907">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575849580907" />
-    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" timestamp="1575850227470">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1575850227470" />
-    <state x="375" y="113" key="CommitChangelistDialog2" timestamp="1575853702073">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="375" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1575853702073" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1575849124246">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1575849124246" />
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom" timestamp="1575859368164">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1575859368164" />
-    <state width="1877" height="281" key="GridCell.Tab.0.center" timestamp="1575859368164">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1575859368164" />
-    <state width="1877" height="281" key="GridCell.Tab.0.left" timestamp="1575859368163">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1575859368163" />
-    <state width="1877" height="281" key="GridCell.Tab.0.right" timestamp="1575859368164">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1575859368164" />
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1575851787376">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1575851787376" />
-    <state width="1877" height="348" key="GridCell.Tab.1.center" timestamp="1575851787376">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1575851787376" />
-    <state width="1877" height="348" key="GridCell.Tab.1.left" timestamp="1575851787376">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1575851787376" />
-    <state width="1877" height="348" key="GridCell.Tab.1.right" timestamp="1575851787376">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1575851787376" />
-    <state x="672" y="235" key="MultipleFileMergeDialog" timestamp="1575764640549">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="672" y="235" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575764640549" />
-    <state x="461" y="162" key="SettingsEditor" timestamp="1575763233950">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1575763233950" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1575852997175">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1575852997175" />
-    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1575764627141">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1575764627141" />
-    <state x="701" y="163" key="refactoring.ChangeSignatureDialog" timestamp="1575768413523">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="701" y="163" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1575768413523" />
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" />
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" />
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser" />
+    <state x="765" y="235" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" />
+    <state x="375" y="113" key="CommitChangelistDialog2" />
+    <state x="375" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" />
+    <state x="740" y="274" key="FileChooserDialogImpl" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom" />
+    <state width="1877" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center" />
+    <state width="1877" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left" />
+    <state width="1877" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right" />
+    <state width="1877" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom" />
+    <state width="1877" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center" />
+    <state width="1877" height="348" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left" />
+    <state width="1877" height="348" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right" />
+    <state width="1877" height="348" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" />
+    <state x="672" y="235" key="MultipleFileMergeDialog" />
+    <state x="672" y="235" key="MultipleFileMergeDialog/0.0.1920.1040@0.0.1920.1040" />
+    <state x="461" y="162" key="SettingsEditor" />
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" />
+    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" />
+    <state x="769" y="436" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" />
+    <state x="701" y="163" key="refactoring.ChangeSignatureDialog" />
+    <state x="701" y="163" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$bulk_edit.coverage" NAME="bulk_edit Coverage Results" MODIFIED="1576039288372" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datafiles/character_datafiles" />
@@ -769,10 +753,55 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_resolver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/actualgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="12087">
+          <caret line="719" column="34" selection-start-line="719" selection-start-column="34" selection-end-line="719" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="61" column="30" selection-start-line="61" selection-start-column="30" selection-end-line="61" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/RECTANGLES.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        <state relative-caret-position="697">
+          <caret line="41" column="52" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/playerparty.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu_objects/menuobject.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="12" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu_objects/button.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
@@ -786,58 +815,15 @@
     <entry file="file://$PROJECT_DIR$/src/constants/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_resolver.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="126" selection-start-line="126" selection-end-line="126" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/constants/SETTINGS.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu_objects/button.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/menu_objects/menuobject.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/playerparty.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/battle_menus/skillselect.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="83" column="72" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
+        <state relative-caret-position="1003">
+          <caret line="110" column="100" selection-start-line="110" selection-start-column="100" selection-end-line="110" selection-end-column="100" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/caster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/actualgame.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="736" column="48" selection-start-line="736" selection-start-column="48" selection-end-line="736" selection-end-column="48" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
