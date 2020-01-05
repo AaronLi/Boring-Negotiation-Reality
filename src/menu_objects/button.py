@@ -13,11 +13,11 @@ class Button(mo.MenuObject):
         if self.hover:
             if self.hover_icon is not None:
                 surface.blit(self.hover_icon, self.shape.topleft)
-                self.hover_callback(surface, self.shape)
+            self.hover_callback(surface, self.shape)
         else:
             if self.normal_icon is not None:
                 surface.blit(self.normal_icon, self.shape.topleft)
-                self.normal_callback(surface, self.shape)
+            self.normal_callback(surface, self.shape)
 
     def update(self, mx, my, mb, *args):
         self.hover = self.shape.collidepoint(mx, my)

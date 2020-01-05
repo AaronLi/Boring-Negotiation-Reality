@@ -39,6 +39,6 @@ class BATTLE_UI:
                       (Rect(__action_button_left_margin + (__action_button_width + __action_button_spacing) * 3, 690, __action_button_width, 57))]  # The buttons for all your possible options
     SKILL_BUTTONS = ACTION_BUTTONS[1:]  # The buttons for the skills when youre using a skill
 
-    BUTTON_BACKGROUND_FILL = Rect(248, 613, 702, 140)
+    BUTTON_BACKGROUND_FILL = Rect(248, 613, 752, 146)
     BACK_BUTTON_RECT = ACTION_BUTTONS[0]
     CONFIRM_RECT = ACTION_BUTTONS[1]

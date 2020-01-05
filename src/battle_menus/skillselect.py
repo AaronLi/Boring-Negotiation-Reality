@@ -4,6 +4,7 @@ from src.menu_objects import button
 from src.playerparty import PlayerParty
 from src.enemyparty import EnemyParty
 from src import ability
+from copy import deepcopy
 
 class SkillSelect:
     def __init__(self, player_party :PlayerParty, enemy_party :EnemyParty, backing, image_cacher):
@@ -36,6 +37,7 @@ class SkillSelect:
         self.abilitydesc = [[self.image_cacher.try_load("DESCS/" + ability.working_name + ".png") for ability in member.abilities]
                        for member in
                        self.player_party.members]
+        self.__create_skill_buttons()
 
     @property
     def __ability_0_title(self):
@@ -74,10 +76,9 @@ class SkillSelect:
         return self.abilitydesc[self.player_party.current_caster_index][2]
 
     def __create_back_button(self):
-        self.back_button = button.Button(RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT)
+        self.back_button = button.Button(RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, self.backing, self.backing)
 
-        def hover_callback(self, surface, shape):
-            print("hover")
+        def hover_callback(surface, shape):
             draw.rect(surface, COLOURS.BLACK, shape, 5)
 
         def back_button_callback():
@@ -89,34 +90,40 @@ class SkillSelect:
     def __create_skill_buttons(self):
         self.skill_buttons = []
 
-        def skill_button_hover_callback(_self, surface, shape, button_number):
+        def skill_button_hover_callback(surface, shape, button_number):
             draw.rect(surface, COLOURS.BLUE, shape, 5)
-            surface.blit(self.abilitydesc[self.player_party.current_caster_index][button_number], (320, 683))
+            surface.blit(self.abilitydesc[self.player_party.current_caster_index][button_number], (280, 615))
 
-        def skill_button_normal_callback(self, surface, shape):
+        def skill_button_normal_callback(surface, shape):
             draw.rect(surface, COLOURS.BLUE, shape, 2)
 
-        def skill_button_clicked_callback(_self, button_number):
+        def skill_button_clicked_callback(button_number):
             self.selected_ability = button_number
+            print(button_number)
 
-        ability_buttons = [self.__ability_0_title, self.__ability_1_title, self.__ability_2_title] # since these are properties, they act like fields but are actually functions
+        ability_buttons = (self.__ability_0_title, self.__ability_1_title, self.__ability_2_title) # since these are properties, they act like fields but are actually functions
 
         for i, button_rect in enumerate(RECTANGLES.BATTLE_UI.SKILL_BUTTONS):
             skill_button = button.Button(button_rect, normal_icon=ability_buttons[i], hover_icon=ability_buttons[i]) #hopefully the button icons will change automatically because of the usage of properties in this way
-            skill_button.hover_callback = lambda _slf, surf, shap: skill_button_hover_callback(_slf, surf, shap, i)
+            skill_button.hover_callback = lambda surf, shap: skill_button_hover_callback(surf, shap, i)
             skill_button.normal_callback = skill_button_normal_callback
-            skill_button.click_callback = lambda: skill_button_clicked_callback(None, i)
+            skill_button.click_callback = lambda: skill_button_clicked_callback(i)
 
             self.skill_buttons.append(skill_button)
+        for i,v in enumerate(self.skill_buttons):
+            v.click_callback()
+            print(v.click_callback)
 
     def draw(self, surface):
+        draw.rect(surface, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
+        draw.rect(surface, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
         self.back_button.draw(surface)
         for i, skill in enumerate(self.player_party.current_caster.abilities):
             self.skill_buttons[i].draw(surface)
 
             if self.selected_ability == i:
                 draw.rect(surface, COLOURS.WHITE, self.skill_buttons[i].shape, 5)
-                surface.blit(self.abilitydesc[self.player_party.current_caster_index][i], (320, 683))
+                surface.blit(self.abilitydesc[self.player_party.current_caster_index][i], (280, 615))
 
         if self.select_enemy:
             for enemyRect in RECTANGLES.BATTLE_UI.ENEMY_RECTS:
@@ -125,11 +132,9 @@ class SkillSelect:
             for allyRect in RECTANGLES.BATTLE_UI.PLAYER_RECTS:
                 draw.rect(surface, COLOURS.GREEN, allyRect, 3)
 
-        #draw.rect(surface, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
-        #draw.rect(surface, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
-        surface.blit(self.backing, (320, 620))
 
     def update(self, mx, my, mb, omb):  # Your skill function that draws and blits things getting ready for you skill selection
+        self.currentaction = MENU.COMBAT_MENU_MODES.SKILLS
         self.back_button.update(mx, my, mb)
         for i, skill in enumerate(self.player_party.current_caster.abilities):
             self.skill_buttons[i].update(mx, my, mb)
@@ -140,7 +145,7 @@ class SkillSelect:
                         if enemyRect.collidepoint(mx, my) and mb[0] and not omb[0]:
                             castResult = skill.cast(selectedEnemyIndex, self.player_party.current_caster,
                                                     self.player_party.members, self.enemy_party.members)
-                            currentaction = castResult.current_action
+                            self.currentaction = castResult.current_action
                             if castResult.success:
                                 framedelay = castResult.frame_delay
                                 self.player_party.current_caster.tired = True
@@ -152,7 +157,7 @@ class SkillSelect:
                         if allyRect.collidepoint(mx, my) and mb[0] and not omb[0]:
                             castResult = skill.cast(selectedAllyIndex, self.player_party.current_caster,
                                                     self.player_party.members, self.enemy_party.members)
-                            currentaction = castResult.current_action
+                            self.currentaction = castResult.current_action
                             if castResult.success:
                                 framedelay = castResult.frame_delay
                                 self.player_party.current_caster.tired = True

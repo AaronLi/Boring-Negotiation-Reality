@@ -716,7 +716,7 @@ def buttons():  # Pressing a button with a function attached calls the function
             draw.rect(screen, COLOURS.BLACK, b, 2)
             if b.collidepoint(mx, my):
                 draw.rect(screen, COLOURS.BLACK, b, 5)
-                if mb[0] and not + clicked:
+                if mb[0] and not omb[0]:
                     clicked = True
                     return v
     return currentaction
@@ -725,6 +725,7 @@ def buttons():  # Pressing a button with a function attached calls the function
 skill_select_menu = skillselect.SkillSelect(player_party, enemy_party, backing, image_cacher)
 
 def casting(action, caster):  # This comes from the button being pressed form before
+    global currentaction
     if action == MENU.COMBAT_MENU_MODES.ATTACK:
         caster = attack(caster)
     elif action == MENU.COMBAT_MENU_MODES.SWITCH:
@@ -734,7 +735,7 @@ def casting(action, caster):  # This comes from the button being pressed form be
     elif action == MENU.COMBAT_MENU_MODES.SKILLS:
         skill_select_menu.update(mx, my, mb, omb)
         skill_select_menu.draw(screen)
-        action = skill_select_menu.currentaction
+        currentaction = skill_select_menu.currentaction
     return caster
 
 
