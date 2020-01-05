@@ -1,5 +1,5 @@
 import pickle
-from constants.MENU import COMBAT_MENU_MODES
+from src.constants.MENU import COMBAT_MENU_MODES
 class AbilityType:
     HEALING = 'healing'
     DAMAGING = 'damaging'

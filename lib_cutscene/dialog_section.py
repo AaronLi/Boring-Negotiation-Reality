@@ -1,5 +1,5 @@
 from pygame import Surface, draw, SRCALPHA
-from constants import COLOURS, RECTANGLES, SETTINGS
+from src.constants import COLOURS, RECTANGLES, SETTINGS
 
 class DialogSection:
     def __init__(self) -> None:
@@ -39,10 +39,10 @@ class DialogSection:
             draw_surface.blit(rendered_text, (160, 610))
 
         if self.is_fading_in():
-            draw_surface.blit(self.get_faded_surface((0,0,0), 255 - self.fade_in_progress() * 255, SETTINGS.VIDEO.SCREEN_SIZE), (0,0))
+            draw_surface.blit(self.get_faded_surface((0,0,0), 255 - self.fade_in_progress() * 255, SETTINGS.VIDEO.SCREEN_SIZE), (0, 0))
         elif self.is_fading_out() or self.is_done():
             draw_surface.blit(
-                self.get_faded_surface((0, 0, 0), self.fade_out_progress() * 255, SETTINGS.VIDEO.SCREEN_SIZE), (0,0))
+                self.get_faded_surface((0, 0, 0), self.fade_out_progress() * 255, SETTINGS.VIDEO.SCREEN_SIZE), (0, 0))
 
     def is_fading_in(self):
         return 0 <= self.fade_in_progress() < 1

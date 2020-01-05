@@ -1,6 +1,6 @@
-from constants import RECTANGLES
+from src.constants import RECTANGLES
 import math_tools
-from pygame import draw
+
 
 class EnemyParty:
     def __init__(self, enemies = None) -> None:

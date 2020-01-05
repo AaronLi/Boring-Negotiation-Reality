@@ -1,11 +1,11 @@
 from pygame import *
 from tkinter import *
 from random import *
-import enemy, ability
-from src import image_cacher, caster_loader, playerparty, code_system, enemyparty, status_effect
+import enemy
+from src import image_cacher, caster_loader, playerparty, code_system, enemyparty, status_effect, ability
+from src.battle_menus import skillselect
 from src.enemy_animation_handler import EnemyVisualHandler
-from constants import *
-import math_tools
+from src.constants import *
 from lib_cutscene import cutscene
 
 root = Tk()
@@ -13,9 +13,9 @@ root.withdraw()
 init()
 
 mb = mouse.get_pressed()
+omb = mb
 mx, my = mouse.get_pos()
 playerturn = True  # Global variable dictating whether its the player's turn or the enemies turn
-selection = 0  # This is the global variable used for when we're using skills inside the battle function
 
 screen = display.set_mode(SETTINGS.VIDEO.SCREEN_SIZE, SRCALPHA)  # making appropriate window
 
@@ -137,14 +137,15 @@ deathScreen = image_cacher.try_load("A BNR/deathScreen.png")
 
 running = True  # boolean variable
 
+selected_ability = None
 direction = 0
 scrollMode = True
-tempBirbs = image_cacher.try_load('birbs.png').convert()  # TODO: remove when I have good art
+tempBirbs = image_cacher.try_load('birbs.png').convert_alpha()  # TODO: remove when I have good art
 
 def charsel(
         clicked):  # This is the character selection function for choosing which characters will be in your party and you'll play the game with
     # TODO: remove magic numbers
-    global focusedCard, skilllist, abilitybutton, abilitydesc, direction, scrollMode  # hee is index of the character that is currently selected in all of the lists
+    global focusedCard, abilitybutton, abilitydesc, direction, scrollMode  # hee is index of the character that is currently selected in all of the lists
     mx, my = mouse.get_pos()
     mb = mouse.get_pressed()
     keys = key.get_pressed()
@@ -243,16 +244,11 @@ def charsel(
             if Rect(690, 675, 540, 50).collidepoint(mx, my):
                 draw.rect(screen, (0, 200, 0), (690, 675, 540, 50))
                 if (mb[0] and not clicked):
+                    skill_select_menu.update_ability_labels()
                     for i in infoCards:
-                        if i.characterName.lower() == player_party.members[0].name.lower():
+                        if player_party.party_leader.info_card is i:
                             pl = i.portrait
                             plprof = i.profile
-                    skilllist = [player_party.members[0].abilities, player_party.members[1].abilities, player_party.members[
-                        2].abilities]  # Appending the necessary values and images for our abilities/skills
-                    abilitybutton = [[image_cacher.try_load("ATTACKS/" + i.working_name + ".png") for i in skilllist[j]] for j in
-                                     range(3)]
-                    abilitydesc = [[image_cacher.try_load("DESCS/" + i.working_name + ".png") for i in skilllist[j]] for j in
-                                   range(3)]
                     clicked = True
                     cutscene.load_from_file('lib_cutscene/Cutscene1.json', plprof, image_cacher).show(screen)
                     if battle(background, battle(background, battle(background, 0))) == -1:
@@ -465,7 +461,7 @@ def slay(target, caster, casters, enemies):
 
 
 def revoke(target, caster, casters, enemies):
-    enemies[target].revoked = True  # TODO: make this a property of Enemy
+    enemies[target].revoked = True
 
 
 def healmore(target, caster, casters, enemies):
@@ -477,7 +473,6 @@ def dragonflame(target, caster, casters, enemies):
     enemies[target].add_status_effect(status_effect.DOTEffect("Dragonburn", 3, 300))
 
 def revive(target, caster, casters, enemies):
-    # TODO: figure out how to do revive
     if not casters[target].is_alive():
         casters[target].health = casters[target].max_health // 2
 
@@ -630,7 +625,7 @@ def UI():  # This is the UI or health bars that need to be blitted
 
 
 def battle(area, battlenum):  # The main battle function
-    global currentaction, mx, my, mb, clicked, playerturn, framedelay, currentlyCasting, healing, enemieshealths, beforehealth, beforehealthtarget
+    global currentaction, mx, my, mb, omb, clicked, playerturn, framedelay, currentlyCasting, beforehealthtarget
     if battlenum == -1:
         return -1
     enemy_party.members = enemyrotations[battlenum]
@@ -700,6 +695,7 @@ def battle(area, battlenum):  # The main battle function
             drawSpeechBubble(speechBubbleX, speechBubbleY, speechBubbleText)
         display.flip()
         clockity.tick(60)
+        omb = mb
     return battlenum
 
 
@@ -726,6 +722,8 @@ def buttons():  # Pressing a button with a function attached calls the function
     return currentaction
 
 
+skill_select_menu = skillselect.SkillSelect(player_party, enemy_party, backing, image_cacher)
+
 def casting(action, caster):  # This comes from the button being pressed form before
     if action == MENU.COMBAT_MENU_MODES.ATTACK:
         caster = attack(caster)
@@ -734,55 +732,11 @@ def casting(action, caster):  # This comes from the button being pressed form be
     elif action == MENU.COMBAT_MENU_MODES.DEFEND:
         caster = defend(caster)
     elif action == MENU.COMBAT_MENU_MODES.SKILLS:
-        caster = skills(caster)
+        skill_select_menu.update(mx, my, mb, omb)
+        skill_select_menu.draw(screen)
+        action = skill_select_menu.currentaction
     return caster
 
-
-def skills(caster):  # Your skill function that draws and blits things getting ready for you skill selection
-    global currentaction, clicked, selection, framedelay
-    draw.rect(screen, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
-    draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
-    screen.blit(backing, (320, 620))
-    if RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT.collidepoint(mx, my):
-        draw.rect(screen, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 5)
-        if mb[0] and not clicked:
-            clicked = True
-            currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
-            return caster
-    for button, skill in zip(RECTANGLES.BATTLE_UI.SKILL_BUTTONS, skilllist[caster]):
-        draw.rect(screen, COLOURS.BLUE, button, 2)
-        screen.blit(abilitybutton[caster][RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)],
-                    (660, 620 + 47 * RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)))
-        if selection == button:
-            draw.rect(screen, COLOURS.WHITE, button, 5)
-            screen.blit(abilitydesc[caster][RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)], (320, 683))
-            if skill.ability_type == ability.AbilityType.DAMAGING:
-                for selectedEnemyIndex, enemyRect in enumerate(RECTANGLES.BATTLE_UI.ENEMY_RECTS):
-                    draw.rect(screen, COLOURS.RED, RECTANGLES.BATTLE_UI.ENEMY_RECTS[selectedEnemyIndex], 3)
-                    if enemyRect.collidepoint(mx, my) and mb[0] and not clicked:
-                        castResult = skill.cast(selectedEnemyIndex, player_party.current_caster, player_party.members, enemy_party.members)
-                        currentaction = castResult.current_action
-                        if castResult.success:
-                            framedelay = castResult.frame_delay
-                            player_party.members[caster].tired = True
-                            player_party.current_caster.spell_animation.update()
-            elif skill.ability_type == ability.AbilityType.HEALING:
-                for selectedAllyIndex, allyRect in enumerate(RECTANGLES.BATTLE_UI.PLAYER_RECTS):
-                    draw.rect(screen, COLOURS.GREEN, RECTANGLES.BATTLE_UI.PLAYER_RECTS[selectedAllyIndex], 3)
-                    if allyRect.collidepoint(mx, my) and mb[0] and not clicked:
-                        castResult = skill.cast(selectedAllyIndex, player_party.current_caster, player_party.members, enemy_party.members)
-                        currentaction = castResult.current_action
-                        if castResult.success:
-                            framedelay = castResult.frame_delay
-                            player_party.members[caster].tired = True
-                            player_party.current_caster.spell_animation.update()
-        if button.collidepoint(mx, my):
-            draw.rect(screen, COLOURS.BLUE, button, 5)
-            screen.blit(abilitydesc[caster][RECTANGLES.BATTLE_UI.SKILL_BUTTONS.index(button)], (320, 683))
-            if mb[0] and not clicked:
-                selection = button
-                clicked = True
-    return caster
 
 
 def attack(caster):  # The attacking function for your character selecting an enemy and dealing their damage

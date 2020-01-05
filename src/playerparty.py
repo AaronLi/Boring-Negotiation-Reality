@@ -7,6 +7,10 @@ class PlayerParty:
     def current_caster(self):
         return self.members[self.current_caster_index]
 
+    @property
+    def party_leader(self):
+        return self.members[0]
+
     def find_next_caster(self):
         assert self.can_attack
         active_casters = [i for i,member in enumerate(self.members) if member.can_attack()]

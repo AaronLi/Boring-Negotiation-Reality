@@ -2,140 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f91c0ccf-832d-4eb2-ba0e-ce953caaec89" name="Default" comment="Cleaned up actualgame.py by moving redundant methods to respective classes">
-      <change afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/bulk_edit.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/battle_menus/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/battle_menus/skillselect.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/menu_objects/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/menu_objects/button.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/menu_objects/menuobject.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BNR.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/BNR.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/CODESYS/code txt2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/STATSBOX.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/aaron.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/aliza standd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/arronback.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/Thumbs.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/aliza portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/emily portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/erik portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/jan portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/julie portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/linh portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/minya portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/natalie portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/ogu portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/priyonto portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/supreet portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/viv portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/battle/zak portrait.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/charArrow1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/desel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/deselect.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/kimcave.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/kimm.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/landscape.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/landscapee.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/alizanom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/charseltitle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/emilynom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/eriknom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/jannom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/julienom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/linhnom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/minyanom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/natnom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/oguzhannom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/printernom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/supreetnom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/vivnom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/vladnom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/nom/zacnom.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/jan 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/jan 3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/jan 4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/jan 5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/minya 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/minya 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/minya 3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/nat 5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/other/playarrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/play arrow.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/portal.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/portal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/sel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/aliza stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/aliza standd.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/desktop.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/emily stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/erik stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/jan stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/julie stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/linh stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/minya stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/nat stand.png" beforeDir="false" afterPath="$PROJECT_DIR$/game sprites/natalie stand.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/ogu stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/priyonto stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/supreet stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/viv stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stands/zak stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/alizastats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/emilystats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/erikstats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/janstats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/juliestats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/linhstats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/minyastats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/natstats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/ogustats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/priyontostats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/supstats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/vivstats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/stats/zakstats.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/vlad stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/vladhead.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/A BNR/zak stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokemon GB Japan HR.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokemon GB Japan KT.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pokemon Unown GB.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ability.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/ability.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/actualgame.py" beforeDir="false" afterPath="$PROJECT_DIR$/actualgame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/battle.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/battlesave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/buttonsave.p" beforeDir="false" afterPath="$PROJECT_DIR$/dependency_checker.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/bulk_edit.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/wa2igi_stats.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/wa3igi_stats.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/character_datafiles/waluigi_stats.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/kim_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/kim_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/vlad_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/enemy_visual_datafiles/vlad_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/aliza_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/aliza_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/bulk_add.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/emily_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/emily_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/erik_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/erik_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/jan_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/jan_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/julie_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/julie_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/linh_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/linh_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/minya_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/minya_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/natalie_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/natalie_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/ogu_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/ogu_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/priyonto_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/priyonto_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/supreet_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/supreet_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/viv_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/viv_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/waluigi_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/waluigi_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datafiles/visual_datafiles/zak_visual.json" beforeDir="false" afterPath="$PROJECT_DIR$/datafiles/visual_datafiles/zak_visual.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/descsave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game sprites/nat stand.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/healthsave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/help.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib_cutscene/Cutscene3.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/Cutscene3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib_cutscene/Cutscene4.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/Cutscene4.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib_cutscene/Cutscene5.json" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/Cutscene5.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manasave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/numssave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/partysave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scenesave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/selectsave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/skillsave.p" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/caster_animation_handler.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/caster_animation_handler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/COLOURS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/COLOURS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/MENU.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/MENU.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/RECTANGLES.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/RECTANGLES.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/SETTINGS.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/SETTINGS.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/infoCard.py" beforeDir="false" afterPath="$PROJECT_DIR$/infoCard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib_cutscene/dialog_section.py" beforeDir="false" afterPath="$PROJECT_DIR$/lib_cutscene/dialog_section.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/caster_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/caster_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/enemyparty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/enemyparty.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/playerparty.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/playerparty.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -144,13 +32,95 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/BNR$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1512660900235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/BNR$infoCard.coverage" NAME="infoCard Coverage Results" MODIFIED="1512352608128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BNR$scratch_2.coverage" NAME="scratch_2 Coverage Results" MODIFIED="1512745574870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/BNR$ability.coverage" NAME="ability Coverage Results" MODIFIED="1510767853705" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/BNR$caster.coverage" NAME="caster Coverage Results" MODIFIED="1510808388176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BNR$infoCard.coverage" NAME="infoCard Coverage Results" MODIFIED="1512352608128" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BNR$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1512867822291" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/BNR$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1512663659662" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/BNR$caster.coverage" NAME="caster Coverage Results" MODIFIED="1510808388176" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1578205436826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/BNR$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1512660900235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/actualgame.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="736" column="48" selection-start-line="736" selection-start-column="48" selection-end-line="736" selection-end-column="48" />
+              <folding>
+                <element signature="e#0#20#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/caster.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-51" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/battle_menus/skillselect.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="212">
+              <caret line="83" column="72" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/playerparty.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/menu_objects/menuobject.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/menu_objects/button.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="163">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/infoCard.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constants/__init__.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/constants/SETTINGS.py">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -159,13 +129,56 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>battle</find>
+      <find>UI()</find>
+      <find>skilllist =</find>
+      <find>skilllist</find>
+      <find>skills(</find>
+      <find>selection =</find>
+      <find>selection</find>
+      <find>selected_ability</find>
+      <find>player_party</find>
+      <find>abilitydesc</find>
+      <find>caster =</find>
+      <find>mx, my =</find>
+      <find>skillSe</find>
+      <find>caster</find>
+      <find>scene =</find>
+      <find>charsel</find>
+      <find>chars</find>
+      <find>draw(</find>
+      <find>mb</find>
+      <find>mb =</find>
+      <find>casting(</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>self.player_party</replace>
+    </replaceStrings>
+  </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GradleLocalSettings">
     <option name="externalProjectsViewState">
       <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/__init__.py" />
+        <option value="$PROJECT_DIR$/src/ability.py" />
+        <option value="$PROJECT_DIR$/infoCard.py" />
+        <option value="$PROJECT_DIR$/src/menu_objects/menu_object.py" />
+        <option value="$PROJECT_DIR$/src/menu_objects/menuobject.py" />
+        <option value="$PROJECT_DIR$/src/playerparty.py" />
+        <option value="$PROJECT_DIR$/src/menu_objects/button.py" />
+        <option value="$PROJECT_DIR$/src/battle_menus/skillselect.py" />
+        <option value="$PROJECT_DIR$/actualgame.py" />
+      </list>
     </option>
   </component>
   <component name="JsFlowSettings">
@@ -174,6 +187,12 @@
     <annotation-enable>false</annotation-enable>
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="459" />
+    <option name="y" value="87" />
+    <option name="width" value="1400" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectId" id="1UfzTkcLZ2LETeQtSrSpJGct68m" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -250,6 +269,48 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Boring-Negotiation-Reality" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Boring-Negotiation-Reality" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Boring-Negotiation-Reality" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Boring-Negotiation-Reality" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Boring-Negotiation-Reality" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Boring-Negotiation-Reality" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="battle_menus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Boring-Negotiation-Reality" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Boring-Negotiation-Reality" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="constants" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Boring-Negotiation-Reality" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Boring-Negotiation-Reality" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="menu_objects" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -267,18 +328,19 @@
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.statistic.project.settings" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\enemy_visual_datafiles" />
+      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\character_datafiles" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\src" />
       <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\visual_datafiles" />
       <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles" />
       <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality" />
       <recent name="D:\BNR" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\enemy_visual_datafiles" />
-      <recent name="C:\Users\dumpl\PycharmProjects\Boring-Negotiation-Reality\datafiles\character_datafiles" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -441,6 +503,7 @@
       <workItem from="1575966649729" duration="66000" />
       <workItem from="1575997088936" duration="22742000" />
       <workItem from="1576036219700" duration="5956000" />
+      <workItem from="1578190384554" duration="10313000" />
     </task>
     <task id="LOCAL-00001" summary="smol bug when going past vivianne">
       <created>1512368917599</created>
@@ -508,6 +571,9 @@
     <option name="localTasksCounter" value="10" />
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="10313000" />
+  </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
@@ -516,6 +582,33 @@
       <are-packages-shown value="true" />
       <is-autoscroll-to-source value="true" />
     </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32936078" />
+      <window_info anchor="right" id="SciView" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -526,15 +619,34 @@
         <entry key="MAIN">
           <value>
             <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
               <option name="COLUMN_ORDER" />
             </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list />
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="smol bug when going past vivianne" />
     <MESSAGE value="green button should be green when hovered over" />
     <MESSAGE value="vivianne causing problems again -_-" />
@@ -625,6 +737,111 @@
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$bulk_add.coverage" NAME="bulk_add Coverage Results" MODIFIED="1575858933978" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/datafiles/visual_datafiles" />
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$scratch_1.coverage" NAME="scratch_1 Coverage Results" MODIFIED="1575849548498" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Boring_Negotiation_Reality$actualgame.coverage" NAME="actualgame Coverage Results" MODIFIED="1576042180328" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/animation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DESCS/flameshell.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="188" selection-start-column="188" selection-end-column="188" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/MENU.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/COLOURS.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ability.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-228">
+          <caret line="1" column="23" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/RECTANGLES.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/infoCard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/__init__.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydevd_bundle/pydevd_resolver.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="126" selection-start-line="126" selection-end-line="126" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants/SETTINGS.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu_objects/button.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/menu_objects/menuobject.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="12" lean-forward="true" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/playerparty.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/battle_menus/skillselect.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="83" column="72" selection-start-line="83" selection-start-column="72" selection-end-line="83" selection-end-column="72" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/caster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/actualgame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="736" column="48" selection-start-line="736" selection-start-column="48" selection-end-line="736" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
   <component name="masterDetails">
     <states>

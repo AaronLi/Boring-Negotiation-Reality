@@ -1,4 +1,5 @@
-import caster, ability, os
+import caster, os
+from src import ability
 import json, pickle, glob
 import src.caster_animation_handler as caster_animation_handler
 

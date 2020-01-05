@@ -1,5 +1,5 @@
 from pygame import *
-from constants.SETTINGS import STATS
+from src.constants.SETTINGS import STATS
 font.init()
 cardFont = font.Font("basis33.ttf",45)
 statFont = font.Font("basis33.ttf",30)
