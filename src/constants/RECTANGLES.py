@@ -23,9 +23,11 @@ class CUTSCENES:
 
 class BATTLE_UI:
 
-    __action_button_width = 190
-    __action_button_left_margin = 280
-    __action_button_spacing = 10
+    __action_button_width = 195
+    __action_button_left_margin = 253
+    __action_button_top_margin = 698
+    __action_button_spacing = 8
+    __action_button_height = 42
 
     ENEMY_RECTS = [Rect(1080, 540, 160, 180), Rect(1050, 300, 160, 180),
                   Rect(1020, 60, 160, 180)]  # The enemies rectangles to be pressed when attacking or using skills
@@ -33,12 +35,14 @@ class BATTLE_UI:
     PLAYER_RECTS = [Rect(325, 20, 120, 180), Rect(310, 210, 120, 180),
                    Rect(295, 400, 120, 180)]  # Ally rectangles for when heals are happening
 
-    ACTION_BUTTONS = [(Rect(__action_button_left_margin, 690, __action_button_width, 57)),
-                      (Rect(__action_button_left_margin + __action_button_width + __action_button_spacing, 690, __action_button_width, 57)),
-                      (Rect(__action_button_left_margin + (__action_button_width + __action_button_spacing) * 2, 690, __action_button_width, 57)),
-                      (Rect(__action_button_left_margin + (__action_button_width + __action_button_spacing) * 3, 690, __action_button_width, 57))]  # The buttons for all your possible options
+    ACTION_BUTTONS = [(Rect(__action_button_left_margin, __action_button_top_margin, __action_button_width, __action_button_height)),
+                      (Rect(__action_button_left_margin + __action_button_width + __action_button_spacing, __action_button_top_margin, __action_button_width, __action_button_height)),
+                      (Rect(__action_button_left_margin + (__action_button_width + __action_button_spacing) * 2, __action_button_top_margin, __action_button_width, __action_button_height)),
+                      (Rect(__action_button_left_margin + (__action_button_width + __action_button_spacing) * 3, __action_button_top_margin, __action_button_width, __action_button_height))]  # The buttons for all your possible options
     SKILL_BUTTONS = ACTION_BUTTONS[1:]  # The buttons for the skills when youre using a skill
 
-    BUTTON_BACKGROUND_FILL = Rect(248, 613, 752, 146)
+    ABILITY_DESCRIPTION = (252, 622)
+
+    BUTTON_BACKGROUND_FILL = Rect(__action_button_left_margin-__action_button_spacing, 611, __action_button_width*4+__action_button_spacing*5, 144)
     BACK_BUTTON_RECT = ACTION_BUTTONS[0]
     CONFIRM_RECT = ACTION_BUTTONS[1]

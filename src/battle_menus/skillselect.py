@@ -92,7 +92,7 @@ class SkillSelect:
 
         def skill_button_hover_callback(surface, shape, button_number):
             draw.rect(surface, COLOURS.BLUE, shape, 5)
-            surface.blit(self.abilitydesc[self.player_party.current_caster_index][button_number], (280, 615))
+            surface.blit(self.abilitydesc[self.player_party.current_caster_index][button_number], RECTANGLES.BATTLE_UI.ABILITY_DESCRIPTION)
 
         def skill_button_normal_callback(surface, shape):
             draw.rect(surface, COLOURS.BLUE, shape, 2)
@@ -104,10 +104,9 @@ class SkillSelect:
         def create_per_button_callbacks(button_number):
             return lambda surf, shap: skill_button_hover_callback(surf, shap, button_number), lambda: skill_button_clicked_callback(button_number)
 
-        ability_buttons = (self.__ability_0_title, self.__ability_1_title, self.__ability_2_title) # since these are properties, they act like fields but are actually functions
 
         for i, button_rect in enumerate(RECTANGLES.BATTLE_UI.SKILL_BUTTONS):
-            skill_button = button.Button(button_rect, normal_icon=ability_buttons[i], hover_icon=ability_buttons[i]) #hopefully the button icons will change automatically because of the usage of properties in this way
+            skill_button = button.Button(button_rect) #hopefully the button icons will change automatically because of the usage of properties in this way
             skill_button.hover_callback, skill_button.click_callback = create_per_button_callbacks(i)
             skill_button.normal_callback = skill_button_normal_callback
 
@@ -120,12 +119,14 @@ class SkillSelect:
         draw.rect(surface, COLOURS.BUTTONBACK, RECTANGLES.BATTLE_UI.BUTTON_BACKGROUND_FILL, 0)
         draw.rect(surface, COLOURS.BLACK, RECTANGLES.BATTLE_UI.BACK_BUTTON_RECT, 2)
         self.back_button.draw(surface)
+
         for i, skill in enumerate(self.player_party.current_caster.abilities):
+            self.skill_buttons[i].normal_icon = self.skill_buttons[i].hover_icon = self.abilitybutton[self.player_party.current_caster_index][i]
             self.skill_buttons[i].draw(surface)
 
             if self.selected_ability == i:
                 draw.rect(surface, COLOURS.WHITE, self.skill_buttons[i].shape, 5)
-                surface.blit(self.abilitydesc[self.player_party.current_caster_index][i], (280, 615))
+                surface.blit(self.abilitydesc[self.player_party.current_caster_index][i], RECTANGLES.BATTLE_UI.ABILITY_DESCRIPTION)
 
         if self.select_enemy:
             for enemyRect in RECTANGLES.BATTLE_UI.ENEMY_RECTS:

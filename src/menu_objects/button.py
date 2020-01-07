@@ -1,4 +1,5 @@
 import src.menu_objects.menuobject as mo
+from pygame import transform
 class Button(mo.MenuObject):
     def __init__(self, rect, normal_icon = None, hover_icon = None) -> None:
         super().__init__(rect)
@@ -12,11 +13,13 @@ class Button(mo.MenuObject):
 
         if self.hover:
             if self.hover_icon is not None:
-                surface.blit(self.hover_icon, self.shape.topleft)
+                reshaped_hover = transform.smoothscale(self.hover_icon, self.shape.size)
+                surface.blit(reshaped_hover, self.shape.topleft)
             self.hover_callback(surface, self.shape)
         else:
             if self.normal_icon is not None:
-                surface.blit(self.normal_icon, self.shape.topleft)
+                reshaped_normal = transform.smoothscale(self.hover_icon, self.shape.size)
+                surface.blit(reshaped_normal, self.shape.topleft)
             self.normal_callback(surface, self.shape)
 
     def update(self, mx, my, mb, *args):
