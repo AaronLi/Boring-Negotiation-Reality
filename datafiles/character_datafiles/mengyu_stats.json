@@ -1,0 +1,34 @@
+{
+ "name": "Mengyu",
+ "health": 2600,
+ "mana": 2000,
+ "attack_damage": 700,
+ "caster_class": "assassin",
+ "abilities": [
+  {
+   "name": "ushanka_ho",
+   "mana_cost": 700,
+   "ability_type": "damaging",
+   "influence_amount": 1000,
+   "callback": "\u0080\u0003N."
+  },
+  {
+   "name": "quick_toss",
+   "mana_cost": 700,
+   "ability_type": "damaging",
+   "influence_amount": 500,
+   "callback": "\u0080\u0003c__main__\nquick_toss\nq\u0000."
+  },
+  {
+   "name": "let_the_dog_out",
+   "mana_cost": 1200,
+   "ability_type": "healing",
+   "influence_amount": 500,
+   "callback": "\u0080\u0003N.",
+   "note": "Mengyu releases Dennis and heals herself. Dennis will buff all her other abilities and change how her character looks"
+  }
+ ],
+ "special_stats": {},
+ "visual_data": "datafiles/visual_datafiles/mengyu_visual.json",
+ "story": "Short.\n Very smol.\n joined by Dennis."
+}

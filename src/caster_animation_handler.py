@@ -1,5 +1,6 @@
-import src.image_cacher, json, pygame.transform
+import src.image_cacher, json, pygame.transform as transform
 from src.visual_handler import VisualHandler
+from math_tools import resize_to_width
 
 
 class CasterVisualHandler(VisualHandler):
@@ -29,10 +30,16 @@ class CasterVisualHandler(VisualHandler):
             self.attack_animation = image_cacher.load_animation(animations_info['attack'], self.game_clock)
             self.spell_animation = image_cacher.load_animation(animations_info['spell'], self.game_clock)
 
+            for animation_set in (self.attack_animation, self.spell_animation):
+                frames = animation_set.sprites
+                resized_frames = [resize_to_width(frame, 170) for frame in frames]
+
+                animation_set.sprites = resized_frames
+
             self.portrait = image_cacher.try_load(data['portrait'])
             self.dead_portrait = image_cacher.try_load(data['dead_portrait'])
-            self.profile = pygame.transform.smoothscale(self.portrait, (100, 100))
-            self.dead = image_cacher.try_load(data['dead'])
-            self.stance = image_cacher.try_load(data['idle'])
-            self.hurt = image_cacher.try_load(data['hurt'])
+            self.profile = transform.smoothscale(self.portrait, (100, 100))
+            self.dead = resize_to_width(image_cacher.try_load(data['dead']), 170)
+            self.stance = resize_to_width(image_cacher.try_load(data['idle']), 170)
+            self.hurt = resize_to_width(image_cacher.try_load(data['hurt']), 170)
         return self

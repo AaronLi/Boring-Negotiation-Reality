@@ -472,24 +472,13 @@ def healmore(target, caster, casters, enemies):
 def dragonflame(target, caster, casters, enemies):
     enemies[target].add_status_effect(status_effect.DOTEffect("Dragonburn", 3, 300))
 
+def quick_toss(target, caster, casters, enemies):
+    enemies[target].add_status_effect(status_effect.DOTEffect("Clinging Dog", 3, 400))
+
+
 def revive(target, caster, casters, enemies):
     if not casters[target].is_alive():
         casters[target].health = casters[target].max_health // 2
-
-
-def flameshell(target, caster, casters, enemies):
-    global beforehealthtarget, currentaction, framedelay, beforehealth
-    beforehealthtarget = enemies[target].health  # TODO: flameshell deals 200-400 damage to attacking enemies and lasts 2-3 turns
-    beforehealth = player_party.current_caster.health
-    player_party.current_caster.tired = False
-    currentaction = MENU.COMBAT_MENU_MODES.MAIN_COMBAT_MENU
-
-
-def firestorm(target, caster, casters, enemies):
-    for i in range(3):
-        enemies[i].damage(1000, caster)
-    if randint(0, 5) == 0:
-        caster.damage(700)
 
 
 def taunt(target, caster, casters, enemies):

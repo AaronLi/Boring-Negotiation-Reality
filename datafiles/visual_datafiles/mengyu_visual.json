@@ -1,0 +1,36 @@
+{
+ "animations": {
+  "attack": {
+   "sprite_frames": [
+    "game sprites/mengyu.png"
+   ],
+   "animation_duration": 0.4
+  },
+  "spell": {
+   "sprite_frames": [
+    "game sprites/mengyu.png"
+   ],
+   "animation_duration": 0.5
+  },
+  "defend": {
+   "sprite_frames": [
+    "shield2.png",
+    "shield1.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield0.png",
+    "shield1.png",
+    "shield2.png"
+   ],
+   "animation_duration": 0.5
+  }
+ },
+ "portrait": "game sprites/battle portraits/mengyu portrait.png",
+ "dead": "game sprites/mengyu ded.png",
+ "hurt": "game sprites/mengyu.png",
+ "idle": "game sprites/mengyu.png",
+ "name": "mengyu",
+ "dead_portrait": "game sprites/battle portraits/mengyu portraitded.png"
+}
