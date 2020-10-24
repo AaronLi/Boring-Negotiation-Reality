@@ -1,4 +1,5 @@
-import caster, ability, os
+import os
+from src import caster, ability
 import json, pickle, glob
 import src.caster_animation_handler as caster_animation_handler
 
@@ -20,7 +21,7 @@ class CastersLoader:
                 ability_info = caster_info['abilities']
                 abilities = list(map(self.load_ability, ability_info))
 
-                visual_data = caster_animation_handler.CasterVisualHandler(game_clock).load_from_file(caster_info['visual_data'], image_cacher)
+                visual_data = caster_animation_handler.CasterVisualHandler().load_from_file(caster_info['visual_data'], image_cacher)
 
                 assert len(abilities) == 3
 

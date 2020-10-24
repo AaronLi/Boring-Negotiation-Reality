@@ -1,8 +1,8 @@
 from pygame import *
 from constants.SETTINGS import STATS
 font.init()
-cardFont = font.Font("basis33.ttf",45)
-statFont = font.Font("basis33.ttf",30)
+cardFont = font.Font("basis33.ttf", 45)
+statFont = font.Font("basis33.ttf", 30)
 barFont = font.Font('basis33.ttf', 25)
 storyFont = font.Font('basis33.ttf', 22)
 class InfoCard():

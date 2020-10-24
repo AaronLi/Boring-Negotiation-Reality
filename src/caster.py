@@ -1,4 +1,4 @@
-import infoCard
+from src import infoCard
 
 
 class Caster:

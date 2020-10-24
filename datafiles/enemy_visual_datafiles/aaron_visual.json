@@ -4,5 +4,5 @@
  "hurt": "game sprites/aaronow.png",
  "idle": "game sprites/aaron.png",
  "attack": "game sprites/aaron1.png",
- "attack_effect": "dumpling.png"
+ "attack_effect": "datafiles/enemy_attack_datafiles/aaron_attack.json"
 }

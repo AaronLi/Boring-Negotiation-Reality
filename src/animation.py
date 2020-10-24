@@ -1,17 +1,24 @@
 from pygame import *
+
+from constants import SETTINGS
+
+
 class Animation():
-    def __init__(self, sprites, totalDuration, gameClockSpeed):
+    def __init__(self, sprites, totalDuration):
         self.sprites = sprites+[sprites[-1]]
         self.sprite_paths = sprites
         self.duration = totalDuration
         secondsPerSprite = totalDuration/len(sprites)
-        self.framesPerSprite = int(gameClockSpeed*secondsPerSprite)
+        self.framesPerSprite = int(SETTINGS.VIDEO.FRAME_RATE*secondsPerSprite)
         self.numFramesPassed = 0
     def update(self):
         self.numFramesPassed+=1
+    @property
+    def current_frame(self):
+        return self.sprites[self.numFramesPassed//self.framesPerSprite]
     def draw(self, surface, x, y, w=None, h=None):
         if (self.numFramesPassed//self.framesPerSprite) < len(self.sprites):
-            spriteToDraw = self.sprites[self.numFramesPassed//self.framesPerSprite]
+            spriteToDraw = self.current_frame
             scaledSpriteToDraw = transform.scale(spriteToDraw, (spriteToDraw.get_width() if w==None else w, spriteToDraw.get_height() if h==None else h))
             surface.blit(scaledSpriteToDraw, (x, y))
     def isFinishedRunning(self):
@@ -20,6 +27,9 @@ class Animation():
         self.numFramesPassed = 0
     def isRunning(self):
         return 0<self.numFramesPassed<len(self.sprites)*self.framesPerSprite
+
+    def get_progress(self):
+        return self.numFramesPassed / (self.framesPerSprite * len(self.sprites))
 
     def get_clone(self):
         new_animation = Animation(self.sprite_paths, self.duration, 0)
@@ -34,5 +44,5 @@ class Animation():
         }
 
     @staticmethod
-    def loadFromFile(filename): #TODO: load animations from a json file
+    def loadFromFile(filename, image_cache): #TODO: load animations from a json file
         pass

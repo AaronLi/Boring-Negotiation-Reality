@@ -1,0 +1,1 @@
+POSITION_LABELS = ('low', 'medium', 'high')

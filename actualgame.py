@@ -1,11 +1,11 @@
+import collections
+
 from pygame import *
 from tkinter import *
 from random import *
-import enemy, ability
-from src import image_cacher, caster_loader, playerparty, code_system, enemyparty, status_effect
+from src import image_cacher, caster_loader, playerparty, code_system, enemyparty, status_effect, ability, enemy
 from src.enemy_animation_handler import EnemyVisualHandler
 from constants import *
-import math_tools
 from lib_cutscene import cutscene
 
 root = Tk()
@@ -75,8 +75,8 @@ instructionsPic = image_cacher.try_load("A BNR/help.png")  # The instructions as
 clicked = False
 
 background = image_cacher.try_load("A BNR/cave.jpg")  # The original background for the game
-fire = transform.scale(image_cacher.try_load("FIREBALL.png"), (15, 15))  # An enemies attacking animation
-lightning = transform.scale(image_cacher.try_load("lightning.png"), (15, 15))  # An enemies attacking animations
+fire = transform.scale(image_cacher.try_load("FIREBALL.png"), (15, 15))  # For slay counter
+lightning = transform.scale(image_cacher.try_load("lightning.png"), (15, 15))  # For Aliza's charge
 
 # Confirm and back pictures
 confirming = image_cacher.try_load("confirm.png")
@@ -98,12 +98,12 @@ selectpoly = [[(380, 30), (360, 10), (400, 10)], [(375, 220), (355, 200), (395, 
 character_move_choices = [MENU.COMBAT_MENU_MODES.ATTACK, MENU.COMBAT_MENU_MODES.SKILLS, MENU.COMBAT_MENU_MODES.DEFEND,
                           MENU.COMBAT_MENU_MODES.SWITCH]  # The buttons values to be associated to functions
 
-grunt_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/doge_visual.json", image_cacher)
-tough_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/pepe_visual.json", image_cacher)
-miniboss_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/spinner_visual.json", image_cacher)
-aaron_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/aaron_visual.json", image_cacher)
-kim_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/kim_visual.json", image_cacher)
-vlad_animations = EnemyVisualHandler(SETTINGS.VIDEO.FRAME_RATE).load_from_file("datafiles/enemy_visual_datafiles/vlad_visual.json", image_cacher)
+grunt_animations = EnemyVisualHandler().load_from_file("datafiles/enemy_visual_datafiles/doge_visual.json", image_cacher)
+tough_animations = EnemyVisualHandler().load_from_file("datafiles/enemy_visual_datafiles/pepe_visual.json", image_cacher)
+miniboss_animations = EnemyVisualHandler().load_from_file("datafiles/enemy_visual_datafiles/spinner_visual.json", image_cacher)
+aaron_animations = EnemyVisualHandler().load_from_file("datafiles/enemy_visual_datafiles/aaron_visual.json", image_cacher)
+kim_animations = EnemyVisualHandler().load_from_file("datafiles/enemy_visual_datafiles/kim_visual.json", image_cacher)
+vlad_animations = EnemyVisualHandler().load_from_file("datafiles/enemy_visual_datafiles/vlad_visual.json", image_cacher)
 
 # All the enemy rounds in order of how they will be coming in a 3D list
 enemyrotations = [
@@ -637,6 +637,8 @@ def battle(area, battlenum):  # The main battle function
     running = True
     clockity = time.Clock()
     speechBubbleTime, speechBubbleText, speechBubbleX, speechBubbleY = 0, '', 0, 0
+    enemy_targets = collections.defaultdict(list)
+    animation_queue = []
     while running:
         for evt in event.get():
             mb = mouse.get_pressed()
@@ -670,10 +672,11 @@ def battle(area, battlenum):  # The main battle function
             if (framedelay >= 0):
                 framedelay -= 1
             elif framedelay <= -1:  # If your characters went to determine the next ally to go or if its the enemies turn
-                if not player_party.can_attack and player_party.animations_done():
+                if not player_party.can_attack and player_party.animations_done() and playerturn:
                     player_party.current_caster_index = 0
                     playerturn = False
-                elif not player_party.current_caster.can_attack() and player_party.animations_done(): #choose a new caster if the current one can't attack
+                    enemy_targets.clear()
+                elif not player_party.current_caster.can_attack() and player_party.animations_done() and playerturn: #choose a new caster if the current one can't attack
                     player_party.find_next_caster()
             if playerturn:  # While its the players turn
                 for enemy in enemy_party.members:
@@ -683,7 +686,7 @@ def battle(area, battlenum):  # The main battle function
                     currentaction = buttons()
                     player_party.current_caster_index = casting(currentaction, player_party.current_caster_index)
             else:  # Its the enemies turn till it turns into the allys turn again
-                playerturn = enemycast()
+                playerturn, enemy_party.currently_attacking, animation_queue = enemycast(enemy_party.currently_attacking, enemy_targets, animation_queue)
         else:
             # death screen
             screen.blit(deathScreen, (0, 0))
@@ -850,55 +853,75 @@ def switch(caster):  # Switching between the characters order
     return caster
 
 
-def enemycast():  # The enemy attacking, It changes depending on what enemy is in the rotation
-    global playerturn, nottired, enemyframedelay
-    for current_enemy_info in enemy_party.members:
-        if enemyframedelay > 0:
-            enemyframedelay -= 1
-        elif enemyframedelay == 0:
-            current_enemy_info.apply_status_effects()
-            if current_enemy_info.taunted: # if the enemy is taunted, attack a taunt target
-                attacken(current_enemy_info.taunt_target, current_enemy_info.attackDamages[0],
-                         current_enemy_info.animations.attack_effect, current_enemy_info)
-            else: #otherwise, attack normal target
-                if current_enemy_info.enemyType == "grunt" and current_enemy_info.can_attack():
-                    target_random(current_enemy_info.attackDamages[0], current_enemy_info.animations.attack_effect, current_enemy_info)
-                elif current_enemy_info.enemyType == "tough" and current_enemy_info.can_attack():
-                    move = randint(0, 3)
-                    if move == 0:
-                        target_random(current_enemy_info.attackDamages[1], current_enemy_info.animations.attack_effect, current_enemy_info)
-                    else:
-                        target_priority(current_enemy_info.attackDamages[0], current_enemy_info.animations.attack_effect, current_enemy_info)
-                elif current_enemy_info.can_attack(): # boss and miniboss attack style
-                    if current_enemy_info.health > (current_enemy_info.max_health // 2):
-                        move = randint(0, 6)
-                    else:
-                        move = randint(0, 3)
-                    if move in [3, 4, 5, 6]:
-                        target_random(current_enemy_info.attackDamages[0], current_enemy_info.animations.attack_effect, current_enemy_info)
-                    elif move in [2, 1]:
-                        target_priority(current_enemy_info.attackDamages[1], current_enemy_info.animations.attack_effect, current_enemy_info)
-                    elif move == 0:
-                        if current_enemy_info.enemyType == 'miniboss':
-                            target_priority(current_enemy_info.attackDamages[1],
-                                            current_enemy_info.animations.attack_effect, current_enemy_info)
-                        else:
-                            attackaoe(current_enemy_info.attackDamages[2], current_enemy_info.animations.attack_effect, current_enemy_info)
-                    #screen.blit(enemyanimation[5][0][0], (1080 - 15 * i, 400 - 190 * i))
-            if all([not i.can_attack() for i in enemy_party.members]):  # When all the enemies go it becomes the partys turn
-                print("-"*10, 'START PLAYER TURN', '-'*10)
-                player_party.start_turn()
-                enemy_party.clear_taunts()
-                playerturn = True
-                enemyframedelay = 15
+def enemycast(currently_attacking, enemy_targets, animation_queue):  # The enemy attacking, It changes depending on what enemy is in the rotation
+    global playerturn, enemyframedelay
+    if all([not i.can_attack() for i in enemy_party.members]):  # When all the enemies go it becomes the partys turn
+        print("-"*10, 'START PLAYER TURN', '-'*10)
+        player_party.start_turn()
+        enemy_party.clear_taunts()
+        playerturn = True
+        enemyframedelay = 15
+        return True, 0, []
 
-                return playerturn
-            enemyframedelay = 15
-    return playerturn
+    if enemy_party.current_attacker.can_attack():
+        if not enemy_targets[enemy_party.currently_attacking]: # no targets marked but current attacker can attack
+            enemy_choose_target(enemy_targets)
+            animation_queue = get_animation_queue(enemy_targets, enemy_party)
+        elif not animation_queue: # animation queue empty
+            for target, dmg in enemy_targets[enemy_party.currently_attacking]:
+                enemy_apply_damage(player_party.members[target], dmg, enemy_party.current_attacker)
+            return False, currently_attacking+1, animation_queue
+        else:
+            current_attack_animation = enemy_party.current_attacker.animations.attack_animations[animation_queue[0]]
+            screen.blit(enemy_party.current_attacker.animations.attack, RECTANGLES.BATTLE_UI.ENEMY_RECTS[enemy_party.currently_attacking].topleft)
+            if current_attack_animation.isFinishedRunning():
+                animation_queue.pop(0)
+                current_attack_animation.reset()
+            else:
+                current_attack_animation.update()
+                current_attack_animation.draw(screen, 1080 - 15 * enemy_party.currently_attacking, 400 - 190 * enemy_party.currently_attacking)
+        return False, currently_attacking, animation_queue
+    else:
+        return False, currently_attacking+1, animation_queue
 
 
-def attacken(target, somedmg, animation, enemyInfo):  # This is the main function where an enemy applies his damage to the party member
-    screen.blit(animation, (randint(0, 1000), randint(0, 700)))
+def get_animation_queue(enemy_targets, enemy_party):
+    targets = enemy_targets[enemy_party.currently_attacking]
+    return [f'{STRINGS.POSITION_LABELS[enemy_party.currently_attacking]}_{STRINGS.POSITION_LABELS[target]}' for target, dmg in targets]
+
+def enemy_choose_target(enemy_targets):
+    # select target for next attacker
+    current_enemy_info = enemy_party.current_attacker
+    current_enemy_info.apply_status_effects()
+    if current_enemy_info.taunted: # if the enemy is taunted, attack a taunt target
+        enemy_targets[enemy_party.currently_attacking] = [(current_enemy_info.taunt_target, current_enemy_info.attackDamages[0])]
+    else: #otherwise, attack normal target
+        if current_enemy_info.enemyType == "grunt" and current_enemy_info.can_attack():
+            target_random(enemy_party.currently_attacking, enemy_targets, current_enemy_info.attackDamages[0])
+        elif current_enemy_info.enemyType == "tough" and current_enemy_info.can_attack():
+            move = randint(0, 3)
+            if move == 0:
+                target_random(enemy_party.currently_attacking, enemy_targets, current_enemy_info.attackDamages[1])
+            else:
+                target_priority(enemy_party.currently_attacking, enemy_targets, current_enemy_info.attackDamages[0])
+        elif current_enemy_info.can_attack(): # boss and miniboss attack style
+            if current_enemy_info.health > (current_enemy_info.max_health // 2):
+                move = randint(0, 6)
+            else:
+                move = randint(0, 3)
+            if move in [3, 4, 5, 6]:
+                target_random(enemy_party.currently_attacking, enemy_targets, current_enemy_info.attackDamages[0])
+            elif move in [2, 1]:
+                target_priority(enemy_party.currently_attacking, enemy_targets, current_enemy_info.attackDamages[1])
+            elif move == 0:
+                if current_enemy_info.enemyType == 'miniboss':
+                    target_priority(enemy_party.currently_attacking, enemy_targets, current_enemy_info.attackDamages[1])
+                else:
+                    attackaoe(enemy_party.currently_attacking, enemy_targets, current_enemy_info.attackDamages[2])
+            #screen.blit(enemyanimation[5][0][0], (1080 - 15 * i, 400 - 190 * i))
+
+
+def enemy_apply_damage(target, somedmg, enemyInfo):  # This is the main function where an enemy applies his damage to the party member
     if target.defending:  # If the ally is defending then the damage is halved
         # screen.blit(shield1, (325 - 15 * someone, 20 + 190 * someone))
         pass
@@ -906,30 +929,21 @@ def attacken(target, somedmg, animation, enemyInfo):  # This is the main functio
     enemyInfo.tired = True
 
     enemynum = enemy_party.get_member_index(enemyInfo)
-
-    screen.blit(enemyInfo.animations.attack, (1080 - 15 * enemynum, 400 - 190 * enemynum))
     display.flip()
 
 
-def attackaoe(somedmg, animation, enemyInfo):  # The attacking function for the bosses where it deals damage to the entire party
-    enemynum = enemy_party.get_member_index(enemyInfo)
-    for member in player_party.members:
-        screen.blit(animation, (randint(0, 1000), randint(0, 1000)))
-        # if yourselection[i].defending:
-        #    screen.blit(shield1, (325 - 15 * i, 20 + 190 * i))
-        member.damage(somedmg)
-    screen.blit(enemyInfo.animations.attack, (1080 - 15 * enemynum, 400 - 190 * enemynum))
-    enemyInfo.tired = True
+def attackaoe(attacker_id, enemy_targets, somedmg):  # The attacking function for the bosses where it deals damage to the entire party
+    enemy_targets[attacker_id] = [(i, somedmg) for i, target in enumerate(player_party.members) if target.is_alive()]
 
 
-def target_priority(dmg, animation, enemyInfo):  # Prioritizing the party member with the lowest health percentage to attack
-    target = min([i for i in player_party.members if i.is_alive()])
-    attacken(target, dmg, animation, enemyInfo)
+def target_priority(attacker_id, enemy_targets, dmg):  # Prioritizing the party member with the lowest health percentage to attack
+    target = min((member, i) for i, member in enumerate(player_party.members) if member.is_alive())
+    enemy_targets[attacker_id] = [(target[1], dmg)]
 
 
-def target_random(dmg, animation, enemyInfo):  # Targeting a random party member to attack
-    target = choice([i for i in player_party.members if i.is_alive()])
-    attacken(target, dmg, animation, enemyInfo)
+def target_random(attacker_id, enemy_targets, dmg):  # Targeting a random party member to attack
+    target = choice([(i, member) for i, member in enumerate(player_party.members) if member.is_alive()])
+    enemy_targets[attacker_id] = [(target[0], dmg)]
 
 
 def load():  # The loading function

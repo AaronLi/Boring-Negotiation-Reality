@@ -13,5 +13,5 @@
  "hurt": "game sprites/pepeow.png",
  "idle": "game sprites/pepe.png",
  "attack": "game sprites/pepe1.png",
- "attack_effect": "icestar.png"
+ "attack_effect": "datafiles/enemy_attack_datafiles/pepe_visual.json"
 }

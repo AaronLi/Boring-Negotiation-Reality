@@ -1,0 +1,21 @@
+{
+    "default": {
+        "animation_type": "pathed",
+        "sprites": [
+            "FIREBALL.png"
+        ],
+        "sprite_timing": [
+            0.33
+        ],
+        "position_keypoints": [
+            [
+                "ATTACKER_POS",
+                "DEFENDER_POS",
+                "DIRECT"
+            ]
+        ],
+        "position_timing": [
+            0.33
+        ]
+    }
+}

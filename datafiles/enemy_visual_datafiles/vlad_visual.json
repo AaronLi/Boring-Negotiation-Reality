@@ -4,5 +4,5 @@
  "hurt": "game sprites/vlad ow.png",
  "idle": "game sprites/vlad stand.png",
  "attack": "game sprites/vlad1.png",
- "attack_effect": "musicnotes.png"
+ "attack_effect": "datafiles/enemy_attack_datafiles/vlad_visual.json"
 }

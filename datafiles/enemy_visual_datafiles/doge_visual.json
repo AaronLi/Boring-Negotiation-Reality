@@ -13,5 +13,5 @@
  "hurt": "game sprites/dogeow.png",
  "idle": "game sprites/doge.png",
  "attack": "game sprites/doge1.png",
- "attack_effect": "FIREBALL.png"
+ "attack_effect": "datafiles/enemy_attack_datafiles/doge_visual.json"
 }

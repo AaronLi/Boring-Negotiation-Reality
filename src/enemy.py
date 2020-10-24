@@ -23,6 +23,9 @@ class Enemy:
         self.health -= damageDealt
         return damageDealt
 
+    def animations_complete(self):
+        return self.animations.animations_complete()
+
     def is_alive(self):
         return self.health > 0
 

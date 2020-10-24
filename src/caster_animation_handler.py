@@ -1,10 +1,10 @@
 import src.image_cacher, json, pygame.transform
 from src.visual_handler import VisualHandler
-
+from constants import SETTINGS
 
 class CasterVisualHandler(VisualHandler):
-    def __init__(self, game_clock) -> None:
-        super().__init__(game_clock)
+    def __init__(self) -> None:
+        super().__init__()
         self.defend_animation = None
         self.attack_animation = None
         self.spell_animation = None
@@ -25,9 +25,9 @@ class CasterVisualHandler(VisualHandler):
 
             animations_info = data['animations']
 
-            self.defend_animation = image_cacher.load_animation(animations_info['defend'], self.game_clock)
-            self.attack_animation = image_cacher.load_animation(animations_info['attack'], self.game_clock)
-            self.spell_animation = image_cacher.load_animation(animations_info['spell'], self.game_clock)
+            self.defend_animation = image_cacher.load_animation(animations_info['defend'])
+            self.attack_animation = image_cacher.load_animation(animations_info['attack'])
+            self.spell_animation = image_cacher.load_animation(animations_info['spell'])
 
             self.portrait = image_cacher.try_load(data['portrait'])
             self.dead_portrait = image_cacher.try_load(data['dead_portrait'])

@@ -4,5 +4,5 @@
  "hurt": "game sprites/kimow.png",
  "idle": "game sprites/kim.png",
  "attack": "game sprites/kim1.png",
- "attack_effect": "diamond.png"
+ "attack_effect": "datafiles/enemy_attack_datafiles/kim_visual.json"
 }

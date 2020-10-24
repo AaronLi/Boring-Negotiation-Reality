@@ -13,5 +13,5 @@
  "hurt": "game sprites/spinnerow.png",
  "idle": "game sprites/spinner.png",
  "attack": "game sprites/spinner1.png",
- "attack_effect": "lightning.png"
+ "attack_effect": "datafiles/enemy_attack_datafiles/spinner_visual.json"
 }

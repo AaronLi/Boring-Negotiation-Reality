@@ -4,7 +4,7 @@ pattern = re.compile('["\\\'][\\w /\\\\]+\\.\\w+["\']')
 file_paths = []
 data_files = []
 
-for directory, folders, files in os.walk('.'):
+for directory, folders, files in os.walk('..'):
     for file in files:
         file_path = os.path.join(directory, file)
 

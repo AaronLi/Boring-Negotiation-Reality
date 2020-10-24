@@ -1,14 +1,17 @@
 from constants import RECTANGLES
-import math_tools
-from pygame import draw
+from src import math_tools
+
 
 class EnemyParty:
     def __init__(self, enemies = None) -> None:
         self.members = enemies if enemies is not None else []
+        self.currently_attacking = 0
 
     def get_member_index(self, member):
         return self.members.index(member)
-
+    @property
+    def current_attacker(self):
+        return self.members[self.currently_attacking]
     def clear_taunts(self):
         for member in self.members:
             member.clear_taunt_targets()
